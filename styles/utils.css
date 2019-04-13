@@ -1,0 +1,189 @@
+/*pomoćne klase, u stilu Bootstrapa*/
+.mb-xs {
+  margin-bottom: 0.5rem;
+}
+
+.mb-s {
+  margin-bottom: 1rem;
+}
+
+.mb-m {
+  margin-bottom: 4rem;
+}
+
+.mb-l {
+  margin-bottom: 8rem;
+}
+
+.mt-s {
+  margin-top: 1rem;
+}
+
+.mt-m {
+  margin-top: 4rem;
+}
+
+.mt-l {
+  margin-top: 8rem;
+}
+
+.mt-xs {
+  margin-top: 0.5rem;
+}
+
+.mr-s {
+  margin-right: 1rem;
+}
+
+.mr-m {
+  margin-right: 4rem;
+}
+
+.mr-l {
+  margin-right: 8rem;
+}
+
+.mr-xs {
+  margin-left: 0.5rem;
+}
+
+.ml-s {
+  margin-left: 1rem;
+}
+
+.ml-m {
+  margin-left: 4rem;
+}
+
+.ml-l {
+  margin-left: 8rem;
+}
+
+.ml-xs {
+  margin-left: 0.5rem;
+}
+
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+.flex-cc {
+  justify-content: center;
+  align-items: center;
+}
+.flex-sa {
+  justify-content: space-around;
+}
+.flex-se {
+  justify-content: space-evenly;
+}
+
+.flex-sb {
+  justify-content: space-between;
+}
+.flex-fe {
+  justify-content: flex-end;
+}
+.flex-fs {
+  justify-content: flex-start;
+}
+
+.fb-50 {
+  flex: 1 0 50%;
+}
+
+.fb-100 {
+  flex: 1 0 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.large {
+  width: 80vmin;
+  height: auto;
+  max-width: 35rem;
+}
+
+.p-xs {
+  padding: 0.5rem;
+}
+
+.p-s {
+  padding: 1rem;
+}
+
+.p-m {
+  padding: 4rem;
+}
+
+.p-l {
+  padding: 8rem;
+}
+
+.p-xl {
+  padding: 16rem;
+}
+
+.fw-m {
+  font-weight: 500;
+}
+
+.fw-l {
+  font-weight: 700;
+}
+
+.fs-s {
+  font-size: 0.8rem;
+}
+
+.fs-m {
+  font-size: 1.3rem;
+}
+
+.fs-l {
+  font-size: 1.8rem;
+}
+
+.fs-xl {
+  font-size: 2.3rem;
+}
+
+.lh-m {
+  line-height: 1.3rem;
+}
+
+.lh-l {
+  line-height: 1.8em;
+}
+
+.lh-m {
+  line-height: 2.3rem;
+}
+
+.br-s {
+  border-radius: 3px;
+}
+
+.br-m {
+  border-radius: 6px;
+}
+
+.br-l {
+  border-radius: 12px;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.larger {
+  width: 100vmin;
+  height: auto;
+  max-width: 35rem;
+}

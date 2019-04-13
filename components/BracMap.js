@@ -1,3 +1,4 @@
+//TODO: comment and explain web components and svg
 const template = document.createElement("template");
 template.innerHTML = `
 <style>

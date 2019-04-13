@@ -1,3 +1,4 @@
+/*TODO: comment and explain css variables*/
 *,
 *::after,
 *::before {
@@ -5,7 +6,120 @@
   padding: 0;
   margin: 0;
 }
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+}
 
 html {
-  --background-color: hsl(15, 10%, 75%);
+  --white-1: hsl(15, 8%, 92%);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--white-1);
+}
+
+.landing-section {
+  display: grid;
+  width: 100vw;
+  min-height: 50vh;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-rows: repeat(auto-fill, 10vh);
+  place-items: center;
+  padding: 4vw;
+  background: var(--color-white-1);
+  transition: opacity 2s, transform 2s;
+  margin-bottom: 10vh;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+  }
+  .landing-section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    max-height: 40rem;
+    padding: 0;
+  }
+
+  .landing-section header {
+    margin: 2rem 2rem;
+  }
+}
+
+.landing-section img {
+  grid-row: 3;
+  gap: 1rem;
+  width: 35vw;
+  min-width: 300px;
+}
+
+.landing-section header {
+  max-width: 30rem;
+  height: 45vh;
+
+  min-height: 10rem;
+  max-height: 20rem;
+  grid-row: 3;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: space-between;
+}
+
+.landing-section button {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem;
+  max-height: 2rem;
+  background: grey;
+}
+
+.project-section {
+  background: grey;
+  min-height: 10rem;
+  padding: 5vw;
+}
+
+.cards {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+.card {
+  min-height: 8rem;
+  background: white;
+  border-radius: 5px;
+}
+.card.fading-in {
+  opacity: 0;
+  transform: translate(-100px, 0);
+}
+
+@media screen and (min-width: 700px) {
+  .cards {
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
+  .card {
+    min-width: 20rem;
+  }
+}
+
+.footer {
+  min-height: 20rem;
+  background-color: black;
 }

@@ -1,0 +1,75 @@
+html {
+  --color-white-1: hsla(30, 30%, 91%, 1);
+  /*glavne boje*/
+  --color-primary-1: hsl(115, 55%, 62%);
+  --color-primary-2: hsl(118, 55%, 52%);
+  --color-primary-3: hsl(122, 51%, 43%);
+  --color-primary-4: hsl(127, 53%, 30%);
+  --color-primary-5: hsl(130, 55%, 22%);
+
+  --color-secondary-1: hsl(183, 53%, 65%);
+  --color-secondary-2: hsl(183, 52%, 52%);
+  --color-secondary-3: hsl(183, 50%, 40%);
+  --color-secondary-4: hsl(186, 52%, 27%);
+  --color-secondary-5: hsl(193, 60%, 22%);
+
+  --color-alert-1: hsl(3, 60%, 66%);
+  --color-alert-2: hsl(2, 65%, 56%);
+  --color-alert-3: hsl(1, 65%, 46%);
+  --color-alert-4: hsl(2, 66%, 39%);
+  --color-alert-5: hsl(1, 61%, 29%);
+
+  --color-text-1: hsla(10, 8%, 25%, 1);
+  --color-grey-1: hsla(10, 8%, 45%, 1);
+
+  --gradient-1: linear-gradient(
+    to right,
+    hsla(110, 55%, 48%, 0.9),
+    hsla(185, 48%, 50%, 0.9)
+  );
+  --gradient-2: linear-gradient(
+      to right,
+      hsla(120, 75%, 58%, 0.7),
+      hsla(180, 75%, 60%, 0.92)
+    )
+    `;
+  --shadow-1: 0 2px 1px hsla(118, 60%, 52%;0.3);
+}
+
+html[data-dark="true"] {
+  --color-primary-3: hsl(125, 35%, 34%);
+  --color-primary-4: hsl(122, 45%, 49%);
+}
+/*
+  const themes = {
+    //spreading the base theme into the other themes to keep the code DRY
+  
+    light: {
+      ...baseTheme;
+      name: "light";
+  
+      mapColor: hsl(173;38%;35%)",  
+      bgColor1: hsla(10;10%;92%;1);
+      toggleBgColor: hsla(170;12%;85%;1"
+    };
+  
+    dark: {
+      ...baseTheme;
+      name: "dark";
+      /*TODO: find the right shade 
+      primaryColor3: hsl(125, 35%, 34%);
+  
+      primaryColor4: hsl(122, 45%, 49%);
+  
+      secondaryColor1: hsl(165;45%;50%)",  
+      mapColor: hsl(163;38%;40%)",  
+      textColor1: hsla(10;10%;75%;1);
+      bgColor1: hsla(10;15%;9%;1)"
+  
+      gradient1: `linear-gradient(to right, hsla(110, 55%, 55%;0.7), hsla(155;55%;55%;0.7))`;
+      gradient2: `linear-gradient(to right, hsla(120, 55%, 48%, 0.9), hsla(180;75%;60%;0.92))`;
+  
+      toggleBgColor: hsla(12;15%;18%;1)
+    }
+  };
+  */

@@ -52,7 +52,6 @@ canvas {
 </style>
 <div class="canvas-container flexCC">
 <div id="overlay" class="">
-  <button id="toggleButton">Next Level</button>
   <span id="scoreDisplay">0</span>
   <span id="collisionTest"></span>
 </div>
