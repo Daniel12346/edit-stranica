@@ -15,7 +15,7 @@ const observe = (
     initialTransform = "translate(0,0)",
     initialOpacity = "1",
     initialTransition = "",
-    transitionDelay = ""
+    delay = ""
   },
   ...elements
 ) => {
@@ -34,7 +34,7 @@ const observe = (
 
     const fadeIn = el => {
       el.style.transition = el.style.transition || initialTransition;
-      el.style.transitionDelay = transitionDelay;
+      el.style.transitionDelay = delay;
       el.style.transform = "translate(0,0)";
       el.style.opacity = "1";
     };
@@ -77,14 +77,14 @@ const options = {
   threshold: 0.1,
   initialOpacity: 0,
   initialTransform: "translate(-100px,0)",
-  initialTransition: "transform 1s, opacity 1s",
-  transitionDelay: "0"
+  initialTransition: "transform 1s ease-out, opacity 1s ease-out",
+  delay: "0"
 };
 
 cards.forEach((card, i) =>
   //card je svaki element s klasom "card", i je index elementa u arrayu svih takvih elemenata (varijabla cards)
   //transition delay ovisi o indexu pa slike ne postaju vidljive istovremeno
-  observe({ ...options, transitionDelay: `${i * 0.3}s` }, card)
+  observe({ ...options, delay: `${i * 0.3}s` }, card)
 );
 
 /***LAZY LOADING***/

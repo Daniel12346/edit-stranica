@@ -5,6 +5,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
 }
 a {
   text-decoration: none;
@@ -35,6 +36,8 @@ img {
   height: auto;
 }
 
+/***POČETNA***/
+
 .landing-section {
   display: grid;
   width: 100vw;
@@ -45,7 +48,7 @@ img {
   padding: 4vw;
   background: var(--color-white-1);
   transition: opacity 2s, transform 2s;
-  margin-bottom: 10vh;
+  margin-bottom: 10vmin;
 }
 
 @media screen and (max-width: 700px) {
@@ -95,7 +98,7 @@ img {
   background: grey;
 }
 
-.project-section {
+.cards-section {
   background: grey;
   min-height: 10rem;
   padding: 5vw;
@@ -108,16 +111,21 @@ img {
 }
 
 .card {
-  min-height: 8rem;
+  /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);*/
+
+  min-height: 12rem;
   background: white;
   border-radius: 5px;
+}
+.card:not(:last-child) {
+  margin-bottom: 2rem;
 }
 .card.fading-in {
   opacity: 0;
   transform: translate(-100px, 0);
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 1024px) {
   .cards {
     flex-flow: row wrap;
     justify-content: space-evenly;
@@ -125,9 +133,14 @@ img {
   .card {
     min-width: 20rem;
   }
+  .card:not(:last-child) {
+    margin-bottom: 0;
+  }
 }
 
 .footer {
   min-height: 20rem;
   background-color: black;
 }
+
+/***PROJEKT***/

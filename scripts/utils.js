@@ -12,7 +12,8 @@ const selectOneById = (root, id) => root.getElementById(id);
 //npr. const [button,img] = select(document,"button","img")
 const select = (root, ...tags) => [...tags].map(tag => root.querySelector(tag));
 
-const selectById = (root, ...ids) => [...ids].map(id => root.querySelector(id));
+const selectById = (root, ...ids) =>
+  [...ids].map(id => root.getElementById(id));
 
 //vraća array koji se sastoji od više arraya elemenata
 //Array.from() pretvara listu nodeova u "pravi" array
