@@ -25,6 +25,14 @@ html {
 body {
   min-height: 100vh;
   background-color: var(--white-1);
+  /*skrivamo horizontalni scrollbar*/
+  overflow-x: hidden;
+}
+
+/*osnovna responzivnost za sve slike*/
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .landing-section {

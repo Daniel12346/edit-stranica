@@ -1,3 +1,4 @@
+//TODO: delete (maybe)
 //all the level settings will be defined in this map
 export const levels = new Map();
 

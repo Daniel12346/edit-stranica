@@ -11,8 +11,10 @@ navTemplate.innerHTML = ` <style>
 
 :host{
     display: block;    
+    width:100%;
 }
 nav{
+    width: 100%;
     height: 5rem;
     background-color: gray;
     display: flex;
@@ -39,7 +41,7 @@ a{
 <nav>
 <ul class="links">
  <li><a href="index.html">Početna</a></li>
- <li>Projekt</li>
+ <li><a href="project.html">Projekt</a></li>
  <li><a href="about.html">Dodaci</a></li>
  <li>O nama</li>
 </ul>
