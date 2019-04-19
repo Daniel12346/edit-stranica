@@ -1,8 +1,9 @@
 //TODO: prevest
 
-//all the level settings will be defined in this map
+//proporcije nisu uvijek idealne, ali igra funkcionira na svim uređajima
 
 /*SETTINGS */
+//all the level settings will be defined in this map
 const levels = new Map();
 levels.set(1, {
   //the current level

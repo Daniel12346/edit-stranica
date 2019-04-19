@@ -6,6 +6,7 @@
   padding: 0;
   margin: 0;
   scroll-behavior: smooth;
+  font-family: "Raleway", "sans-serif";
 }
 a {
   text-decoration: none;
@@ -19,15 +20,12 @@ button {
   border: none;
 }
 
-html {
-  --white-1: hsl(15, 8%, 92%);
-}
-
 body {
   min-height: 100vh;
-  background-color: var(--white-1);
+  background-color: var(--color-bg-1);
   /*skrivamo horizontalni scrollbar*/
   overflow-x: hidden;
+  color: var(--color-text-1);
 }
 
 /*osnovna responzivnost za sve slike*/
@@ -38,6 +36,17 @@ img {
 
 /***POČETNA***/
 
+button {
+  display: inline-flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 1rem;
+  max-height: 2rem;
+  background: var(--color-primary-2);
+  color: var(--color-white-1);
+}
+
 .landing-section {
   display: grid;
   width: 100vw;
@@ -46,9 +55,10 @@ img {
   grid-template-rows: repeat(auto-fill, 10vh);
   place-items: center;
   padding: 4vw;
-  background: var(--color-white-1);
   transition: opacity 2s, transform 2s;
   margin-bottom: 10vmin;
+  color: var(--color-text-1);
+  background: var(--color-bg-1);
 }
 
 @media screen and (max-width: 700px) {
@@ -90,14 +100,6 @@ img {
   align-items: space-between;
 }
 
-.landing-section button {
-  display: inline-flex;
-  align-items: center;
-  padding: 1rem;
-  max-height: 2rem;
-  background: grey;
-}
-
 .cards-section {
   background: grey;
   min-height: 10rem;
@@ -112,7 +114,6 @@ img {
 
 .card {
   /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);*/
-
   min-height: 12rem;
   background: white;
   border-radius: 5px;
@@ -143,4 +144,126 @@ img {
   background-color: black;
 }
 
-/***PROJEKT***/
+/***O NAMA***/
+
+.us-section {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  --color-text-1: hsla(150, 10%, 88%, 1);
+}
+
+.question {
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  border-left: 4px var(--color-primary-3) solid;
+  margin-right: 3rem;
+}
+
+.after {
+  position: relative;
+  color: var(--color-text-1);
+}
+
+.after {
+  padding: 2rem;
+  max-width: 20rem;
+  margin-bottom: 8vh;
+}
+.after .role {
+  background: darkmagenta;
+  box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.after::after {
+  content: "";
+  display: block;
+  height: 40rem;
+  width: 50rem;
+  z-index: -1;
+  border-radius: 10px;
+  background: url("../assets/abstract2.svg") no-repeat;
+  transform: rotate(-15deg);
+  position: absolute;
+  top: 0px;
+}
+#after-2::after {
+  transform: rotate(10deg);
+  background: url("../assets/abstract2blue.svg") no-repeat;
+}
+
+#question-2 {
+  border-left-color: var(--color-secondary-2);
+  margin-top: 10rem;
+  margin-left: 3rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .us-section {
+    width: 60%;
+    display: grid;
+    grid-template-areas:
+      "question-1 . after-1"
+      "after-2 . ."
+      ". . after-3"
+      "question-2 . ."
+      "p p p";
+    grid-template-columns: 1fr 20% 1fr;
+    grid-template-rows: repeat(auto-fill, 18rem);
+    padding-top: 3rem;
+  }
+  #after-1 {
+    grid-area: after-1;
+  }
+  #after-2 {
+    grid-area: after-2;
+  }
+
+  #after-3 {
+    grid-area: after-3;
+  }
+  .question {
+    padding: 0.8rem;
+  }
+  #question-1 {
+    grid-area: question-1;
+    margin-top: -5vmax;
+  }
+  #question-2 {
+    grid-area: question-2;
+    margin-left: 0;
+  }
+}
+
+.main-about {
+  min-height: 150vh;
+  overflow: hidden;
+}
+
+#ciljevi {
+  grid-area: p;
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+#ciljevi ul {
+  padding: 1rem 0 0 1.5rem;
+}
+
+#ciljevi ul li::before {
+  content: "-";
+  height: 3px;
+  color: var(--color-primary-3);
+  font-weight: bold;
+}
+
+/**FOOTER**/
+.footer img {
+  transition: filter 0.4s;
+  filter: grayscale(0.85);
+}
+
+.footer img:hover {
+  filter: grayscale(0);
+}

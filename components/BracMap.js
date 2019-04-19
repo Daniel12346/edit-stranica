@@ -94,6 +94,7 @@ class BracMap extends HTMLElement {
     }
     return this.getAttribute("fill");
   }
+  //postvlja atribut fill s koji  u constructoru određujemo boju svg-ja
   set fill(color) {
     src ? this.setAttribute("fill", color) : this.removeAttribute("fill");
   }

@@ -13,16 +13,23 @@ navTemplate.innerHTML = ` <style>
     display: block;    
     width:100%;
 }
-nav{
+nav{  
     width: 100%;
-    height: 5rem;
-    background-color: gray;
+    height: 3rem;
     display: flex;
     align-items: center;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+
+}
+
+nav:not(.mobile){
+  position: relative;
+  background: var(--color-nav)
 }
 
 .links{
     display: flex;
+    text-transform: uppercase;
     align-items: center;
     width: 100%;
     height: 70%;
@@ -32,53 +39,131 @@ nav{
 }
 a{
     text-decoration: none;
+    color: var(--color-primary-4);
+
+
+    /*TODO: new serif*/
+    font-family: roboto;
+}
+
+nav.mobile{
+  display: none;
+}
+
+
+@media(max-width: 500px){
+a{
+  color: white;
+}
+
+  nav.mobile{
+    display: flex;
+    background-color: var(--color-primary-3);
+  }
+
+  :host nav:not(.mobile){
+    font-size: 1.4rem;
+    opacity: 0;
+    position: fixed;
+    height: 100vh;
+    z-index: 11;
+    pointer-events: none;
+    transition: opacity 0.3s;
+
+   :host nav:not(.mobile) a{
     color: white;
+   } 
+
+  }
+  :host([open]) nav:not(.mobile){
+    opacity: 1;
+    max-height: 100vh;
+    pointer-events: all;
+
+  }
+
+  :host([open]) button{
+    position: fixed;
+  }
+  nav:not(.mobile){
+    background: var(--gradient-1);
+    height: 100%;
+  }
+  .links{
+    padding: 7vh 0;
+    height: 90%;
+    max-height: 100vh;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .links>*{
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      color: white;
+      transition: transform 0.2s;
+      position: relative;
+      padding: 0.3rem;
+  }
+  .links>*::after {
+      transform-origin: bottom left;
+      transition: transform 0.2s;
+      transform: scale(0);
+      position: absolute;
+      display: inline-block;
+      content: "";
+      width: 100%;
+      height: 3px;
+      background: white;
+      bottom: -3px;
+  }
+  .links>*:hover::after{
+      transform: scale(1);
+  }
 }
 
 </style>
 
-
 <nav>
 <ul class="links">
  <li><a href="index.html">Početna</a></li>
- <li><a href="project.html">Projekt</a></li>
- <li><a href="about.html">Dodaci</a></li>
- <li>O nama</li>
+ <li><a href="ekologija.html">Ekologija</a></li>
+ <li><a href="dodatci.html">Dodatci</a></li>
+ <li><a href="about.html">O nama</a></li>
 </ul>
+</nav>
+<nav class="mobile">
+<button style="z-index: 12;">toggle</button>
 </nav>`;
+
+//TODO: mobile nav
 class Nav extends HTMLElement {
   constructor() {
     super();
     this.$root = this.attachShadow({ mode: "open" });
     this.$root.appendChild(navTemplate.content.cloneNode(true));
+    this.button = this.$root.querySelector("button");
+    this.button.addEventListener("click", this.toggle.bind(this));
   }
 
   //TODO: sth
-  get imgSrc() {
-    if (!this.hasAttribute("img-src")) {
+  get open() {
+    if (!this.hasAttribute("open")) {
       return null;
     }
-    return this.getAttribute("img-src");
+    return this.getAttribute("open");
   }
-  set imgSrc(src) {
-    src ? this.setAttribute("img-src", src) : this.removeAttribute("img-src");
-  }
-  get lazyImg() {
-    return this.hasAttribute("lazy-img");
-  }
-  set lazyImg(val) {
-    val ? this.setAttribute("lazy-img", "") : this.removeAttribute("lazy-img");
+  set open(val) {
+    val ? this.setAttribute("open", val) : this.removeAttribute("open");
   }
 
-  get expanded() {
-    return this.hasAttribute("lazy-img");
-  }
-  set expanded(val) {
-    val ? this.setAttribute("lazy-img", "") : this.removeAttribute("lazy-img");
+  toggle() {
+    this.open = !this.open;
   }
 
   static get observedAttributes() {
-    return ["img-src", "lazy-img", "expanded"];
+    return ["open"];
   }
 }
 
