@@ -151,12 +151,55 @@ canvas {
   height: 100%;
   width: 100%;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #overlay {
   z-index: 4;
   position: absolute;
   height: 90%;
   width: 90%;
+}
+
+.display{
+  padding: 0.6rem;
+  background: hsla(130,60%,30%,0.9);
+  border-radius: 4px;
+  color: white;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+ }
+#scoreCounter,#levelCounter{
+  font-weight: bold;
+  font-family: roboto;
+  font-size: 1.2rem;
+}
+
+
+.info-display{
+  box-shadow: 0 2px 2px 2px rgba(0,0,0,0.4);
+  background: hsla(130,60%,30%,0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s;
+  flex-flow: row wrap;
+  opacity: 1;
+}
+
+.info-display>*{
+  flex: 1 0 100%;
+  display: block;
+}
+
+.game-info{
+  width: 90%;
+  background: hsla(130,60%,20%,0.95); 
+}
+
+
+.info-display.hidden{
+  opacity:0;
 }
 
 /*TODO: refactor*/
@@ -168,12 +211,17 @@ canvas {
 
 
 </style>
+
 <div class="canvas-container flexCC">
-<div id="overlay" class="">
-  <span id="scoreDisplay">0</span>
-  <span id="collisionTest"></span>
-</div>
-<canvas id="canvas" width="1000" height="100"></canvas>
+  <div id="overlay" class="">
+    <span class="display">LEVEL <span id="levelCounter">1</span></span>
+    <span class="display">score: <span id="scoreCounter">0</span></span>
+    <div class="display info-display">
+      <p class="display game-info" id="gameInfo">E</p>
+      </div>
+  </div>
+
+  <canvas id="canvas" width="1000" height="100"></canvas>
 </div>`;
 
 class FlappyGaleb extends HTMLElement {
@@ -201,7 +249,9 @@ class FlappyGaleb extends HTMLElement {
     canvas.height = window.innerHeight;
 
     // const toggleButton = document.getElementById("toggleButton");
-    const scoreDisplay = this.$root.getElementById("scoreDisplay");
+    const scoreCounter = this.$root.getElementById("scoreCounter");
+    const levelCounter = this.$root.getElementById("levelCounter");
+    const gameInfo = this.$root.getElementById("gameInfo");
 
     const { gravity, speed } = currentLevel;
     const physics = new Physics({ gravity, speed });
@@ -222,7 +272,7 @@ class FlappyGaleb extends HTMLElement {
       return (
         Math.sqrt((seagull.y - object.y) ** 2 + (seagull.x - object.x) ** 2) <
         //the factor by which the height is multiplied effectively signifies collision sensitivity
-        object.height * 0.75
+        object.height * 0.7
       );
     };
 
@@ -239,14 +289,18 @@ class FlappyGaleb extends HTMLElement {
         canvas.style.backgroundImage = `url(${next.backgroundUrl})`;
         physics.speed = next.speed;
         physics.gravity = next.gravity;
+        levelCounter.textContent = next.current;
         return next;
       }
     };
 
-    const reset = () => {
+    const end = () => {
+      gameInfo.textContent = `REZULTAT: ${distance}`;
+      distance = 0;
+      gameInfo.parentElement.classList.remove("hidden");
       let first = levels.get(1);
       currentLevel = first;
-      distance = 0;
+      levelCounter.textContent = first.current;
       isRunning = false;
       //TODO: move this setup to a new function
       canvas.style.backgroundImage = `url(${first.backgroundUrl})`;
@@ -266,8 +320,7 @@ class FlappyGaleb extends HTMLElement {
         pipe.draw({});
         pipe.x -= 2 * physics.speed;
         if (hasCollided({ seagull, object: pipe })) {
-          this.$root.getElementById("collisionTest").textContent = "COLLISION";
-          reset();
+          end();
         }
       });
     };
@@ -309,7 +362,7 @@ class FlappyGaleb extends HTMLElement {
       seagull.y += physics.gravity;
       distance += Math.round(1 * currentLevel.speed);
       //displaying the current distance ("" + number implicit converts it to a string)
-      scoreDisplay.textContent = "" + distance;
+      scoreCounter.textContent = "" + distance;
       if (distance === currentLevel.totalDistance) {
         nextLevel();
       }
@@ -354,9 +407,11 @@ class FlappyGaleb extends HTMLElement {
           }
           seagull.jump({ multiplier: 2 / physics.gravity });
         } else if (e.key === "p") {
+          if (gameInfo.parentElement.classList.contains("hidden")) {
+            gameInfo.textContent = "PAUZIRANO";
+          }
+          gameInfo.parentElement.classList.toggle("hidden");
           toggleActive();
-        } else if (e.key === "l") {
-          nextLevel();
         }
       });
 

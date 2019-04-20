@@ -12,8 +12,8 @@ const observe = (
     root = null,
     rootMargin = "-20% 1000px -20% 1000px",
     threshold = 1,
-    initialTransform = "translate(0,0)",
-    initialOpacity = "1",
+    initialTransform = "",
+    initialOpacity = "",
     initialTransition = "",
     delay = ""
   },
@@ -73,7 +73,7 @@ const [cards] = selectAll(document, ".card");
 
 //osnovne postavke
 const options = {
-  rootMargin: "-20% 300px",
+  rootMargin: "0px 0px",
   threshold: 0.1,
   initialOpacity: 0,
   initialTransform: "translate(-100px,0)",
@@ -84,7 +84,7 @@ const options = {
 cards.forEach((card, i) =>
   //card je svaki element s klasom "card", i je index elementa u arrayu svih takvih elemenata (varijabla cards)
   //transition delay ovisi o indexu pa slike ne postaju vidljive istovremeno
-  observe({ ...options, delay: `${i * 0.3}s` }, card)
+  observe({ ...options, rootMargin: "-20% 300px", delay: `${i * 0.3}s` }, card)
 );
 
 /***LAZY LOADING***/
@@ -105,3 +105,22 @@ lazyImages.forEach(img => {
 });
 
 observe({ ...options, initialTransition: "" }, ...lazyImages);
+const [afters] = selectAll(document, ".after");
+
+afters.forEach((after, i) => {
+  after.onIntersection = function() {
+    this.classList.add("fade-in");
+  };
+  //card je svaki element s klasom "card", i je index elementa u arrayu svih takvih elemenata (varijabla cards)
+  //transition delay ovisi o indexu pa slike ne postaju vidljive istovremeno
+  observe(
+    {
+      ...options,
+      initialTransform: "translate(-100px,0)",
+      delay: `${i * 0.3}s`,
+      threshold: 0.2,
+      rootMargin: "-5% 1000px"
+    },
+    after
+  );
+});

@@ -46,6 +46,8 @@ template.innerHTML = `
     stroke="#000"
     fill-opacity=".983"
     fill="#006673"
+    filter="drop-shadow(0px 0.1px 0.3px rgba(0,0,0,0.7))"
+
   />
   <circle
   id="pucisca"

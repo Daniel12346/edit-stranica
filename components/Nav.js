@@ -18,7 +18,7 @@ nav{
     height: 3rem;
     display: flex;
     align-items: center;
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    box-shadow: 0.5px 0.5px 0.5px rgba(0,0,0,0.2), 3px 3px 3px rgba(0,0,0,0.2);
 
 }
 
@@ -41,9 +41,7 @@ a{
     text-decoration: none;
     color: var(--color-primary-4);
 
-
     /*TODO: new serif*/
-    font-family: roboto;
 }
 
 nav.mobile{
@@ -55,10 +53,13 @@ nav.mobile{
 a{
   color: white;
 }
-
+#theme-toggle{
+  display: none;
+}
   nav.mobile{
     display: flex;
     background-color: var(--color-primary-3);
+    justify-content: space-between;
   }
 
   :host nav:not(.mobile){
@@ -131,10 +132,13 @@ a{
  <li><a href="ekologija.html">Ekologija</a></li>
  <li><a href="dodatci.html">Dodatci</a></li>
  <li><a href="about.html">O nama</a></li>
+ <li id="theme-toggle"><ie-toggle></ie-toggle></li>
 </ul>
 </nav>
 <nav class="mobile">
 <button style="z-index: 12;">toggle</button>
+<span><ie-toggle></ie-toggle></span>
+
 </nav>`;
 
 //TODO: mobile nav

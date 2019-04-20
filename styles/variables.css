@@ -29,8 +29,11 @@ html {
   --color-alert-2: hsl(47, 54%, 53%);
   --color-alert-3: hsl(52, 60%, 47%);
 
-  --color-bg-1: hsla(150, 38%, 93%, 1);
+  --color-bg-1: hsla(150, 28%, 86%, 1);
+  --color-bg-2: hsla(150, 22%, 89%, 1);
+
   --color-text-1: hsla(10, 8%, 22%, 1);
+  --color-text-2: hsla(10, 8%, 82%, 1);
 
   --color-text-about: hsla(10, 8%, 75%, 1);
 
@@ -60,14 +63,18 @@ html {
 
 html[data-dark="true"] {
   --color-white-1: black;
-  --color-primary-3: hsl(125, 35%, 34%);
+  --color-primary-3: hsl(125, 45%, 54%);
   --color-primary-4: hsl(122, 45%, 49%);
 
+  --color-secondary-4: hsl(196, 72%, 62%);
+
   --color-text-1: hsla(10, 8%, 90%, 1);
+  --color-text-2: hsla(10, 8%, 10%, 1);
 
   --color-text-about: hsla(10, 8%, 75%, 1);
 
   --color-bg-1: hsla(180, 15%, 10%, 1);
+  --color-bg-2: hsla(180, 15%, 16%, 1);
 
   --color-nav: hsla(180, 10%, 15%, 1);
 }
