@@ -1,6 +1,5 @@
 const navTemplate = document.createElement("template");
-//use a top level img="src" attribute to enable lazy loading  (shadow.$img.src=this.getAttribute(img))
-// TODO: intersection observer lazy loading
+
 navTemplate.innerHTML = ` <style>
 
 *,*::before,*::after{
@@ -42,6 +41,7 @@ a{
     color: var(--color-primary-4);
 
     /*TODO: new serif*/
+    font-family: "sans-serif";
 }
 
 nav.mobile{
@@ -141,7 +141,6 @@ a{
 
 </nav>`;
 
-//TODO: mobile nav
 class Nav extends HTMLElement {
   constructor() {
     super();

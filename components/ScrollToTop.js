@@ -1,3 +1,5 @@
+//element koji dopušta lakši povratak na vrh stranice
+
 const scrollToTopTemplate = document.createElement("template");
 
 scrollToTopTemplate.innerHTML = ` <style>
@@ -43,10 +45,14 @@ scrollToTopTemplate.innerHTML = ` <style>
 }
 
 :host([shown]) #scrollButton{
-  opacity: 1;
+  opacity: 0.7;
   pointer-events: all;
+  cursor: pointer;
 }
 
+:host([shown]) #scrollButton:hover{
+  opacity: 1;
+}
 </style>
 
   <div id="scrollMark">E</div>  
@@ -54,6 +60,7 @@ scrollToTopTemplate.innerHTML = ` <style>
 
 `;
 
+//strukturom je ova klasa slična klasi komponente prekidača Toggle
 class scrollToTop extends HTMLElement {
   constructor() {
     super();

@@ -5,12 +5,9 @@ template.innerHTML = `
 :host{
     
 }
-#pucisca{
-    fill: green;
-}
+
 #pucisca:hover{
-    transform: scale(2);
-    fill: red;
+  fill: lightgreen;
 }
 </style>
 <svg
@@ -46,14 +43,12 @@ template.innerHTML = `
     stroke="#000"
     fill-opacity=".983"
     fill="#006673"
-    filter="drop-shadow(0px 0.1px 0.3px rgba(0,0,0,0.7))"
 
   />
   <circle
-  id="pucisca"
     cx="46.507"
     cy="8.3"
-    r="2.384"
+    r="12.384"
     fill="url(#b)"
     fill-opacity=".573"
     stroke="#000"
@@ -64,7 +59,9 @@ template.innerHTML = `
     stroke-opacity=".106"
   />
   <a transform="translate(-4.546 1.92)">
+
     <path
+      id="pucisca"
       d="M53.215 6.363a2.161 2.161 0 0 1-2.162 2.161 2.161 2.161 0 0 1-2.16-2.161 2.161 2.161 0 0 1 2.16-2.162 2.161 2.161 0 0 1 2.162 2.162z"
       fill="#3fd25b"
       fill-opacity=".614"
@@ -83,12 +80,14 @@ class BracMap extends HTMLElement {
     super();
     this.$root = this.attachShadow({ mode: "open" });
     this.$root.appendChild(template.content.cloneNode(true));
-    const [pucisca, map] = selectById(this.$root, "pucisca", "map");
+    [this.pucisca, this.map] = selectById(this.$root, "pucisca", "map");
     //TODO: sections, scrolling,...
-    //pucisca.addEventListener("mouseover", () => alert("PUCISCA"));
-    console.log(this.$root, map, this.fill);
-    this.map = map;
     this.fill && this.map.setAttribute("style", `fill: ${this.fill}`);
+  }
+  connectedCallback() {
+    this.pucisca.addEventListener("click", () => {
+      select(document, "footer")[0].scrollIntoView();
+    });
   }
   get fill() {
     if (!this.hasAttribute("fill")) {
@@ -96,9 +95,14 @@ class BracMap extends HTMLElement {
     }
     return this.getAttribute("fill");
   }
-  //postvlja atribut fill s koji  u constructoru određujemo boju svg-ja
+  //postavlja atribut fill s kojim  u konstruktoru određujemo boju svg-ja
   set fill(color) {
-    src ? this.setAttribute("fill", color) : this.removeAttribute("fill");
+    color ? this.setAttribute("fill", color) : this.removeAttribute("fill");
+    this.map.setAttribute("style", `fill: ${color}`);
+  }
+
+  static get observedAttributes() {
+    return ["fill"];
   }
 }
 

@@ -2,20 +2,23 @@
 
 //proporcije nisu uvijek idealne, ali igra funkcionira na svim uređajima
 
-/*SETTINGS */
-//all the level settings will be defined in this map
+/*POSTAVKE */
+
+//sve postavke razina su definirane u ovoj mapi
 const levels = new Map();
 levels.set(1, {
-  //the current level
+  //trenutna razina
   current: 1,
-  //the next level
+  //sljedeća razina
   next: 2,
+  //pozadinska slika razine
   backgroundUrl: "assets/pucisca.jpg",
   gravity: 1.1,
   speed: 1.1,
+  //određuje broj stvorenih cijevi
   pipeFrequencyModifier: 1,
   //total distance is the overall distance passed through all the levels, including the current one,
-  //that is needed to progress to the next level
+  //ukupna udaljenost prijeđena kroz sve razine, uključujući trenutnu, koja je potrebna za prelazak na novu razinu
   totalDistance: 1000
 });
 
@@ -39,17 +42,22 @@ levels.set(3, {
   totalDistance: 200
 });
 
-/*ENTITIES */
+/*ENTITIES (prijevod?)*/
+
 class Physics {
   constructor({ gravity, speed }) {
-    //determines how fast the seagull falls
+    //određuje brzinu padanja galeba
     this.gravity = gravity;
-    //determines how fast the pipes move
+    //određuje brzinu kretanja cijevi (privid brzine kretanja galeba)
     this.speed = speed;
   }
 }
 //the base class all other drawable object classes will inherit from
+//klasa od koje naslijeđuju sve ostale klase koje pretstavljaju objekte koji su vidljivi na canvasu
+
+//u konstruktoru klase se svi parametri vezuju za objekt koji nastaje
 class Drawable {
+  //ctx je kontekst canvas koji je potreban za crtanje, img je Image objekt
   constructor({ ctx, img, x = 0, y = 0, width, height }) {
     this.ctx = ctx;
     this.x = x;
@@ -59,70 +67,84 @@ class Drawable {
     this.width = width;
     this.height = height;
   }
+  //crta sliku predmeta na canvas
   draw({ x = this.x, y = this.y, width = this.width, height = this.height }) {
     this.ctx.drawImage(this.img, x, y, width, height);
   }
   //the multiplier will be calculated using gravity
-  jump({ multiplier }) {
+  flap({ multiplier }) {
     this.y -= multiplier * 15;
   }
 }
 
+//klasa koja predstavlja galeba
 class Seagull extends Drawable {
-  //the first parameter in the constructor is the canvas drawing context
   constructor({ ctx, img, x = 0, y = 0, width = 300, height = 300 }) {
+    //metoda super poziva konstruktor klase Drawable
     super({ ctx, img, x, y, width, height });
   }
-  //the multiplier will be calculated using gravity
-  jump({ multiplier }) {
+  //galeb "skače" tako da se njegova pozicija na y-osi smanjuje jer se 0 nalazi na vrhu canvasa
+  flap({ multiplier }) {
     this.y -= multiplier * 15;
   }
+  //metoda draw je naslijeđena od klase Drawable i nisu potrebne promjene
 }
 
-//TODO: fix or delete
-const randomPipeSize = height =>
-  height / 3 - Math.floor((Math.random() * 7 * height) / 2);
-
+//cijev
 class Pipe extends Drawable {
+  //pozicija cijevi može biti na vrhu - top ili dnu - bottom
   constructor({ ctx, position = "top", width = 20, height, canvasHeight, x }) {
     super({ ctx, width, x });
-    //  this.position = position;
     this.position = position;
     this.canvasHeight = canvasHeight;
-    //the height of the pipe is determined by the height of the canvas, making it responsive
+    //visinu cijevi određuje visina canvasa, zbog čega je ona responzivna pa je igra igriva na zaslonima različitih veličina (uključujući neke mobilne)
     this.height =
+      //visina svake cijevi je slična, ali u osnovi nasumična
       canvasHeight / 3.5 + Math.round(Math.random() * canvasHeight * 0.1);
     this.y =
       this.position === "top"
-        ? 0
-        : 0.75 * canvasHeight + Math.floor(Math.random() * 30);
+        ? //ako se cijev nalazi na vrhu, udaljenost na y-osi je 0,
+          0
+        : //inače je vrijednost y velika pa se nalzi blizu dnu canvasa
+          0.75 * canvasHeight + Math.floor(Math.random() * 30);
   }
+  //metoda draw ove klase se razlikuje od metode klase od koje naslijeđuje
   draw({ x = this.x, y = this.y, width = this.width, height = this.height }) {
+    //gradient boje na cijevima zbog manje jednoličnosti
     const gradient = this.ctx.createLinearGradient(x, y, width, height);
     gradient.addColorStop(0, "green");
     gradient.addColorStop(0.6, "black");
 
     this.ctx.fillStyle = gradient;
     this.ctx.fillRect(x, y, width, height);
-    //drawing the top of the pipe
+    //ovaj dio funkcije crta vrh cijevi
     this.ctx.fillRect(
-      //x offset
+      //x je različit zbog centriranja otrova čija širina nije jednaka širini cijevi
       x - 20,
-      //y ofset
       this.position === "top" ? y + height : y,
-      //width
+      //širina otvora
       1.4 * width,
-      //height
+      //visina je jednaka desetini visine cijevi
       height / 10
     );
   }
   //TODO: class PowerUp
 }
 
-/*COMPONENT */
+//plastične vrećice
+class Bag extends Drawable {
+  constructor({ ctx, img, x = 0, y = 0, width = 300, height = 300 }) {
+    super({ ctx, img, x, y, width, height });
+  }
+}
 
-//the template is used as the component's rendered html
+/*KOMPONENTA */
+
+//html template-a predstavlja html koji komponenta stvara,
+//slično render metodi u reactjs klasama ili vrijednosti koju vraćaju funkcijske komponente
 const template = document.createElement("template");
+//postavljanje html-a (i css-a)
+
 template.innerHTML = `
 <style>
 *,
@@ -159,7 +181,8 @@ canvas {
   z-index: 4;
   position: absolute;
   height: 90%;
-  width: 90%;
+  width: 60%;
+  min-width: 250px;
 }
 
 .display{
@@ -194,7 +217,7 @@ canvas {
 
 .game-info{
   width: 90%;
-  background: hsla(130,60%,20%,0.95); 
+  background: hsla(130,60%,22%,0.95); 
 }
 
 
@@ -202,62 +225,85 @@ canvas {
   opacity:0;
 }
 
-/*TODO: refactor*/
-#overlay.shown {
-  pointer-events: none;
-  z-index: 5;
-  background: hsla(130, 50%, 50%, 0.9);
+.info-button{
+  background: hsla(130,60%,10%,0.95); 
+display: inline-block;
+padding: 0.2rem;
+border-radius: 3px;
 }
-
 
 </style>
 
-<div class="canvas-container flexCC">
-  <div id="overlay" class="">
+<div class="canvas-container">
+  <div id="overlay" >
     <span class="display">LEVEL <span id="levelCounter">1</span></span>
     <span class="display">score: <span id="scoreCounter">0</span></span>
     <div class="display info-display">
-      <p class="display game-info" id="gameInfo">E</p>
+      <p class="display game-info" id="gameInfo">Pritisnite <span class="info-button">P</span> da započnete</p>
       </div>
   </div>
 
   <canvas id="canvas" width="1000" height="100"></canvas>
 </div>`;
 
+//klasa koja predstavlja cijelu komponentu
 class FlappyGaleb extends HTMLElement {
   constructor() {
+    //super() se mora pozvati u konstruktoru klase web komponente
     super();
+    //$root je korijen shadow dom-a komponente
+    //TODO: još komentara
     this.$root = this.attachShadow({ mode: "open" });
+    //kopija cijelog saržaja template-a se ubacuje u shadow dom
     this.$root.appendChild(template.content.cloneNode(true));
-    //TODO: refactor into a web component (maybe)
+    //canvas i njegov kontekst se vezuju za klasu
     this.canvas = this.$root.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
   }
   connectedCallback() {
+    //veliki dio ovih varijabli i funkcija je mogao biti definiran kao svojstva i metode klase,
+    //ali ideja o pretvaranju ove igre u web komponentu je došla nakon njegova stvaranja pa je prebačen
+    //u ovu metodu koja je pozvana kad se komponenta poveže u dom html-a
     let isRunning = false;
+    let isOver = false;
     let distance = 0;
+    //lista svih cijevi na canvasu u određenom trenutku
     let pipes = [];
-
-    //TODO: add max distance to levels
+    //lista plastičnih vrećica
+    let bags = [];
+    //postavljanje prve razine
     let currentLevel = levels.get(1);
 
+    //destruktriranje objekta canvasa i njegovog konteksta iz ove klase
     const { ctx, canvas } = this;
 
-    //setting up the canvas
+    //postavljanje canvasa
+
+    //pozadina canvasa ovisi o razini i njezin url je svojstvo objekta svake razine
     canvas.style.backgroundImage = `url(${currentLevel.backgroundUrl})`;
+
+    //širina i visina canvasa su jednake visini i širini windowa zbog responzivnosti
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // const toggleButton = document.getElementById("toggleButton");
+    //element koji prikazuje trenutne bodove igrača (udaljenost od početka prve razine)
     const scoreCounter = this.$root.getElementById("scoreCounter");
+    //element koji prikazuje trenutnu razinu igrača
     const levelCounter = this.$root.getElementById("levelCounter");
+    //element koji prikazuje poruku koja ovisi o trenutnom stanju igre
     const gameInfo = this.$root.getElementById("gameInfo");
 
     const { gravity, speed } = currentLevel;
     const physics = new Physics({ gravity, speed });
 
-    const seagullImg = new Image(300, 300);
+    //korištenje Image objekta je praktičnije od <img/> objekta jer ne ovisi o učitavanju html-a
+    const seagullImg = new Image();
     seagullImg.src = "assets/galeb.svg";
+
+    const bagImg = new Image();
+    bagImg.src = "assets/bag.svg";
+
+    //stvaranje objekta galeba uz pomoć ranije definirane klase
     const seagull = new Seagull({
       ctx,
       img: seagullImg,
@@ -266,35 +312,43 @@ class FlappyGaleb extends HTMLElement {
       width: canvas.clientHeight / 2
     });
 
+    //detekcija sudara između galeba i nekog objekta
     const hasCollided = ({ seagull, object }) => {
-      //calculating approximate distances between the centres of the seagull and the object on both axes
-      //the results are suprisingly accurate
+      //rezultati nisu savršeno precizni jer funkcija samo računa udaljenost dviju točaka
+
+      //broj s kojim se uspoređuju dimenzije objekta tehnički predstavlja osjetljivost na sudar (manji broj bi značio manju učestalost sudara),
+      //i nije jednak za cijevi i za vrećice
+      const factor =
+        object instanceof Pipe ? object.height * 0.7 : object.width * 0.5;
       return (
         Math.sqrt((seagull.y - object.y) ** 2 + (seagull.x - object.x) ** 2) <
-        //the factor by which the height is multiplied effectively signifies collision sensitivity
-        object.height * 0.7
+        factor
       );
     };
 
-    //advancing to the next level
+    //prelazak na sljedeću razinu
     const nextLevel = () => {
       if (currentLevel && currentLevel.next) {
-        const next = levels.get(currentLevel.next);
-        //if there is no next level (if it's undefinded) the function does nothing
-        if (!next) {
+        const nextLevel = levels.get(currentLevel.next);
+        //ako nema sljedeće razine funkcija prestaje
+        if (!nextLevel) {
           return;
         }
-        //if there is a next level it sets it as the current level and updates the background and the physics variables
-        currentLevel = next;
-        canvas.style.backgroundImage = `url(${next.backgroundUrl})`;
-        physics.speed = next.speed;
-        physics.gravity = next.gravity;
-        levelCounter.textContent = next.current;
-        return next;
+        //sljedeća razina postaje trenutna razina
+        currentLevel = nextLevel;
+        canvas.style.backgroundImage = `url(${nextLevel.backgroundUrl})`;
+        physics.speed = nextLevel.speed;
+        physics.gravity = nextLevel.gravity;
+        //broj razine se prikazuje u levelCounter elementu
+        levelCounter.textContent = nextLevel.current;
+        return nextLevel;
       }
     };
 
+    //kraj igre
     const end = () => {
+      //TODO: resetiranje
+      //prikazivanje poruke s konačnim rezultatom
       gameInfo.textContent = `REZULTAT: ${distance}`;
       distance = 0;
       gameInfo.parentElement.classList.remove("hidden");
@@ -302,41 +356,67 @@ class FlappyGaleb extends HTMLElement {
       currentLevel = first;
       levelCounter.textContent = first.current;
       isRunning = false;
+      isOver = true;
       //TODO: move this setup to a new function
       canvas.style.backgroundImage = `url(${first.backgroundUrl})`;
       physics.speed = first.speed;
       physics.gravity = first.gravity;
     };
-
-    const drawPipes = () => {
-      //removing the first pipe reached if it reached the left edge
-      if (pipes[0] && pipes[0].x === 0) {
+    // crta sve cijevi na canvas
+    const drawPipesAndBags = () => {
+      //ako je prva prešla lijevog ruba za duljinu jednaku svojoj širini, briše se iz liste cijevi
+      if (pipes[0] && pipes[0].x <= -pipes[0].width) {
         pipes.shift();
       }
-      //moving and drawing all pipes
-      //using forEach and not map because the function returns nothing
 
-      pipes.forEach(pipe => {
-        pipe.draw({});
-        pipe.x -= 2 * physics.speed;
-        if (hasCollided({ seagull, object: pipe })) {
+      if (bags[0] && bags[0].x <= -bags[0].width) {
+        bags.shift();
+      }
+
+      //stvaranje liste svih objekata spreadanjem listi cijevi i vrećica u novu listu
+      const objects = [...pipes, ...bags];
+      objects.forEach(object => {
+        //crtanje objekata
+        object.draw({});
+        //kretanje objekata mijenjajem svojstva x, ovisi o brzini određene razine
+        object.x -= 2 * physics.speed;
+        //u slučaju sudara, igra je gotova
+        if (hasCollided({ seagull, object })) {
           end();
         }
       });
     };
 
+    //stvaranje pojedine cijevi
     const generatePipe = () =>
+      //novi objekt cijevi se dodaje u listu svih cijevi
       pipes.push(
         new Pipe({
           canvasHeight: canvas.clientHeight,
           ctx,
-          //TODO: random multipliers (and randomize height in gameSettings)
           x: canvas.clientWidth,
           width: 100,
           position: Math.round(Math.random()) ? "top" : "bottom"
         })
       );
 
+    const generateBag = () =>
+      bags.push(
+        new Bag({
+          img: bagImg,
+          canvasHeight: canvas.clientHeight,
+          ctx,
+          x: canvas.clientWidth,
+          width: canvas.clientHeight / 4,
+          y:
+            canvas.clientHeight / 4 +
+            //u ovoj funkciji se nalazi sinus kako bi mogla generitati pozitivne i negativen brojeve jer vrećice mogu biti ispod ili iznad sredine y-osi canvasa
+            (Math.round(Math.sin(Math.random() * 90)) * canvas.clientHeight) /
+              10
+        })
+      );
+
+    //TODO: sth
     const areLastNPipesOnTheSameSide = (n = 3) => {
       let lastNPipes = [...pipes].splice(n);
       return (
@@ -346,46 +426,62 @@ class FlappyGaleb extends HTMLElement {
     };
     pipes.length >= 2 &&
       pipes[pipes.length - 1].position === pipes[pipes.length - 2].position;
+    //boolean koji predstavlja mogući nedostatak prostora za crtanje novih cijevi
     const notEnoughSpace =
+      //nema dovoljno prostora ako postoje bar 3 cijevi i ako su one međusobno preblizu
       pipes.length > 3 &&
-      //TODO
+      //uspoređivanje udaljenosti cijevi
       pipes[pipes.length - 1].x - pipes[pipes.length - 2].x <
-        //dividing by the modifier set in the levels map
-        //higher modifier means smaller minimum distance between pipes
+        //djelitelj je veći na višim razinama, što znači da je dozvoljena manja udaljenost između cijevi
         150 / currentLevel.pipeFrequencyModifier;
-    //the animation loop
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      //drawing the seagull first so it's in the bottom layer
 
+    //glavna animacijska petlja
+    const animate = () => {
+      //prvo nastupa potpuno čišćenje canvasa
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      //crtanje galeba bez promjena zadanih parametara jer su sva potrebna svosjtva definirana na klasi galeba
       seagull.draw({});
       seagull.y += physics.gravity;
+      //promjena bodova (udaljenosti) ovisi o brzini definiranoj na svakoj razini
       distance += Math.round(1 * currentLevel.speed);
-      //displaying the current distance ("" + number implicit converts it to a string)
+      //string + int pretvara int u string
       scoreCounter.textContent = "" + distance;
+      //ako je prijeđena udaljenost jednaka udaljenosti određenoj na razini, igrač prelazi na višu razinu
       if (distance === currentLevel.totalDistance) {
         nextLevel();
       }
 
-      //a random integer between lower than 1000 generated on every redraw used to randomly create pipes
+      //nasumičan broj od 1 do 1000
       const randomizer = Math.floor(Math.random() * 1000);
 
+      //petlja djeluje više puta u sekundi pa ovaj uvjete ograničava stvaranje cijevi
       if (randomizer < 6 * currentLevel.pipeFrequencyModifier) {
-        //if there are any pipes, it generates a pipe only if the distance between the last one
-        //and the new one would be sufficient
+        //ako postoje cijevi, cijev će biti stvorena samo ako je prostora dovoljno,
+        //a ako trenutno ne postoji ni jedna cijev, nova cijev će biti stvorena bez drugih uvjeta
+        //(vjerojatno bilo čitljivije uz dvije if-petlje)
         pipes.length ? !notEnoughSpace && generatePipe() : generatePipe();
       }
-      //the movement of the seagull forward is simulated by moving the pipes further to the left
-      drawPipes();
 
+      //ako nema nijedne vrećice i randomizer bude manji od 4 (šansa je 3/1000) i trenutna razina je viša od 2, stvara se nova vrećica
+      !bags.length &&
+        randomizer < 4 &&
+        currentLevel.current > 2 &&
+        generateBag();
+      //crtanje svih objekata, bez obzira je li nova stvorena
+      drawPipesAndBags();
+      //requestAnimationFrame automatski poziva funkciju u petlji učestalošću koja odgovara browseru,
+      // znatno učinkovitije od setInterval
+      //req je objekt koji requestAnimationFrame vraća služi za prekidanje te iste petlje
       const req = requestAnimationFrame(animate);
       if (!isRunning) {
+        //ako je igra pauzirana ili prekinuta, prekida se petlja
         cancelAnimationFrame(req);
       }
     };
 
     const run = () => {
-      if (!isRunning) {
+      if (!isRunning && !isOver) {
         isRunning = true;
       }
       animate();
@@ -397,32 +493,39 @@ class FlappyGaleb extends HTMLElement {
       }
     };
 
-    //sets up the keyboard events
+    const toggleActive = () => {
+      isRunning ? stop() : run();
+    };
+
+    //postavlja listener za event pritiska određenih tipki
     const listenToKB = () =>
       window.addEventListener("keydown", e => {
-        //(the spacebar)
+        //keyCode 32 predstavlja razmaknicu (spacebar)
         if (e.keyCode === 32) {
-          if (!isRunning) {
+          if (!isRunning && !isOver) {
             run();
           }
-          seagull.jump({ multiplier: 2 / physics.gravity });
+          //služi za "skakanje" galeba
+          seagull.flap({ multiplier: 2 / physics.gravity });
         } else if (e.key === "p") {
+          //p pauzira igru i prikazuje poruku o pauziranju
           if (gameInfo.parentElement.classList.contains("hidden")) {
             gameInfo.textContent = "PAUZIRANO";
           }
           gameInfo.parentElement.classList.toggle("hidden");
           toggleActive();
+          //TODO: delete
+        } else if (e.key === "b") {
+          generateBag();
         }
       });
 
-    const toggleActive = () => {
-      isRunning ? stop() : run();
-    };
-
+    //regiranje ne evente počinje nakon učitavanja slike galeba
     seagullImg.onload = () => {
       listenToKB();
     };
   }
 }
 
+//definiranje web komponente
 window.customElements.define("ie-flappy-galeb", FlappyGaleb);
