@@ -19,8 +19,20 @@
     <ie-nav></ie-nav>
     <ie-scroll-to-top></ie-scroll-to-top>
     <main>
+      <!--<ie-project-section>
+        <button slot="button-opasnosti" style="margin-right: 1rem">
+          opasnosti
+        </button>
+        <p slot="opasnosti">
+          OPASNOSTI
+        </p>
+        <button slot="button-priroda">priroda</button>
+        <p slot="opasnosti">
+          PRIRODA
+        </p>
+      </ie-project-section>-->
       <div class="map-wrapper flex flex-c mt-m">
-        <ie-brac-map style="width: 50%" fill="darkgreen"></ie-brac-map>
+        <ie-brac-map fill="darkgreen"></ie-brac-map>
       </div>
       <section class="flex flex-col flex-ac mt-l mb-s" id="ljepote">
         <h1>Prirodne ljepote</h1>
@@ -91,7 +103,7 @@
         </div>
       </section>
     </main>
-    <footer class="footer"></footer>
+    <ie-footer></ie-footer>
 
     <script src="scripts/theme.js"></script>
     <script src="scripts/utils.js"></script>
@@ -101,5 +113,7 @@
     <script src="components/Toggle.js"></script>
     <script src="components/Nav.js"></script>
     <script src="components/ScrollToTop.js"></script>
+    <script src="components/ProjectSection.js"></script>
+    <script src="components/Footer.js"></script>
   </body>
 </html>

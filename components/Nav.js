@@ -17,7 +17,8 @@ nav{
     height: 3rem;
     display: flex;
     align-items: center;
-    box-shadow: 0.5px 0.5px 0.5px rgba(0,0,0,0.2), 3px 3px 3px rgba(0,0,0,0.2);
+    /*prva sjena je tanka linija uz rub elementa, druga sjena je veća s većim spread radiusom*/
+    box-shadow: 0.5px 0.5px 0.5px rgba(0,0,0,0.15), 2px 2px 5px rgba(0,0,0,0.2);
 
 }
 
@@ -38,7 +39,7 @@ nav:not(.mobile){
 }
 a{
     text-decoration: none;
-    color: var(--color-primary-4);
+    color: var(--color-primary-3);
 
     /*TODO: new serif*/
     font-family: "Raleway";

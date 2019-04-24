@@ -46,7 +46,7 @@ img {
   height: 2.5rem;
   width: 4.5rem;
   text-align: center;
-  background: var(--color-primary-2);
+  background: var(--color-primary-4);
   color: var(--color-white-1);
   transition: transform 0.3s ease-out;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.23);
@@ -86,7 +86,7 @@ img {
     align-items: center;
     max-height: 40rem;
     padding: 0;
-    margin-bottom: 10vmin;
+    margin-bottom: 5vmin;
   }
 
   .landing-section header {
@@ -154,11 +154,10 @@ img {
   }
 }
 
-.footer {
-  min-height: 20rem;
-  background-color: black;
+ie-brac-map {
+  width: 90%;
+  max-width: 45rem;
 }
-
 /**DODATCI**/
 .info {
   background-color: var(--color-bg-2);
@@ -199,6 +198,7 @@ img {
 
 #after-2 {
   transform: translate(-200px);
+  margin-top: -3rem;
 }
 #after-1.fade-in,
 #after-2.after.fade-in,
@@ -251,6 +251,14 @@ img {
   margin-left: 3rem;
 }
 
+.us-section ul {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  /*TODO: sth*/
+  height: 10rem;
+  list-style: square;
+}
 @media screen and (min-width: 1024px) {
   .us-section {
     padding: 0 4vw;
@@ -300,21 +308,13 @@ img {
 
 #ciljevi ul {
   padding: 1rem 0 0 1.5rem;
+  /*TODO: sth*/
+  list-style: none;
 }
 
 #ciljevi ul li::before {
   content: "-";
   height: 3px;
-  color: var(--color-primary-3);
+  color: var(--color-secondary-3);
   font-weight: bold;
-}
-
-/**FOOTER**/
-.footer img {
-  transition: filter 0.4s;
-  filter: grayscale(0.85);
-}
-
-.footer img:hover {
-  filter: grayscale(0);
 }

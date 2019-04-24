@@ -17,6 +17,7 @@ scrollToTopTemplate.innerHTML = ` <style>
 }
 
 
+/*nevidljivi element do čije pozicije treba scrollati da se vidljivost scrollButton-a promijeni*/
 #scrollMark{
   width: 1px;
   height: 1px;
@@ -45,7 +46,7 @@ scrollToTopTemplate.innerHTML = ` <style>
 }
 
 :host([shown]) #scrollButton{
-  opacity: 0.7;
+  opacity: 0.8;
   pointer-events: all;
   cursor: pointer;
 }

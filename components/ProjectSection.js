@@ -1,7 +1,7 @@
-const navTemplate = document.createElement("template");
+const sectionTemplate = document.createElement("template");
 //use a top level img="src" attribute to enable lazy loading  (shadow.$img.src=this.getAttribute(img))
 // TODO: intersection observer lazy loading
-navTemplate.innerHTML = ` <style>
+sectionTemplate.innerHTML = ` <style>
 
 *,*::before,*::after{
     padding: 0;
@@ -12,49 +12,61 @@ navTemplate.innerHTML = ` <style>
 :host{
     display: block;    
     width:100%;
+    transition: all 1s;
 }
 
+:host([mode=priroda]){
+  background: green;
+}
+
+:host([mode=opasnosti]){
+  background: red;
+}
 
 </style>
 
 
-<nav>
-<div class="wrapper"></
-</nav>`;
-class Nav extends HTMLElement {
+<article>
+<slot name="button-priroda" class="button"></slot>
+<slot name="button-opasnosti" class="button"></slot>
+
+  <span>Pučišća</span>
+  <slot name="priroda" id="priroda" class="text"></slot>
+
+  <slot name="opasnosti" id="opasnosti" class="text"></slot>
+</article>`;
+class ProjectSection extends HTMLElement {
   constructor() {
     super();
     this.$root = this.attachShadow({ mode: "open" });
-    this.$root.appendChild(navTemplate.content.cloneNode(true));
+    this.$root.appendChild(sectionTemplate.content.cloneNode(true));
+    [this.prirodaBtn, this.opasnostiBtn] = select(
+      this.$root,
+      "slot[name=button-priroda]",
+      "slot[name=button-opasnosti]"
+    );
+    this.prirodaBtn.addEventListener("click", () => {
+      this.mode = "priroda";
+      alert(this.mode);
+    });
+    this.opasnostiBtn.addEventListener("click", () => {
+      this.mode = "opasnosti";
+      alert(this.mode);
+    });
   }
 
   //TODO: sth
-  get imgSrc() {
-    if (!this.hasAttribute("img-src")) {
-      return null;
-    }
-    return this.getAttribute("img-src");
-  }
-  set imgSrc(src) {
-    src ? this.setAttribute("img-src", src) : this.removeAttribute("img-src");
-  }
-  get lazyImg() {
-    return this.hasAttribute("lazy-img");
-  }
-  set lazyImg(val) {
-    val ? this.setAttribute("lazy-img", "") : this.removeAttribute("lazy-img");
-  }
 
-  get expanded() {
-    return this.hasAttribute("lazy-img");
+  get mode() {
+    return this.getAttribute("mode") || null;
   }
-  set expanded(val) {
-    val ? this.setAttribute("lazy-img", "") : this.removeAttribute("lazy-img");
+  set mode(val) {
+    val ? this.setAttribute("mode", val) : this.removeAttribute("mode");
   }
 
   static get observedAttributes() {
-    return ["img-src", "lazy-img", "expanded"];
+    return ["mode"];
   }
 }
 
-customElements.define("ie-nav", Nav);
+customElements.define("ie-project-section", ProjectSection);
