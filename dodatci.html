@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="theme-color" content="#57DB78" />
+
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/utils.css" />
+    <link rel="stylesheet" href="styles/variables.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <ie-nav></ie-nav>
+    <main>
+      <div class="flex flex-cc mb-m mt-m br-m">
+        <p class="info" style="min-height: 20vh">
+          <span class="highlighted">Flappy Galeb</span>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore
+          optio explicabo voluptas maxime, nulla alias aspernatur similique
+          dolores nisi laboriosam libero et ratione suscipit architecto
+          repellendus fuga aliquid enim nostrum aut dignissimos reprehenderit,
+          reiciendis repudiandae? Hic quia consectetur dignissimos numquam.
+        </p>
+      </div>
+      <ie-flappy-galeb></ie-flappy-galeb>
+      <script src="scripts/theme.js"></script>
+      <script src="scripts/utils.js"></script>
+      <script src="scripts/observer.js"></script>
+
+      <script src="components/FlappyGaleb.js"></script>
+      <script src="components/Toggle.js"></script>
+      <script src="components/Nav.js"></script>
+      <script>
+        document.onkeydown = e => e.keyCode !== 32;
+      </script>
+    </main>
+  </body>
+
+  <footer class="footer mt-l">
+    <img width="300px" src="assets/ict.png" />
+  </footer>
+</html>

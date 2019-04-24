@@ -1,0 +1,84 @@
+html {
+  /*css varijable služe za manje ponavljanja koda i lakše istovremeno mijenjanje stylinga više elemenata*/
+  --color-white-1: hsla(180, 10%, 96%, 1);
+  /*glavne boje*/
+  --color-primary-1: hsl(135, 65%, 50%);
+  --color-primary-2: hsl(130, 62%, 41%);
+  --color-primary-3: hsl(135, 66%, 32%);
+  --color-primary-4: hsl(134, 63%, 19%);
+  --color-primary-5: hsl(130, 65%, 8%);
+
+  --color-secondary-1: hsl(188, 51%, 59%);
+  --color-secondary-2: hsl(191, 50%, 43%);
+  --color-secondary-3: hsl(192, 51%, 33%);
+  --color-secondary-4: hsl(196, 52%, 22%);
+  --color-secondary-5: hsl(199, 50%, 11%);
+
+  --color-secondary-d1: hsl(240, 65%, 18%);
+  --color-secondary-d2: hsl(183, 52%, 52%);
+  --color-secondary-d3: hsl(183, 50%, 40%);
+  --color-secondary-d4: hsl(186, 52%, 27%);
+  --color-secondary-d5: hsl(240, 65%, 9%);
+
+  --color-danger-1: hsl(4, 65%, 64%);
+  --color-danger-2: hsl(5, 63%, 55%);
+  --color-danger-3: hsl(4, 65%, 43%);
+  --color-danger-4: hsl(2, 64%, 32%);
+  --color-danger-5: hsl(1, 61%, 19%);
+
+  --color-alert-1: hsl(45, 57%, 60%);
+  --color-alert-2: hsl(47, 54%, 53%);
+  --color-alert-3: hsl(52, 60%, 47%);
+
+  --color-bg-1: hsla(150, 30%, 89%, 1);
+  --color-bg-2: hsla(150, 12%, 92%, 1);
+
+  --color-text-1: hsla(10, 8%, 22%, 1);
+  --color-text-2: hsla(10, 8%, 82%, 1);
+
+  --color-text-about: hsla(10, 8%, 75%, 1);
+
+  --color-grey-1: hsla(10, 8%, 45%, 1);
+
+  --color-nav: hsla(180, 10%, 95%, 1);
+
+  --gradient-1: linear-gradient(
+    to right,
+    hsla(110, 55%, 48%, 0.9),
+    hsla(185, 48%, 50%, 0.9)
+  );
+  /*TODO: fix*/
+  --gradient-2: linear-gradient(
+      to right,
+      hsla(120, 75%, 58%, 0.7),
+      hsla(180, 75%, 60%, 0.92)
+    )
+    `;
+  --gradient-3: linear-gradient(
+    to right,
+    hsla(110, 55%, 48%, 0.92),
+    hsla(135, 48%, 50%, 0.92)
+  );
+  --shadow-1: 0 2px 1px hsla(118, 60%, 52%;0.3);
+}
+
+/*ove vrijednosti varijabli zamjenjuju ranije definirane kad html element ima svojstvo data-dark=true (tamna tema),
+ varijable koje u ovom selektoru nemaju nove vrijednosti su uvijek jednake i ne ovise o temi*/
+html[data-dark="true"] {
+  --color-white-1: black;
+  --color-primary-3: hsl(125, 45%, 46%);
+  --color-primary-4: hsl(122, 45%, 49%);
+
+  --color-secondary-3: hsl(192, 61%, 53%);
+  --color-secondary-4: hsl(196, 72%, 62%);
+
+  --color-text-1: hsla(10, 8%, 90%, 1);
+  --color-text-2: hsla(10, 8%, 10%, 1);
+
+  --color-text-about: hsla(10, 8%, 75%, 1);
+
+  --color-bg-1: hsla(180, 15%, 11%, 1);
+  --color-bg-2: hsla(180, 15%, 16%, 1);
+
+  --color-nav: hsla(180, 10%, 20%, 1);
+}

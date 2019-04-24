@@ -1,0 +1,320 @@
+/*TODO: comment and explain css variables*/
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  font-family: "Raleway", "sans-serif";
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+}
+
+h2,
+p {
+  line-height: 1.4;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg-1);
+  /*skrivanje horizontalnog scrollbara*/
+  overflow-x: hidden;
+  color: var(--color-text-1);
+}
+
+/*osnovna responzivnost za sve slike*/
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/***POČETNA***/
+
+.button {
+  justify-content: center;
+  display: inline-block;
+  height: 2.5rem;
+  width: 4.5rem;
+  text-align: center;
+  background: var(--color-primary-2);
+  color: var(--color-white-1);
+  transition: transform 0.3s ease-out;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.23);
+}
+
+.button:hover {
+  /*povećavanje elementa te veća površina i gustoća njegove sjene simuliraju fizičko idizanje iznad plohe*/
+  transform: scale(1.05);
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.28);
+}
+
+.landing-section {
+  display: grid;
+  width: 100vw;
+  min-height: 40vh;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-rows: repeat(auto-fill, 10vh);
+  place-items: center;
+  padding: 6vw;
+  transition: opacity 2s, transform 2s;
+  color: var(--color-text-1);
+  background: var(--color-bg-1);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: center;
+  }
+  .landing-section {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    max-height: 40rem;
+    padding: 0;
+    margin-bottom: 10vmin;
+  }
+
+  .landing-section header {
+    margin: 2rem 2rem;
+  }
+}
+
+.landing-section img {
+  grid-row: 3;
+  gap: 1rem;
+  width: 35vw;
+  min-width: 300px;
+}
+
+.landing-section header {
+  max-width: 30rem;
+  height: 45vh;
+
+  min-height: 10rem;
+  max-height: 20rem;
+  grid-row: 3;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: space-between;
+}
+
+.cards-section {
+  background: url("../assets/abstract1.svg"), var(--color-secondary-3);
+  background-blend-mode: luminosity;
+  min-height: 10rem;
+  padding: 5vw;
+}
+
+.cards {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+.card {
+  /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);*/
+  min-height: 12rem;
+  background: white;
+  border-radius: 5px;
+  color: var(--color-bg-1);
+}
+.card:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.card.fading-in {
+  opacity: 0;
+  transform: translate(-100px, 0);
+}
+
+@media screen and (min-width: 1024px) {
+  .cards {
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+  }
+  .card {
+    min-width: 20rem;
+  }
+  .card:not(:last-child) {
+    margin-bottom: 0;
+  }
+}
+
+.footer {
+  min-height: 20rem;
+  background-color: black;
+}
+
+/**DODATCI**/
+.info {
+  background-color: var(--color-bg-2);
+  padding: 1rem 2rem;
+  border-top: 4px var(--color-secondary-3) solid;
+  box-shadow: 0px 1.5px 2px rgba(0, 0, 0, 0.23);
+  width: 90%;
+  /*širina je ograničena tako da broj znakova u svakom redu ne prelazi 80 na većim zaslonima (zbog bolje čitljivosti)*/
+  max-width: 40rem;
+  border-radius: 6px;
+}
+
+.info .highlighted {
+  color: var(--color-secondary-4);
+}
+
+/***O NAMA***/
+
+.us-section {
+  margin-top: 15vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  --color-text-1: hsla(150, 10%, 88%, 1);
+}
+
+.question {
+  font-size: 1.6rem;
+  padding: 0.5rem;
+  border-left: 4px var(--color-primary-3) solid;
+  margin-right: 3rem;
+}
+
+#after-1,
+#after-3 {
+  transform: translate(200px);
+}
+
+#after-2 {
+  transform: translate(-200px);
+}
+#after-1.fade-in,
+#after-2.after.fade-in,
+#after-3.fade-in {
+  transform: translate(0px);
+  opacity: 1;
+}
+
+.after {
+  position: relative;
+  color: var(--color-text-1);
+  padding: 2rem;
+  max-width: 20rem;
+  margin-bottom: 8vh;
+  opacity: 0;
+  transition: opacity 1.5s, transform 1.5s;
+}
+
+.after .role {
+  background: darkmagenta;
+  box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: bold;
+}
+.after::after {
+  content: "";
+  display: block;
+  height: 40rem;
+  width: 50rem;
+  z-index: -1;
+  border-radius: 10px;
+  background: url("../assets/abstract2.svg") no-repeat;
+  transform: rotate(-15deg);
+  position: absolute;
+  top: 0px;
+}
+#after-2::after {
+  transform: rotate(10deg);
+  background: url("../assets/abstract2.1.svg") no-repeat;
+}
+
+#after-3::after {
+  background: url("../assets/abstract2.2.svg") no-repeat;
+}
+
+#question-2 {
+  border-left-color: var(--color-secondary-2);
+  margin-top: 10rem;
+  margin-left: 3rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .us-section {
+    padding: 0 4vw;
+    width: 60%;
+    display: grid;
+    grid-template-areas:
+      "question-1 . after-1"
+      "after-2 . ."
+      ". . after-3"
+      "question-2 . ."
+      "p p p";
+    grid-template-columns: 1fr 20% 1fr;
+    padding-top: 3rem;
+  }
+  #after-1 {
+    grid-area: after-1;
+  }
+  #after-2 {
+    grid-area: after-2;
+  }
+
+  #after-3 {
+    grid-area: after-3;
+  }
+  .question {
+    padding: 0.8rem;
+  }
+  #question-1 {
+    grid-area: question-1;
+    align-self: flex-start;
+  }
+  #question-2 {
+    grid-area: question-2;
+    margin-left: 0;
+  }
+}
+
+.main-about {
+  min-height: 150vh;
+  overflow: hidden;
+}
+
+#ciljevi {
+  grid-area: p;
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+#ciljevi ul {
+  padding: 1rem 0 0 1.5rem;
+}
+
+#ciljevi ul li::before {
+  content: "-";
+  height: 3px;
+  color: var(--color-primary-3);
+  font-weight: bold;
+}
+
+/**FOOTER**/
+.footer img {
+  transition: filter 0.4s;
+  filter: grayscale(0.85);
+}
+
+.footer img:hover {
+  filter: grayscale(0);
+}
