@@ -1,4 +1,6 @@
-/*pomoćne klase, u stilu Bootstrapa*/
+/*pomoćne klase, služe za brže prototipiranje*/
+
+/***MARGINE (b-bottom,t-top,l-left-r-right)***/
 .mb-xs {
   margin-bottom: 0.5rem;
 }
@@ -63,16 +65,21 @@
   margin-left: 0.5rem;
 }
 
+/***FLEXBOX***/
+
+/* "običan" flex */
 .flex {
   display: flex;
   flex-flow: row wrap;
 }
 
+/* flex sa stupcima */
 .flex-col {
   display: flex;
   flex-flow: column nowrap;
 }
 
+/* horizontalno i vertikalno centriranje*/
 .flex-cc {
   justify-content: center;
   align-items: center;
@@ -120,6 +127,8 @@
   align-items: flex-start;
 }
 
+/*vojstvo flex je skraćenica za flex-grow (količina dodatnog prostora koliko element uzima kad je prostora previše),
+flex-shrink(količina dodatnog prostora koliko element uzima kad je prostora premalo) i flex-basis(prostor koji element zauzima prije dodatnih podjela preostalog prostora (slično svojstvu width))*/
 .fb-50 {
   flex: 1 0 50%;
 }
@@ -128,6 +137,7 @@
   flex: 1 0 100%;
 }
 
+/*padding, poredan prema veličinama od xs do xl*/
 .p-xs {
   padding: 0.5rem;
 }
@@ -148,6 +158,7 @@
   padding: 16rem;
 }
 
+/*klase vezane uz tekst*/
 .fw-m {
   font-weight: 500;
 }
@@ -184,6 +195,10 @@
   line-height: 2.3rem;
 }
 
+.text-center {
+  text-align: center;
+}
+/*ostale klase*/
 .br-s {
   border-radius: 3px;
 }
@@ -198,10 +213,6 @@
 
 .round {
   border-radius: 50%;
-}
-
-.text-center {
-  text-align: center;
 }
 
 .hidden {
@@ -230,7 +241,7 @@
 
 .narrow {
   width: 100%;
-  height: 10vh;
+  height: 30vh;
   object-fit: cover;
   object-position: center center;
 }

@@ -18,7 +18,7 @@ footerTemplate.innerHTML = ` <style>
 footer{
   display: flex;
   align-items: center;
-  background: black;
+  background: var(--color-footer);
   height: 18vh;
   margin-top: 10vh;
 

@@ -73,7 +73,6 @@ toggleTemplate.innerHTML = ` <style>
 <div class="wrapper">
   <div id="switch"></div>
 </div>
-<span style="text-transform: none; position: relative; bottom: 3px;">tema</span>
 
 `;
 

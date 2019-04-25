@@ -33,7 +33,7 @@ html {
   --color-bg-1: hsla(190, 20%, 89%, 1);
   --color-bg-2: hsla(190, 12%, 92%, 1);
 
-  --color-text-1: hsla(10, 8%, 22%, 1);
+  --color-text-1: hsla(30, 8%, 14%, 1);
   --color-text-2: hsla(10, 8%, 82%, 1);
 
   --color-text-about: hsla(10, 8%, 75%, 1);
@@ -41,6 +41,7 @@ html {
   --color-grey-1: hsla(10, 8%, 45%, 1);
 
   --color-nav: hsla(190, 10%, 96%, 1);
+  --color-footer: black;
 
   --gradient-1: linear-gradient(
     to right,
@@ -59,7 +60,8 @@ html {
     hsla(110, 55%, 48%, 0.92),
     hsla(135, 48%, 50%, 0.92)
   );
-  --shadow-1: 0 2px 1px hsla(118, 60%, 52%;0.3);
+  --shadow-1: 2px 2px 3px rgba(0, 0, 0, 0.23);
+  --shadow-2: 2px 4px 5px rgba(0, 0, 0, 0.28);
 }
 
 /*ove vrijednosti varijabli zamjenjuju ranije definirane kad html element ima svojstvo data-dark=true (tamna tema),
@@ -80,4 +82,7 @@ html[data-dark="true"] {
   --color-bg-2: hsla(180, 15%, 16%, 1);
 
   --color-nav: hsla(180, 10%, 18%, 1);
+
+  --shadow-1: 2px 2px 3px hsla(0, 0%, 70%, 0.2);
+  --shadow-2: 2px 4px 5px hsla(0, 0%, 70%, 0.2);
 }

@@ -403,6 +403,7 @@ class FlappyGaleb extends HTMLElement {
     const generateBag = () =>
       bags.push(
         new Bag({
+          height: canvas.clientHeight / 7,
           img: bagImg,
           canvasHeight: canvas.clientHeight,
           ctx,

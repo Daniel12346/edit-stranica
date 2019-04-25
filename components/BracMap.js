@@ -84,7 +84,7 @@ class BracMap extends HTMLElement {
   }
   connectedCallback() {
     this.pucisca.addEventListener("click", () => {
-      select(document, "footer")[0].scrollIntoView();
+      select(document, "ie-footer")[0].scrollIntoView();
     });
   }
   get fill() {

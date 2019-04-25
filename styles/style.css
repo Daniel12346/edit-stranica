@@ -48,14 +48,14 @@ img {
   text-align: center;
   background: var(--color-primary-4);
   color: var(--color-white-1);
-  transition: transform 0.3s ease-out;
-  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.23);
+  transition: transform 0.3s ease-out, box-shadow 0.3s;
+  box-shadow: var(--shadow-1);
 }
 
 .button:hover {
   /*povećavanje elementa te veća površina i gustoća njegove sjene simuliraju fizičko idizanje iznad plohe*/
   transform: scale(1.05);
-  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--shadow-2);
 }
 
 .landing-section {
@@ -127,7 +127,7 @@ img {
 }
 
 .card {
-  /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);*/
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   min-height: 12rem;
   background: white;
   border-radius: 5px;

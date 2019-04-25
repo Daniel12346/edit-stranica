@@ -30,6 +30,7 @@ scrollToTopTemplate.innerHTML = ` <style>
 
 #scrollButton{
   position: fixed;
+  display: flex;
   top: 80vh;
   right: 5vh;
   opacity: 0;
@@ -39,7 +40,10 @@ scrollToTopTemplate.innerHTML = ` <style>
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  color: var(--color-text-2);
+  color: white;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: center;
   border: none;
   box-shadow: 0px 1px 2px rgba(0,0,0,0.3) 
   
