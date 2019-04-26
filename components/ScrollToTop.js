@@ -17,6 +17,7 @@ scrollToTopTemplate.innerHTML = ` <style>
 }
 
 
+/*nevidljivi element do čije pozicije treba scrollati da se vidljivost scrollButton-a promijeni*/
 #scrollMark{
   width: 1px;
   height: 1px;
@@ -29,6 +30,8 @@ scrollToTopTemplate.innerHTML = ` <style>
 
 #scrollButton{
   position: fixed;
+  display: flex;
+  z-index: 12;
   top: 80vh;
   right: 5vh;
   opacity: 0;
@@ -38,14 +41,17 @@ scrollToTopTemplate.innerHTML = ` <style>
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  color: var(--color-text-2);
+  color: white;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: center;
   border: none;
   box-shadow: 0px 1px 2px rgba(0,0,0,0.3) 
   
 }
 
 :host([shown]) #scrollButton{
-  opacity: 0.7;
+  opacity: 0.8;
   pointer-events: all;
   cursor: pointer;
 }

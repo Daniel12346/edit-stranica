@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg1523" viewBox="0 0 688.3 406">
+  <defs id="defs1517">
+    <linearGradient id="linearGradient10634">
+      <stop offset="0" id="stop10630" stop-color="#241c1c"/>
+      <stop offset="1" id="stop10632" stop-color="#241c1c" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linearGradient10608">
+      <stop offset="0" id="stop10604" stop-color="#fbbc1d"/>
+      <stop offset="1" id="stop10606" stop-color="#fbbc1d" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linearGradient10600">
+      <stop offset="0" id="stop10596" stop-color="#fbbc1d"/>
+      <stop offset="1" id="stop10598" stop-color="#e7c97f" stop-opacity=".6"/>
+    </linearGradient>
+    <linearGradient id="linearGradient6496">
+      <stop offset="0" id="stop6492" stop-color="#d4b144"/>
+      <stop offset="1" id="stop6494" stop-color="#43160f" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linearGradient6089">
+      <stop offset="0" id="stop6085" stop-color="#ff7f2a"/>
+      <stop offset="1" id="stop6087" stop-color="#ff7f2a" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient xlink:href="#linearGradient6089" id="linearGradient6083" x1="403.9" y1="213.8" x2="373.3" y2="213.1" gradientUnits="userSpaceOnUse" gradientTransform="translate(7.8 -2)"/>
+    <linearGradient xlink:href="#linearGradient6496" id="linearGradient6482" x1="385.1" y1="103.4" x2="449.6" y2="107.5" gradientUnits="userSpaceOnUse" gradientTransform="rotate(-3.3 68.6 -645.3)"/>
+    <linearGradient xlink:href="#linearGradient10600" id="linearGradient10602" x1="348.7" y1="188.6" x2="324.6" y2="184.8" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#linearGradient10608" id="linearGradient10610" x1="447" y1="103.2" x2="362" y2="108.2" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#linearGradient10634" id="linearGradient10636" x1="463.6" y1="76.6" x2="436.1" y2="81.8" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#linearGradient10608" id="linearGradient10798" gradientUnits="userSpaceOnUse" x1="447" y1="103.2" x2="362" y2="108.2"/>
+    <linearGradient xlink:href="#linearGradient6496" id="linearGradient10800" gradientUnits="userSpaceOnUse" gradientTransform="rotate(-3.3 68.6 -645.3)" x1="385.1" y1="103.4" x2="449.6" y2="107.5"/>
+  </defs>
+  <style>
+  :hover #krilo{
+    animation: flap 1s alternate infinite ease-in; 
+  }
+  #krilo{
+  transform-origin: 50% 40%;
+  }
+  #krilo.flapping{
+    animation: flap 0.3s alternate infinite ease-in-out; 
+  }
+  @keyframes flap{
+   from{
+   transform: rotate(0deg)
+   }
+   to{
+   transform: rotate(40deg)
+   }
+  }
+  
+  </style>
+  <g id="layer3">
+    <g id="g10796" transform="translate(83 -3.2)">
+      <g id="g10903">
+        <g id="g10949" transform="translate(25.4 11.6)">
+          <g id="g2280" transform="translate(23.2 -27)">
+            <g transform="matrix(1 0 0 .90173 235.4 -155.3)" id="g2933" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="12.6">
+              <path d="M43.7 325.9c-36.3 0-73.9 14.2-122.4 31.7-10.5 3.7-43.6 9.9-51.8 13.9-5 2.3-32.9 10.5-36.9 14-2.6 2.4 19.3 1.7 16 2.3-25.4 4.7-6.5 6.2-9.6 8.4-6.4 4.4-14.2 2.6-15.2 5.3-1 2.5-4.4 3.6-3.7 6.3.3 1.2 9.6-2.8 7.4-.9-3 2.7-1.8 6.2.9 7.8 6.2 3.7 27.2-2.1 37.3-1 10.4 1.2 10.1 9.3 24.4 9.2 6.5 0 20.4-9.9 29-9.1 5.4.4 17.6-1.5 22.7-.5 22.5 4.4 27 4.7 48.8-.6C-7.2 412 1.9 401.5 4 401c8.3-2.2 11.5 4 17.7 0 8.1-5.2 12.2-11 23.4-15.5 18.4-7.5 59.9-13.6 49.6-18.1-9.3-4 2-4.3 4.5-6 13.6-9.6-6-16.8-6.7-20.4l-23.9-12.8c-8.4-1.6-16.7-2.3-25-2.3z" id="path2862-1-2" fill="#d3d5d8" paint-order="markers fill stroke"/>
+              <path d="M46.3 320c-36.3.1-73.8 14.3-122.4 31.8-10.4 3.7-43.6 9.8-51.8 13.8-4.9 2.4-32.8 10.6-36.8 14.2-2.7 2.3 19.3 1.5 16 2.1-25.4 4.8-32.5 6.9-35.6 9-6.4 4.4 11.7 2 10.7 4.8-1 2.5-4.4 3.5-3.7 6.3.3 1.2 9.6-2.8 7.4-.9-3 2.7-1.7 6.2 1 7.7 12.5 7.7 33.4 8.5 61.7 8.2 6.5 0 7.7 1.3 16.2 2 5.4.5 19.2.2 24.3 1.2 22.5 4.4 38.1-8 60-13.3l6.5-1.7c8.4-2.2 18.5-6 24.7-10 8-5.2 12.1-11 23.4-15.5 18.3-7.5 59.8-13.6 49.5-18.1-9.3-4 2-4.4 4.5-6 13.7-9.7-6-16.8-6.6-20.5l-24-12.7c-8.3-1.6-16.6-2.4-25-2.3z" id="path2862-1" fill="#26282b" paint-order="markers fill stroke"/>
+            </g>
+            <g id="g10730">
+              <g id="g10857">
+                <path d="M312.5 119.7c-8.2 0 4.8 8.1-3.6 9.4-29 4.6-81.2 8.7-118.8 22.3-3.6 1.3 0 0-16.9 4.5-13.3 3.6-29.5 6.7-35 9.3-12.6 6.2-18 14.7-26.7 20.7-6.4 4.3-17.9 6.7-18.9 9.4-1 2.5 11.5-1.8 12.2 1 .3 1.2-6.3 2.5-8.5 4.4-3 2.7-1.7 6.2 1 7.7 12.5 7.7 28.9-10.6 57.2-10.8 6.5 0 8.8.8 17.3 1.6 5.4.5 17 .5 22 1.5 22.6 4.4 43.8 11.1 65.6 5.8l6.6-1.7c8.4-2.2 18.4-6 24.7-10 8-5.2 12.1-11 23.3-15.5 18.4-7.5 60-13.6 49.6-18.1-9.3-4.1 2-4.4 4.5-6 13.6-9.7-6-16.8-6.7-20.5L337.5 122c-8.3-1.6-16.6-2.4-25-2.3z" id="path2862-9" fill="#61646c" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="12.6" paint-order="markers fill stroke"/>
+                <path d="M287.7 334.9a155.8 155.8 0 0 1-27.7-5.7 32 32 0 0 1-4-2c-2-1.1-2.3-1.6-3.8-4.6l-2.7-4.7c-.6-.8-1.4-2.2-1.9-3.2-1-2.5-1-7.8 0-13l2.6-11.9 1.6-8v-10.7-11.9c0-1 .3-1.3 1.3-2 .7-.4 1.4-1.1 1.6-1.6 0-.5.3-1 .4-1 7.2-.7 9.7-1 9.9-.8.2.1.3.6.3 1 0 .6.4 2.3 1 3.9 1.4 4.6 1.2 6.5-1 10.9-2.5 5.1-3.9 11.4-5 23.2-.7 9.4.1 16.2 2.4 18.2 1.2 1.1 9.7 2.1 13.8 1.6 1.7-.2 4.3-.4 5.8-.4 2.4 0 2.7 0 3.5 1l1 1.1-2.3 2-2.2 2h9.4c5.2 0 9.9.1 10.4.4 1.6.6 1.1-.1-1.8-2.6-5-4.1-6.9-7.1-6.5-10.4l.2-1.6h-2.4c-1.3 0-2.4-.2-2.6-.4-.1-.2.8-1.8 2.1-3.5 3.7-4.8 4-5.5 3.9-11.3 0-6-.8-10-4.3-24.5-2.7-11.4-4-18.1-3.6-18.6.1-.1 2.5.2 5.2.8 4.5 1 5 1.2 6.8 2.7 2 1.7 3.3 3.6 3.8 5.6 0 .6 0 3.6-.4 6.7-.3 3-.4 5.7-.3 5.8l.5 10.9c.2 6 .6 11.6 1 13 .9 4.7 3.3 8.3 6.6 10 2.4 1.2 4 1.2 9.4 0 6-1.4 11.3-1.8 23.3-1.7 12.1.2 12.5.3 10 2.5-.8.7-2.9 2-4.6 2.8-1.7.8-3 1.6-3 1.7l4 1c5.8 1.4 9 3.2 8 4.6-.9 1.5-2.3 1.6-16.2 1.4-11.8-.2-25.2.2-28 .8l-.8.2 1.1 1.4c2.5 3.1 2.4 4.6-.4 5.3-7.3 1.9-23.4 6.5-23.6 6.7-.4.4 0 1 2.4 3.8a13 13 0 0 1 2 2.9c.2.7.1.8-1 .8l-5.2-.6z" id="path1688" fill="#ff9956" stroke-width=".1" stroke-linecap="round" stroke-linejoin="round" paint-order="markers fill stroke"/>
+                <g id="g6679" transform="translate(-63.7 20.7)">
+                  <path id="path6037" d="M444.6 86.8h-1.1l-1.4-.1c-.5 0 6.3-2 5.4-2.3 0 0-9.9-1.3-11.7-1-1.7.1-3.5-.5-5.2.1-2.6 1-4.9 3.1-4.7 1l6-2.6 4.4-.5 5.5-1c1.5-.2 3.7.6 4.9 0 1.2-.5 6-1.8 9.3-2.6 1.7-.4 2.7-.4 3-1 0-.1-.3 1-.2.3 0-.3-.7-.8-1.3-1-.7-.3-1.2-1-2-1.4-2-1.1-3.7-3.1-3.7-3.1" fill="none" stroke="#973711" stroke-width=".1" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".9" paint-order="stroke markers fill"/>
+                  <g transform="translate(43.3 -21.4)" id="g6529">
+                    <g id="g5923" transform="translate(-28.9 -5.3)" opacity=".4" fill="none">
+                      <path id="path2116" d="M93.4 274.2s29.9-10.3 45-14.8c6.2-1.9 15.9-8.3 22.5-10.5 42-14 87.6-29.3 114.3-26.6" transform="translate(77.6 -86.9)" stroke-width=".3"/>
+                      <path id="path2118" d="M275.2 222.3s4.5-.9 2-10.1c-3-10.7-5.2-23.3 2-32.7" transform="translate(77.6 -86.9)" stroke-width=".3"/>
+                      <path transform="translate(77.6 -86.9)" id="path2122" d="M93.4 274.2S73.8 285 75.2 294.5c2.5 16.5 18.2 10.2 42.3 11.8" stroke-width=".3"/>
+                      <a id="a2161">
+                        <path d="M309.8 332.6s104.3-57.1 43.5-119.9" id="path2131" transform="translate(77.6 -86.9)" stroke-width=".3"/>
+                      </a>
+                      <path id="path2133" d="M353.3 212.7L346 209l10.2-8" transform="translate(77.6 -86.9)" stroke-width=".3"/>
+                      <path transform="translate(77.6 -86.9)" d="M93.4 274.2s29.9-10.3 45-14.8c6.2-1.9 15.9-8.3 22.5-10.5 42-14 87.6-29.3 114.3-26.6" id="path5875" opacity=".8" stroke-width=".3"/>
+                      <path transform="translate(77.6 -86.9)" d="M275.2 222.3s4.5-.9 2-10.1c-3-10.7-5.2-23.3 2-32.7 9.4-12.4 26.2-18 51-12.2 0 0 7.5 3 17.7 7.9 2 .9 4.3 2.6 6.3 4.3 3.3 3 6 5.9 5.5 5.7" id="path5877" stroke-width=".3"/>
+                      <path d="M93.4 274.2S73.8 285 75.2 294.5c2.5 16.5 18.2 10.2 42.3 11.8" id="path5879" transform="translate(77.6 -86.9)" stroke-width=".3"/>
+                      <a id="a5883">
+                        <path transform="translate(77.6 -86.9)" id="path5881" d="M309.8 332.6s104.3-57.1 43.5-119.9" stroke-width=".3"/>
+                      </a>
+                      <path transform="translate(77.6 -86.9)" d="M353.3 212.7L346 209l10.2-8" id="path5885" stroke-width=".3"/>
+                      <path id="path10682" d="M93.4 274.2s29.9-10.3 45-14.8c6.2-1.9 15.9-8.3 22.5-10.5 42-14 87.6-29.3 114.3-26.6" transform="translate(77.6 -86.9)" opacity=".8" stroke-width=".3"/>
+                    </g>
+                  </g>
+                  <g id="g10594" transform="translate(-1.3 .3)">
+                    <path id="path6453" d="M432.6 110.5a57.4 57.4 0 0 0-28.4-1c-.5.1-.9-.6-1.6-1-.7-.3-1.2-.4-2.2-.4h-1.3l2.4-.9c2-.7 3-1.2 2.8-1.4a126 126 0 0 0-14.2-1.2l-2.2.3-2 1.4c-2 1.3-3 .5-3.2 0-.1-.3 0-.4 4-2 1.8-.7 2.6-1 4.1-1.1 1-.1 3.2-1.5 5-1.8 2.9-.5 4-1 5.6-.8 1.6.2 1 1.2 3 .6a113.3 113.3 0 0 1 11.3-2.6c0-.3-.4-.6-1.5-1.2-1.4-.9-3.5-2.4-4.5-3.3l-1-.9 5.8.3c21.6 3.4 21.8 3.5 33 7 15.9 12.6-3.5 8.8-10.4 10-1.7.2-3.4.3-4.5 0z" transform="translate(43.3 -21.4)" fill="url(#linearGradient10798)" stroke="#010103" stroke-width=".1" stroke-linecap="round" stroke-linejoin="round" paint-order="stroke markers fill"/>
+                    <path d="M448.8 84.1s7.3-1 22.3.4c5.3.6 10.2 1.7 17.2 1.8 1.4 0 6.4 0 7.8.6" id="path6474" fill="url(#linearGradient10800)" stroke="#9b620d" stroke-width=".3"/>
+                  </g>
+                </g>
+                <g id="g2949" transform="translate(2.1)" fill="#fefefe" stroke="#7c6767" stroke-width=".2" stroke-linecap="round" stroke-linejoin="round">
+                  <g id="g2974" transform="translate(0 .5)">
+                    <path id="path1699" d="M262 262.6c-.4-10.1-14.1 1-18.2-8-14.6-8.7-30.6-14.7-45.9-21.9-25.7-6.8-52-11.3-78-17.1 4.3-1.4 14.1-3.4 3.5-2.9-11.1 2.6-27.2-6.6-17.7-18.8 8.2-11.4 22.4-14 34.7-18.6 47.9-17.2 95-39 146-45.2 5.7-1 12.4.3 17.6-1.2 3.6-10.3-4.3-21.1-1.6-32 3.9-18.7 25.6-26.5 42.8-24 12.9.8 25.1 6.5 35.6 13.7 4.5 5.2 20 13.8 4.2 13.4-6.2 1.1-23.3 2.3-22.8 5.7 3.4-3.2 19.5-1.6 17.6.5-6.4 1.6 7.7 2.7-2.2 6.2-10.6 5.8 10.3 9.3 11 17.7a51.9 51.9 0 0 1 2.9 58.3c-15.4 26.4-41.4 44.7-68 58.5-7.7 4.6-19.6 9.6-23.7 13.7-4-4.9 1.8-.7-14.3-4.8-11.4-10.6-16.5 16.2-22.2 10.4zM364.7 93c11.5-9.8-27.8-5.2-11 1 3.6.6 7.7 1 11-1z"/>
+                  </g>
+                </g>
+                <path d="M287.9 335.1c.8-.7.1-1.9-.9-3.1-1.7-2.1-4.4-4.4-3-4.8l23-6.4s2 0 2.6-2c.3-1.6-3-4.8-3-4.8s10.3-1 20.2-1c11.6.1 23.1 1.2 24.7-.9 2.9-4-12-6.3-12-6.3" id="path1678" opacity=".2" fill="none" stroke="#cf7c58" stroke-width=".3"/>
+                <path d="M248.8 315.8s29.3 19.7 39 19.3" id="path2503" fill="#f60" stroke="#cf7c58" stroke-width="1.3"/>
+                <path d="M248.8 315.8s38.4 7.4 51.2 7.3" id="path2503-7" fill="#f60" stroke="#cf7c58" stroke-width=".9"/>
+                <path d="M249.4 316.9s27.8 1.8 34.3-2.3" id="path2503-5" fill="#f60" stroke="#cf7c58"/>
+                <path d="M296.1 304s5.8 2.5 6.7 2.5c5 .2 23 .6 34.3-1.4 3.3-.6 6.1-1.4 7.8-2.5" id="path2503-3" fill="#ff7d26" stroke="#cf7c58" stroke-width="1.3"/>
+                <path d="M296.1 304s44.7 11.3 53.2 6.7" id="path2503-56" fill="#ff8839" stroke="#cf7c58" stroke-width="1.3"/>
+                <path d="M296.1 304c.3 1.8 6 19.3 15.1 16.8" id="path2503-2" fill="#ff7c24" stroke="#cf7c58" stroke-width="1.2"/>
+                <g id="g10653" transform="matrix(1.0013 0 0 .80721 -4.5 20)" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="47.8">
+                  <ellipse ry="9.5" rx="13.2" cy="89.7" cx="360.3" id="path10498" fill="#685526" stroke-width=".9" paint-order="markers fill stroke"/>
+                  <ellipse ry="8.4" rx="11.6" cy="89.8" cx="361" id="path10492" fill="#efefef" stroke-width=".9" paint-order="markers fill stroke"/>
+                  <ellipse ry="6.5" rx="6.2" cy="89.9" cx="366.4" id="path10587" fill="#454352" stroke-width="1.7" paint-order="markers fill stroke"/>
+                  <path id="path10612" d="M461.8 68.9a8 8 0 0 0-5.7 2.4 8.6 8.6 0 0 0 0 11.7 8 8 0 0 0 5.7 2.5 8 8 0 0 0 5.6-2.5 8.6 8.6 0 0 0 0-11.7 8 8 0 0 0-5.6-2.4z" transform="matrix(.60546 .16596 -.12152 .65956 97.5 -37.6)" fill="url(#linearGradient10636)" paint-order="markers fill stroke"/>
+                </g>
+              </g>
+              <path id="krilo" d="M305.2 137.5c-36.3 0-73.9 14.2-122.4 31.7-10.4 3.7-43.6 9.9-51.8 13.9-12.7 6.1-18 14.6-26.8 20.6-6.4 4.4-17.9 6.7-18.9 9.4-1 2.5 11.5-1.7 12.2 1 .3 1.2-6.3 2.5-8.5 4.4-3 2.7-1.7 6.2 1 7.8 12.5 7.6 16.5-6.2 44.8-6.4 6.5 0 21.2-3.6 29.7-2.9 5.4.5 17 .5 22 1.5 22.6 4.4 43.8 11.1 65.6 5.8l6.6-1.7c8.4-2.1 18.4-6 24.7-10 8-5.2 12.1-11 23.3-15.5 18.4-7.5 60-13.6 49.6-18.1-9.3-4 2-4.3 4.5-6 13.6-9.6-6-16.8-6.7-20.4l-23.9-12.8c-8.3-1.6-16.6-2.3-25-2.3z" fill="#85878d" stroke-width=".9" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="12.6" paint-order="markers fill stroke"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

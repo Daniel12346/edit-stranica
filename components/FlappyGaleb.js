@@ -42,8 +42,6 @@ levels.set(3, {
   totalDistance: 200
 });
 
-/*ENTITIES (prijevod?)*/
-
 class Physics {
   constructor({ gravity, speed }) {
     //određuje brzinu padanja galeba
@@ -52,7 +50,6 @@ class Physics {
     this.speed = speed;
   }
 }
-//the base class all other drawable object classes will inherit from
 //klasa od koje naslijeđuju sve ostale klase koje pretstavljaju objekte koji su vidljivi na canvasu
 
 //u konstruktoru klase se svi parametri vezuju za objekt koji nastaje
@@ -128,7 +125,6 @@ class Pipe extends Drawable {
       height / 10
     );
   }
-  //TODO: class PowerUp
 }
 
 //plastične vrećice
@@ -232,6 +228,10 @@ padding: 0.2rem;
 border-radius: 3px;
 }
 
+
+
+
+
 </style>
 
 <div class="canvas-container">
@@ -240,7 +240,7 @@ border-radius: 3px;
     <span class="display">score: <span id="scoreCounter">0</span></span>
     <div class="display info-display">
       <p class="display game-info" id="gameInfo">Pritisnite <span class="info-button">P</span> da započnete</p>
-      </div>
+    </div>
   </div>
 
   <canvas id="canvas" width="1000" height="100"></canvas>
@@ -252,7 +252,6 @@ class FlappyGaleb extends HTMLElement {
     //super() se mora pozvati u konstruktoru klase web komponente
     super();
     //$root je korijen shadow dom-a komponente
-    //TODO: još komentara
     this.$root = this.attachShadow({ mode: "open" });
     //kopija cijelog saržaja template-a se ubacuje u shadow dom
     this.$root.appendChild(template.content.cloneNode(true));
@@ -347,7 +346,7 @@ class FlappyGaleb extends HTMLElement {
 
     //kraj igre
     const end = () => {
-      //TODO: resetiranje
+      //TODO!: resetiranje
       //prikazivanje poruke s konačnim rezultatom
       gameInfo.textContent = `REZULTAT: ${distance}`;
       distance = 0;
@@ -403,6 +402,7 @@ class FlappyGaleb extends HTMLElement {
     const generateBag = () =>
       bags.push(
         new Bag({
+          height: canvas.clientHeight / 7,
           img: bagImg,
           canvasHeight: canvas.clientHeight,
           ctx,
@@ -416,14 +416,6 @@ class FlappyGaleb extends HTMLElement {
         })
       );
 
-    //TODO: sth
-    const areLastNPipesOnTheSameSide = (n = 3) => {
-      let lastNPipes = [...pipes].splice(n);
-      return (
-        lastNPipes.every(pipe => pipe.position === "top") ||
-        lastNPipes.every(pipe => pipe.position === "bottom")
-      );
-    };
     pipes.length >= 2 &&
       pipes[pipes.length - 1].position === pipes[pipes.length - 2].position;
     //boolean koji predstavlja mogući nedostatak prostora za crtanje novih cijevi
@@ -498,7 +490,7 @@ class FlappyGaleb extends HTMLElement {
     };
 
     //postavlja listener za event pritiska određenih tipki
-    const listenToKB = () =>
+    const listenToEvents = () =>
       window.addEventListener("keydown", e => {
         //keyCode 32 predstavlja razmaknicu (spacebar)
         if (e.keyCode === 32) {
@@ -514,15 +506,26 @@ class FlappyGaleb extends HTMLElement {
           }
           gameInfo.parentElement.classList.toggle("hidden");
           toggleActive();
-          //TODO: delete
-        } else if (e.key === "b") {
-          generateBag();
         }
       });
+    if (this.canvas.clientWidth < 1200) {
+      const infoButton = this.$root.querySelector(".info-button");
+      // "pritisnite bilo gdje da započnete"
+      infoButton.textContent = "bilo gdje";
+      //TODO: mobilno pauziranje
+      infoButton.classList.remove("info-button");
+      this.addEventListener("click", e => {
+        if (!isRunning && !isOver) {
+          run();
+          gameInfo.parentElement.classList.add("hidden");
+        }
+        seagull.flap({ multiplier: 2 / physics.gravity });
+      });
+    }
 
-    //regiranje ne evente počinje nakon učitavanja slike galeba
+    //regiranje na evente počinje nakon učitavanja slike galeba
     seagullImg.onload = () => {
-      listenToKB();
+      listenToEvents();
     };
   }
 }

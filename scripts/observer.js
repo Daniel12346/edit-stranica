@@ -92,19 +92,27 @@ cards.forEach((card, i) =>
 //lazy loading je tehnika odgađanja učitavanja elementa do određenog trenutka zbog bržeg učitavanja stranice
 //uz pomoć intersection observera lazy loadamo sve slike koje bi zbog svoje veličine učitavanje
 
-//sve slike koje je potrebno lazy loadati imaju atribut data-lazy=true u html-u
-const [lazyImages] = selectAll(document, "img[data-lazy=true]");
+//sve slike koje je potrebno lazy loadati imaju atribut data-src umjesto src u html-u
+const [lazyImages] = selectAll(document, "*[data-src]");
 lazyImages.forEach(img => {
-  //ovdje ne koristimo arrow function jer bi on implicitno vezao this za ono što this predstavlja u okolnom leksičkom scopeu (u ovom slučaju window)
-  //u običnoj funkciji this će predstavljati ono što poziva funkciju, ovdje img - sam img element
-  img.onIntersection = function() {
-    //img u html-u nema definiran src jer učitavanje slike počinje tek kad ima taj atribut
-    //kad se img nađe u željenom prostoru, dobija atribut src jednak atributu data-src postavljenom u html-u i počinje učitavanje slike
+  //ako IntersectionObserver nije podržan, odmah postavljamo src
+  if (!window.IntersectionObserver) {
     this.src = this.dataset.src;
-  };
+  } else {
+    //ovdje ne koristimo arrow function jer bi on implicitno vezao this za ono što this predstavlja u okolnom leksičkom scopeu (u ovom slučaju window)
+    //u običnoj funkciji this će predstavljati ono što poziva funkciju, ovdje img - sam img element
+    img.onIntersection = function() {
+      //img u html-u nema definiran src jer učitavanje slike počinje tek kad ima taj atribut
+      //kad se img nađe u željenom prostoru, dobija atribut src jednak atributu data-src postavljenom u html-u i počinje učitavanje slike
+      this.src = this.dataset.src;
+    };
+  }
 });
 
-observe({ ...options, initialTransition: "" }, ...lazyImages);
+observe(
+  { ...options, initialTransition: "", rootMargin: "100px" },
+  ...lazyImages
+);
 const [afters] = selectAll(document, ".after");
 
 afters.forEach((after, i) => {
@@ -124,3 +132,29 @@ afters.forEach((after, i) => {
     after
   );
 });
+
+/*GALEB NA POČETNOJ STRANICI*/
+
+const [galeb, quoteSection] = selectById(
+  document,
+  "galebObject",
+  "quoteSection"
+);
+
+if (quoteSection) {
+  quoteSection.onIntersection = function() {
+    galeb.style.transform = "translate(0,0)";
+  };
+}
+observe(
+  {
+    ...options,
+    initialOpacity: 1,
+    initialTransform: null,
+    threshold: 0.8,
+    rootMargin: "0px 3000px"
+  },
+  quoteSection
+);
+
+/*** */

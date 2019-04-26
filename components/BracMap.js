@@ -2,9 +2,6 @@
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
-:host{
-    
-}
 
 #pucisca:hover{
   fill: lightgreen;
@@ -86,7 +83,7 @@ class BracMap extends HTMLElement {
   }
   connectedCallback() {
     this.pucisca.addEventListener("click", () => {
-      select(document, "footer")[0].scrollIntoView();
+      select(document, "ie-footer")[0].scrollIntoView();
     });
   }
   get fill() {

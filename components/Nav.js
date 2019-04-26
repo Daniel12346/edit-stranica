@@ -17,13 +17,25 @@ nav{
     height: 3rem;
     display: flex;
     align-items: center;
-    box-shadow: 0.5px 0.5px 0.5px rgba(0,0,0,0.2), 3px 3px 3px rgba(0,0,0,0.2);
+    /*prva sjena je tanka linija uz rub elementa, druga sjena je veća s većim spread radiusom*/
+    box-shadow: 0.5px 0.5px 0.5px rgba(0,0,0,0.15), 2px 2px 5px rgba(0,0,0,0.2);
 
 }
 
 nav:not(.mobile){
   position: relative;
   background: var(--color-nav)
+}
+
+button{
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  color: var(--color-white-1);
+  border-radius: 50%
+  cursor: pointer;
 }
 
 .links{
@@ -38,8 +50,8 @@ nav:not(.mobile){
 }
 a{
     text-decoration: none;
-    color: var(--color-primary-4);
-
+    color: var(--color-primary-3);
+    padding: 1rem;
     /*TODO: new serif*/
     font-family: "sans-serif";
 }
@@ -48,10 +60,48 @@ nav.mobile{
   display: none;
 }
 
+@media(min-width: 501px){
+nav{
+  padding:0;
+}
+  .links{
+    height: 100%;
+    padding:0;
+  }
+  li{
+    display: inline-flex;
+    height: 100%;
+    align-items: center;
+    transition: background 0.3s;
+  }
+  a{
+    transition: color 0.3s;
+  }
+  li:hover{
+    background: var(--color-primary-3);
+  }
+  li:last-child:hover{
+    background: inherit;
+  }
+  li:hover a{
+    color: white;
+  }
+}
+
+.toggle-wrapper{
+display: flex;
+align-items: center;
+margin-right: 0.8rem;
+}
+
+ie-toggle{
+  margin-right: 0.5rem;
+}
 
 @media(max-width: 500px){
 a{
   color: white;
+  padding: 0.2rem;
 }
 #theme-toggle{
   display: none;
@@ -136,8 +186,8 @@ a{
 </ul>
 </nav>
 <nav class="mobile">
-<button style="z-index: 12;">toggle</button>
-<span><ie-toggle></ie-toggle></span>
+<button style="z-index: 12;"><img src ="../assets/menu.svg" id="menuIcon"/></button>
+<div class="toggle-wrapper"><ie-toggle></ie-toggle> <span style="color: white">tema</span></div>
 
 </nav>`;
 
@@ -146,7 +196,7 @@ class Nav extends HTMLElement {
     super();
     this.$root = this.attachShadow({ mode: "open" });
     this.$root.appendChild(navTemplate.content.cloneNode(true));
-    this.button = this.$root.querySelector("button");
+    [this.button, this.menuIcon] = select(this.$root, "button", "#menuIcon");
     this.button.addEventListener("click", this.toggle.bind(this));
   }
 
@@ -158,6 +208,9 @@ class Nav extends HTMLElement {
     return this.getAttribute("open");
   }
   set open(val) {
+    //ikona u lijevom kutu nav-a se mijenja ovisno boolean vrijednosti argumenta val
+    this.menuIcon.src = `../assets/${val ? "x" : "menu"}.svg`;
+    //ako je val true (truth-y) menu se otvara, inače se zatvara
     val ? this.setAttribute("open", val) : this.removeAttribute("open");
   }
 

@@ -21,9 +21,7 @@
       <section class="landing-section">
         <header class="header">
           <h1>
-            <span style="color: var(--color-primary-3)"
-              >Ekologija i turizam</span
-            >
+            <span style="color: var(--color-primary-3)">Ekologija</span>
             otoka <span class="brac">Brača</span>
           </h1>
           <span
@@ -48,21 +46,37 @@
           <div class="card card-3">zaštita</div>
         </div>
       </section>
+      <section
+        id="quoteSection"
+        class="quote-section flex flex-se flex-ac"
+        style="background:var(--color-primary-4); margin: 5vmax 0rem; padding: 5rem 0rem"
+      >
+        <!--koristimo object a ne img sa src-om zbog animacija-->
+        <object
+          id="galebObject"
+          width="300px"
+          data="assets/galeb1.svg"
+          style="filter:drop-shadow(3px 2px 6px hsla(0,0%,0%,0.5));width: 100%; max-width: 400px;;"
+        ></object>
 
-      <div class="flex flex-cc mt-m">
-        <img src="assets/pucisca.jpg" />
-      </div>
-
-      <script src="scripts/theme.js"></script>
-      <script src="scripts/utils.js"></script>
-      <script src="scripts/observer.js"></script>
-
-      <script src="components/BracMap.js"></script>
-      <script src="components/Toggle.js"></script>
-      <script src="components/Nav.js"></script>
+        <p class="quote">
+          <span class="quote-sign">"</span> Lorem ipsum dolor sit, amet
+          consectetur adipisicing elit. Repellat, facilis eveniet. Excepturi,
+          sit ad? Voluptate sint incidunt error, cum dolorem quod cumque sit,
+          explicabo velit officiis alias excepturi amet saepe?
+          <span class="quote-sign">"</span>
+        </p>
+      </section>
     </main>
-    <footer class="footer mt-l">
-      <img width="300px" src="assets/ict.png" />
-    </footer>
+    <ie-footer></ie-footer>
+
+    <script src="scripts/theme.js"></script>
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/observer.js"></script>
+
+    <script src="components/BracMap.js"></script>
+    <script src="components/Toggle.js"></script>
+    <script src="components/Nav.js"></script>
+    <script src="components/Footer.js"></script>
   </body>
 </html>

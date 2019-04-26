@@ -65,7 +65,7 @@ toggleTemplate.innerHTML = ` <style>
 /*u aktivnom stanju switch::after se nalazi na desnoj strani*/
 /*vrijednosti su -3% i 52% a ne 0% i 50% zbog uračunane širine switch::after-a*/
 :host([toggled]) #switch::after{
-  left: 52%;
+  left: 53%;
 }
 
 </style>
@@ -73,7 +73,6 @@ toggleTemplate.innerHTML = ` <style>
 <div class="wrapper">
   <div id="switch"></div>
 </div>
-<span style="text-transform: none; position: relative; bottom: 3px;">tema</span>
 
 `;
 
