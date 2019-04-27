@@ -3,7 +3,7 @@ html {
   --color-white-1: hsla(180, 10%, 97%, 1);
   /*glavne boje*/
   --color-primary-1: hsl(135, 65%, 50%);
-  --color-primary-2: hsl(130, 62%, 41%);
+  --color-primary-2: hsl(130, 62%, 39%);
   --color-primary-3: hsl(135, 66%, 32%);
   --color-primary-4: hsl(134, 63%, 23%);
   --color-primary-5: hsl(130, 65%, 15%);
@@ -14,11 +14,7 @@ html {
   --color-secondary-4: hsl(196, 52%, 22%);
   --color-secondary-5: hsl(199, 50%, 11%);
 
-  --color-secondary-d1: hsl(240, 65%, 18%);
-  --color-secondary-d2: hsl(183, 52%, 52%);
-  --color-secondary-d3: hsl(183, 50%, 40%);
-  --color-secondary-d4: hsl(186, 52%, 27%);
-  --color-secondary-d5: hsl(240, 65%, 9%);
+  --color-accent-1: hsl(235, 55%, 40%);
 
   --color-danger-1: hsl(4, 65%, 64%);
   --color-danger-2: hsl(5, 63%, 55%);
@@ -67,11 +63,13 @@ html {
 /*ove vrijednosti varijabli zamjenjuju ranije definirane kad html element ima svojstvo data-dark=true (tamna tema),
  varijable koje u ovom selektoru nemaju nove vrijednosti su uvijek jednake i ne ovise o temi*/
 html[data-dark="true"] {
-  --color-primary-3: hsl(125, 45%, 49%);
+  --color-primary-3: hsl(125, 45%, 39%);
   --color-primary-4: hsl(122, 47%, 33%);
 
   --color-secondary-3: hsl(192, 41%, 39%);
   --color-secondary-4: hsl(196, 72%, 62%);
+
+  --color-accent-1: hsl(235, 65%, 55%);
 
   --color-text-1: hsla(10, 8%, 90%, 1);
   --color-text-2: hsla(10, 8%, 10%, 1);

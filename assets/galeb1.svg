@@ -30,14 +30,14 @@
   </defs>
   <style>
   :hover #krilo{
-    animation: flap 1s alternate infinite ease-in; 
+    animation: flap 0.5s alternate infinite ease-in; 
   }
+
+  /*postavljanje izvorne točke rotacije koja bi inače bila u središtu svg-ja*/
   #krilo{
   transform-origin: 50% 40%;
   }
-  #krilo.flapping{
-    animation: flap 0.3s alternate infinite ease-in-out; 
-  }
+ 
   @keyframes flap{
    from{
    transform: rotate(0deg)

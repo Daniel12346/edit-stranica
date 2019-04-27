@@ -50,10 +50,9 @@ button{
 }
 a{
     text-decoration: none;
-    color: var(--color-primary-3);
+    color: var(--color-primary-2);
     padding: 1rem;
     /*TODO: new serif*/
-    font-family: "sans-serif";
 }
 
 nav.mobile{
@@ -76,6 +75,8 @@ nav{
   }
   a{
     transition: color 0.3s;
+    font-size: 1.2rem;
+
   }
   li:hover{
     background: var(--color-primary-3);

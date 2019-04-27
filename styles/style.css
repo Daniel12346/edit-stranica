@@ -17,6 +17,7 @@ ul {
 
 button {
   border: none;
+  cursor: pointer;
 }
 
 h2,
@@ -28,7 +29,7 @@ body {
   min-height: 100vh;
   background-color: var(--color-bg-1);
   /*skrivanje horizontalnog scrollbara*/
-  overflow: hidden;
+  overflow-x: hidden;
   color: var(--color-text-1);
 }
 
@@ -91,7 +92,7 @@ img {
     align-items: center;
     max-height: 40rem;
     padding: 0;
-    margin-bottom: 5vmin;
+    margin-bottom: 20vh;
   }
 
   .landing-section header {
@@ -123,6 +124,7 @@ img {
   background-blend-mode: luminosity;
   min-height: 10rem;
   padding: 5vw;
+  margin-bottom: 20vh;
 }
 
 .cards {
@@ -194,6 +196,71 @@ ie-brac-map {
   max-width: 45rem;
 }
 
+.mjesto {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin: 5rem 1rem;
+}
+
+.mjesto-wrapper {
+  min-width: 300px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.mjesto-img {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 1.5rem;
+}
+
+.text-wrapper {
+  padding: 0.5rem;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.text-wrapper > p {
+  max-width: 70rem;
+}
+
+.text-wrapper .num {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-danger-1);
+}
+
+.text-wrapper h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.text-wrapper {
+  margin-top: 0.5rem;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+.text-wrapper p,
+.text-wrapper h2,
+.text-wrapper li {
+  line-height: 1.5;
+}
+
+.mjesto ul {
+  min-width: 280px;
+  max-width: 60rem;
+  margin: 3rem 0;
+  width: 85%;
+}
+
+.mjesto ul li {
+  margin: 1.5rem 0;
+}
 /**DODATCI**/
 .info {
   background-color: var(--color-bg-2);
@@ -224,7 +291,7 @@ ie-brac-map {
   font-size: 1.6rem;
   padding: 0.5rem;
   border-left: 4px var(--color-primary-3) solid;
-  margin-right: 3rem;
+  margin: 0 3rem 0.5rem 0;
 }
 
 #after-1,
@@ -281,10 +348,20 @@ ie-brac-map {
   background: url("../assets/abstract2.2.svg") no-repeat;
 }
 
+.question {
+  min-width: 100%;
+  margin-left: 4rem;
+}
+.about-p {
+  margin-bottom: 1rem;
+}
 #question-2 {
   border-left-color: var(--color-secondary-2);
   margin-top: 10rem;
-  margin-left: 3rem;
+  min-width: 50%;
+}
+#izvori-h {
+  border-color: var(--color-primary-4);
 }
 
 .us-section ul {
@@ -302,6 +379,10 @@ ie-brac-map {
   margin-bottom: 1.5rem;
 }
 
+#izvori {
+  grid-area: p2;
+}
+
 @media screen and (min-width: 1024px) {
   .us-section {
     padding: 0 4vw;
@@ -312,7 +393,9 @@ ie-brac-map {
       "after-2 . ."
       ". . after-3"
       "question-2 . ."
-      "p p p";
+      "p p p"
+      "izvori-h . ."
+      "p2 p2 p2";
     grid-template-columns: 1fr 20% 1fr;
     padding-top: 3rem;
   }
@@ -335,10 +418,19 @@ ie-brac-map {
   }
   #question-2 {
     grid-area: question-2;
-    margin-left: 0;
+  }
+  #ciljevi {
+    grid-area: p;
   }
   #ciljevi ul {
     margin-top: 2rem;
+  }
+
+  #izvori-h {
+    grid-area: izvori-h;
+  }
+  #izvori {
+    grid-area: p2;
   }
 }
 
@@ -347,8 +439,7 @@ ie-brac-map {
   overflow: hidden;
 }
 
-#ciljevi {
-  grid-area: p;
+.about-p {
   padding: 1rem 2rem 2rem 2rem;
 }
 

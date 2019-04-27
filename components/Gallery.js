@@ -31,8 +31,8 @@ galleryTemplate.innerHTML = ` <style>
   content: "";
   left: 0;
   right: 0;
-  background: var(--color-primary-2);
-  /*pozadina je viša od galerije za 7vmax - 7% dulje dimenzije viewporta zaslona*/
+  background: var(--color-primary-3);
+  /*pozadina je viša od galerije za 7vmax (7% od dulje dimenzije viewporta)*/
   height: calc(100% + 7vmax);
   min-width: 300vmax;
   z-index: -3;
@@ -58,7 +58,7 @@ galleryTemplate.innerHTML = ` <style>
 
 ::slotted(img:hover){
   outline-offset: 5px;
-  outline-width: 3px;
+  outline-width: 4px;
   transform: scale(1.05);
 }
 

@@ -2,7 +2,9 @@
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
-
+.mjesto{
+  cursor: pointer;
+}
 #pucisca:hover{
   fill: lightgreen;
 }
@@ -24,7 +26,7 @@ template.innerHTML = `
       cy="8.207"
       fx="47.103"
       fy="8.207"
-      r="2.283"
+      r=2.283"
       gradientUnits="userSpaceOnUse"
       gradientTransform="matrix(1.04896 0 0 1.04896 -2.903 -.309)"
     />
@@ -45,7 +47,7 @@ template.innerHTML = `
   <circle
     cx="46.507"
     cy="8.3"
-    r="12.384"
+    r="2.384"
     fill="url(#b)"
     fill-opacity=".573"
     stroke="#000"
@@ -59,6 +61,7 @@ template.innerHTML = `
 
     <path
       id="pucisca"
+      class="mjesto"
       d="M53.215 6.363a2.161 2.161 0 0 1-2.162 2.161 2.161 2.161 0 0 1-2.16-2.161 2.161 2.161 0 0 1 2.16-2.162 2.161 2.161 0 0 1 2.162 2.162z"
       fill="#3fd25b"
       fill-opacity=".614"
