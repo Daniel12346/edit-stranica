@@ -1,11 +1,14 @@
 html {
   /*css varijable služe za manje ponavljanja koda i lakše istovremeno mijenjanje stylinga više elemenata*/
+  /*većina odabranih boja je relativno tamna (niska vrijednost 3.broja u hsl zapisu) i nije previše zasićena (2.broj u hsl zapisu), a razlog je izbjegavanje prevelikog isticanja boje u odnosu na sve ostale elemente dizajna
+  i manja štetnost za oči (svijetle, prezasićene boje mogu uzrokovati naprezanje i zamor očiju)*/
+  /*ne moramo iskoristiti sve ove boje, ali smisao ovog sustava je ograničavanje izbora na manji broj boja zbog lakšeg odabira*/
   --color-white-1: hsla(180, 10%, 97%, 1);
   /*glavne boje*/
   --color-primary-1: hsl(135, 65%, 50%);
   --color-primary-2: hsl(130, 62%, 39%);
   --color-primary-3: hsl(135, 66%, 32%);
-  --color-primary-4: hsl(134, 63%, 23%);
+  --color-primary-4: hsl(134, 64%, 27%);
   --color-primary-5: hsl(130, 65%, 15%);
 
   --color-secondary-1: hsl(188, 51%, 59%);
@@ -16,18 +19,18 @@ html {
 
   --color-accent-1: hsl(235, 55%, 40%);
 
-  --color-danger-1: hsl(4, 65%, 64%);
-  --color-danger-2: hsl(5, 63%, 55%);
-  --color-danger-3: hsl(4, 65%, 43%);
-  --color-danger-4: hsl(2, 64%, 32%);
-  --color-danger-5: hsl(1, 61%, 19%);
+  --color-danger-1: hsl(4, 55%, 64%);
+  --color-danger-2: hsl(5, 53%, 55%);
+  --color-danger-3: hsl(4, 55%, 43%);
+  --color-danger-4: hsl(2, 54%, 32%);
+  --color-danger-5: hsl(1, 51%, 19%);
 
   --color-alert-1: hsl(45, 57%, 60%);
   --color-alert-2: hsl(47, 54%, 53%);
   --color-alert-3: hsl(52, 60%, 47%);
 
   --color-bg-1: hsla(190, 20%, 89%, 1);
-  --color-bg-2: hsla(190, 12%, 92%, 1);
+  --color-bg-2: hsla(190, 12%, 93%, 1);
 
   --color-text-1: hsla(30, 8%, 14%, 1);
   --color-text-2: hsla(10, 8%, 82%, 1);
@@ -36,7 +39,9 @@ html {
 
   --color-grey-1: hsla(10, 8%, 45%, 1);
 
+  /*boja navigacije*/
   --color-nav: hsla(190, 10%, 96%, 1);
+  /*boja zaglavlja*/
   --color-footer: hsla(190, 30%, 4%, 1);
 
   --gradient-1: linear-gradient(
@@ -44,7 +49,6 @@ html {
     hsla(110, 55%, 48%, 0.9),
     hsla(185, 48%, 50%, 0.9)
   );
-  /*TODO: fix*/
   --gradient-2: linear-gradient(
       to right,
       hsla(120, 75%, 58%, 0.7),
@@ -64,10 +68,13 @@ html {
  varijable koje u ovom selektoru nemaju nove vrijednosti su uvijek jednake i ne ovise o temi*/
 html[data-dark="true"] {
   --color-primary-3: hsl(125, 45%, 39%);
-  --color-primary-4: hsl(122, 47%, 33%);
+  --color-primary-4: hsl(122, 49%, 35%);
 
   --color-secondary-3: hsl(192, 41%, 39%);
-  --color-secondary-4: hsl(196, 72%, 62%);
+  --color-secondary-4: hsl(196, 42%, 35%);
+
+  --color-danger-1: hsl(4, 69%, 61%);
+  --color-danger-3: hsl(4, 69%, 68%);
 
   --color-accent-1: hsl(235, 65%, 55%);
 

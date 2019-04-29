@@ -14,7 +14,6 @@ galleryTemplate.innerHTML = ` <style>
 }
 
 .gallery {
-  margin-top: 10vmax;
   padding: 2rem;
   position: relative;
   min-width: 100%;
@@ -31,7 +30,7 @@ galleryTemplate.innerHTML = ` <style>
   content: "";
   left: 0;
   right: 0;
-  background: var(--color-primary-3);
+  background: var(--color-primary-4);
   /*pozadina je viša od galerije za 7vmax (7% od dulje dimenzije viewporta)*/
   height: calc(100% + 7vmax);
   min-width: 300vmax;
@@ -133,13 +132,13 @@ class Gallery extends HTMLElement {
     bigImg.src = e.target.src;
     this.$root.appendChild(this.backdrop);
     this.backdrop.appendChild(bigImg);
-    //dodaje listener koji se aktivira kad se klikne izvan slike
+    //dodavanje listenera koji uklanja veliku sliku
     this.$root.addEventListener("click", e => this.removeLargeImg(e));
   }
   removeLargeImg(e) {
-    //funkcija je prekinuta ako kliknuti element nije img
+    //uklanjanje velike slike ako korisnik klikne pozdinu izvan nje
     if (!e.target.matches("img")) {
-      this.$root.removeChild(this.backdrop);
+      this.backdrop.remove();
       this.$root.removeEventListener("click", e => this.removeLargeImg(e));
     }
   }

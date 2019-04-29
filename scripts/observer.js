@@ -1,6 +1,3 @@
-/*intersection observer*/
-//TODO: observer.js
-
 //intersection observer je novi API koji omogućuje lakše aktiviranje neke funkcije kad
 //određeni element postane vidljiv i učinkovitiji je od window.onScroll
 
