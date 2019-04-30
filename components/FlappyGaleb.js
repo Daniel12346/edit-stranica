@@ -221,7 +221,7 @@ canvas {
   opacity:0;
 }
 
-.info-button{
+.info-button, #resetButton{
   background: hsla(130,60%,10%,0.95); 
 display: inline-block;
 padding: 0.2rem;
@@ -229,7 +229,15 @@ border-radius: 3px;
 }
 
 
+#resetButton{
+  color: white;
+  border: none;
+  max-width: 3rem;
+  height: auto;
+  background: hsla(130,60%,15%,0.95); 
+  font-size: 2rem
 
+}
 
 
 </style>
@@ -239,8 +247,10 @@ border-radius: 3px;
     <span class="display">LEVEL <span id="levelCounter">1</span></span>
     <span class="display">score: <span id="scoreCounter">0</span></span>
     <div class="display info-display">
-      <p class="display game-info" id="gameInfo">Pritisnite <span class="info-button">P</span> da započnete</p>
+      <p class="display game-info" id="gameInfo">Pritisnite <span class="info-button">P</span> da započnete</p> 
+      <button id="resetButton">&#x21bb</button>    
     </div>
+
   </div>
 
   <canvas id="canvas" width="1000" height="100"></canvas>
@@ -291,6 +301,7 @@ class FlappyGaleb extends HTMLElement {
     const levelCounter = this.$root.getElementById("levelCounter");
     //element koji prikazuje poruku koja ovisi o trenutnom stanju igre
     const gameInfo = this.$root.getElementById("gameInfo");
+    const resetButton = this.$root.getElementById("resetButton");
 
     const { gravity, speed } = currentLevel;
     const physics = new Physics({ gravity, speed });
@@ -346,20 +357,13 @@ class FlappyGaleb extends HTMLElement {
 
     //kraj igre
     const end = () => {
-      //TODO!: resetiranje
       //prikazivanje poruke s konačnim rezultatom
       gameInfo.textContent = `REZULTAT: ${distance}`;
-      distance = 0;
+
       gameInfo.parentElement.classList.remove("hidden");
-      let first = levels.get(1);
-      currentLevel = first;
-      levelCounter.textContent = first.current;
       isRunning = false;
       isOver = true;
       //TODO: move this setup to a new function
-      canvas.style.backgroundImage = `url(${first.backgroundUrl})`;
-      physics.speed = first.speed;
-      physics.gravity = first.gravity;
     };
     // crta sve cijevi na canvas
     const drawPipesAndBags = () => {
@@ -384,6 +388,24 @@ class FlappyGaleb extends HTMLElement {
           end();
         }
       });
+    };
+
+    //resetiranje (vraćanje svega na osnovne postavke)
+    const reset = () => {
+      isOver = false;
+      distance = 0;
+      pipes = [];
+      bags = [];
+      currentLevel = levels.get(1);
+      canvas.style.backgroundImage = `url(${currentLevel.backgroundUrl})`;
+      levelCounter.textContent = 1;
+      physics.speed = currentLevel.speed;
+      physics.gravity = currentLevel.gravity;
+      isRunning = true;
+      //drugi argument toggle funkcije mora biti true da se toggle izvrši, što znači da će se gameInfo prikazati samo ako je igra uspješno resetirana i ponovno započeta
+      gameInfo.parentElement.classList.toggle("hidden", isRunning);
+      seagull.y = canvas.clientHeight / 3;
+      run();
     };
 
     //stvaranje pojedine cijevi
@@ -490,13 +512,15 @@ class FlappyGaleb extends HTMLElement {
     };
 
     //postavlja listener za event pritiska određenih tipki
-    const listenToEvents = () =>
+    const listenToEvents = () => {
       window.addEventListener("keydown", e => {
         //keyCode 32 predstavlja razmaknicu (spacebar)
         if (e.keyCode === 32) {
           if (!isRunning && !isOver) {
             run();
           }
+          gameInfo.parentElement.classList.toggle("hidden", isRunning);
+
           //služi za "skakanje" galeba
           seagull.flap({ multiplier: 2 / physics.gravity });
         } else if (e.key === "p") {
@@ -506,23 +530,26 @@ class FlappyGaleb extends HTMLElement {
           }
           gameInfo.parentElement.classList.toggle("hidden");
           toggleActive();
+        } else if (e.key === "r") {
+          reset();
         }
       });
-    if (this.canvas.clientWidth < 1200) {
-      const infoButton = this.$root.querySelector(".info-button");
-      // "pritisnite bilo gdje da započnete"
-      infoButton.textContent = "bilo gdje";
-      //TODO: mobilno pauziranje
-      infoButton.classList.remove("info-button");
-      this.addEventListener("click", e => {
-        if (!isRunning && !isOver) {
-          run();
-          gameInfo.parentElement.classList.add("hidden");
-        }
-        seagull.flap({ multiplier: 2 / physics.gravity });
-      });
-    }
-
+      resetButton.addEventListener("click", reset);
+      if (this.canvas.clientWidth < 1200) {
+        const infoButton = this.$root.querySelector(".info-button");
+        // "pritisnite bilo gdje da započnete"
+        infoButton.textContent = "bilo gdje";
+        //TODO: mobilno pauziranje
+        infoButton.classList.remove("info-button");
+        this.addEventListener("click", () => {
+          if (!isRunning && !isOver) {
+            run();
+            gameInfo.parentElement.classList.add("hidden");
+          }
+          seagull.flap({ multiplier: 2 / physics.gravity });
+        });
+      }
+    };
     //regiranje na evente počinje nakon učitavanja slike galeba
     seagullImg.onload = () => {
       listenToEvents();
