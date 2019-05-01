@@ -50,19 +50,20 @@ button{
 }
 a{
     text-decoration: none;
-    color: var(--color-primary-2);
+    color: var(--color-primary-1);
     padding: 1rem;
     /*TODO: new serif*/
+    font-family: Roboto;
 }
 
 nav.mobile{
   display: none;
 }
 
-@media(min-width: 501px){
-nav{
-  padding:0;
-}
+@media(min-width: 550px){
+  nav{
+    padding:0;
+  }
   .links{
     height: 100%;
     padding:0;
@@ -87,6 +88,29 @@ nav{
   li:hover a{
     color: white;
   }
+
+  /*isticanje linka u nav-u stranice na kojoj se korisnik nalazi*/
+  
+ :host([active=pocetna]) #pocetna{
+  font-weight: bold;
+  border-left: 1px var(--color-primary-3) solid;
+  border-right: 1px var(--color-primary-3) solid;
+ }
+ :host([active=ekologija]) #ekologija{
+  font-weight: bold;
+  border-left: 1px var(--color-primary-3) solid;
+  border-right: 1px var(--color-primary-3) solid;
+ }
+ :host([active=dodatci]) #dodatci{
+  font-weight: bold;
+  border-left: 1px var(--color-primary-3) solid;
+  border-right: 1px var(--color-primary-3) solid;
+ }
+ :host([active=about]) #about{
+  font-weight: bold;
+  border-left: 1px var(--color-primary-3) solid;
+  border-right: 1px var(--color-primary-3) solid;
+ }
 }
 
 .toggle-wrapper{
@@ -99,14 +123,14 @@ ie-toggle{
   margin-right: 0.5rem;
 }
 
-@media(max-width: 500px){
-a{
+@media(max-width: 549px){ 
+  a{
   color: white;
   padding: 0.2rem;
-}
-#theme-toggle{
+  }
+  #theme-toggle{
   display: none;
-}
+  }
   nav.mobile{
     display: flex;
     background-color: var(--color-primary-3);
@@ -175,14 +199,15 @@ a{
   }
 }
 
+
 </style>
 
 <nav>
 <ul class="links">
- <li><a href="index.html">Početna</a></li>
- <li><a href="ekologija.html">Ekologija</a></li>
- <li><a href="dodatci.html">Dodatci</a></li>
- <li><a href="about.html">O nama</a></li>
+ <li id="pocetna"><a href="index.html" >Početna</a></li>
+ <li id="ekologija"><a href="ekologija.html">Ekologija</a></li>
+ <li id="dodatci"><a href="dodatci.html">Dodatci</a></li>
+ <li id="about"><a href="about.html">O nama</a></li>
  <li id="theme-toggle"><ie-toggle></ie-toggle></li>
 </ul>
 </nav>
@@ -199,9 +224,10 @@ class Nav extends HTMLElement {
     this.$root.appendChild(navTemplate.content.cloneNode(true));
     [this.button, this.menuIcon] = select(this.$root, "button", "#menuIcon");
     this.button.addEventListener("click", this.toggle.bind(this));
+    console.log(this.active);
   }
 
-  //TODO: sth
+  //atribut koji govori je li navigacija na mobilnom uređaju otvorena(prikazana) ili ne
   get open() {
     if (!this.hasAttribute("open")) {
       return null;
@@ -211,7 +237,7 @@ class Nav extends HTMLElement {
   set open(val) {
     //ikona u lijevom kutu nav-a se mijenja ovisno boolean vrijednosti argumenta val
     this.menuIcon.src = `../assets/${val ? "x" : "menu"}.svg`;
-    //ako je val true (truth-y) menu se otvara, inače se zatvara
+    //ako je val true (truth-y) navigacija se prikazuje, inače je skrivena
     val ? this.setAttribute("open", val) : this.removeAttribute("open");
   }
 
@@ -219,8 +245,18 @@ class Nav extends HTMLElement {
     this.open = !this.open;
   }
 
+  get active() {
+    if (!this.hasAttribute("active")) {
+      return null;
+    }
+    return this.getAttribute("active");
+  }
+  set active(val) {
+    val ? this.setAttribute("active", val) : this.removeAttribute("active");
+  }
+
   static get observedAttributes() {
-    return ["open"];
+    return ["open, active"];
   }
 }
 

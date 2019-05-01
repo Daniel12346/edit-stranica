@@ -1,4 +1,5 @@
-/*pomoćne klase, služe za brže prototipiranje*/
+/*pomoćne klase, po uzoru na css frameworkove*/
+/*osnovni cilj većine klasa je lakše pozicioniranje elemenata u prostoru*/
 
 /***MARGINE (b-bottom,t-top,l-left-r-right)***/
 .mb-xs {

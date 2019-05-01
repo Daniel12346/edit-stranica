@@ -132,11 +132,9 @@ afters.forEach((after, i) => {
 
 /*GALEB NA POČETNOJ STRANICI*/
 
-const [galeb, quoteSection] = selectById(
-  document,
-  "galebObject",
-  "quoteSection"
-);
+const [galeb, quoteSection] = selectById(document, "galeb", "quoteSection");
+
+console.log(galeb);
 
 if (quoteSection) {
   quoteSection.onIntersection = function() {
@@ -148,8 +146,8 @@ observe(
     ...options,
     initialOpacity: 1,
     initialTransform: null,
-    threshold: 0.8,
-    rootMargin: "0px 3000px"
+    threshold: 0.5,
+    rootMargin: "20px 3000px"
   },
   quoteSection
 );

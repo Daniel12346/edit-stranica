@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#57DB78" />
-
+    <title>GoGreenBrač</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/utils.css" />
     <link rel="stylesheet" href="styles/variables.css" />
-    <!--TODO: favicon-->
     <link
       rel="icon"
       type="image/png"
@@ -29,7 +28,7 @@
   </head>
   <body>
     <!--TODO: active-->
-    <ie-nav></ie-nav>
+    <ie-nav active="pocetna"></ie-nav>
     <main>
       <section class="landing-section">
         <header class="header">
@@ -65,7 +64,8 @@
       >
         <!--koristimo object a ne img sa src-om zbog animacija-->
         <object
-          id="galebObject"
+          id="galeb"
+          class="galeb-img"
           width="300px"
           data="assets/galeb1.svg"
           style="filter:drop-shadow(3px 2px 6px hsla(0,0%,0%,0.5));width: 100%; max-width: 400px;;"

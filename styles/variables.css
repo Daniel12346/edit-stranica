@@ -5,22 +5,22 @@ html {
   /*ne moramo iskoristiti sve ove boje, ali smisao ovog sustava je ograničavanje izbora na manji broj boja zbog lakšeg odabira*/
   --color-white-1: hsla(180, 10%, 97%, 1);
   /*glavne boje*/
-  --color-primary-1: hsl(135, 59%, 45%);
-  --color-primary-2: hsl(130, 57%, 39%);
+  --color-primary-1: hsl(135, 59%, 42%);
+  --color-primary-2: hsl(130, 57%, 36%);
   --color-primary-3: hsl(135, 61%, 32%);
   --color-primary-4: hsl(134, 59%, 24%);
-  --color-primary-5: hsl(134, 55%, 16%);
+  --color-primary-5: hsl(134, 65%, 19%);
 
   --color-secondary-1: hsl(188, 51%, 59%);
-  --color-secondary-2: hsl(191, 50%, 43%);
+  --color-secondary-2: hsl(191, 50%, 40%);
   --color-secondary-3: hsl(192, 51%, 33%);
   --color-secondary-4: hsl(196, 52%, 22%);
   --color-secondary-5: hsl(199, 50%, 11%);
 
   --color-accent-1: hsl(235, 55%, 40%);
 
-  --color-danger-1: hsl(4, 55%, 64%);
-  --color-danger-2: hsl(5, 53%, 55%);
+  --color-danger-1: hsl(4, 45%, 63%);
+  --color-danger-2: hsl(5, 43%, 55%);
   --color-danger-3: hsl(4, 55%, 43%);
   --color-danger-4: hsl(2, 54%, 32%);
   --color-danger-5: hsl(1, 51%, 19%);
@@ -32,7 +32,7 @@ html {
   --color-bg-1: hsla(190, 20%, 89%, 1);
   --color-bg-2: hsla(190, 12%, 93%, 1);
 
-  --color-text-1: hsla(30, 8%, 14%, 1);
+  --color-text-1: hsla(30, 8%, 18%, 1);
   --color-text-2: hsla(10, 8%, 82%, 1);
 
   --color-text-about: hsla(10, 8%, 75%, 1);
@@ -72,16 +72,17 @@ html {
 html[data-dark="true"] {
   --color-primary-3: hsl(125, 40%, 39%);
   --color-primary-4: hsl(122, 35%, 29%);
+  --color-primary-5: hsla(125, 49%, 59%, 1);
 
   --color-secondary-3: hsl(192, 41%, 39%);
   --color-secondary-4: hsl(196, 42%, 35%);
 
   --color-danger-1: hsl(4, 69%, 61%);
-  --color-danger-3: hsl(4, 69%, 68%);
+  --color-danger-3: hsl(11, 89%, 76%);
 
   --color-accent-1: hsl(235, 65%, 55%);
 
-  --color-text-1: hsla(10, 8%, 90%, 1);
+  --color-text-1: hsla(10, 8%, 88%, 1);
   --color-text-2: hsla(10, 8%, 10%, 1);
 
   --color-text-about: hsla(10, 8%, 75%, 1);

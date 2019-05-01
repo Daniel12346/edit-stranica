@@ -30,7 +30,7 @@ p {
     color: var(--color-text-1);
   }
   to {
-    color: green;
+    color: var(--color-primary-2);
   }
 }
 
@@ -175,6 +175,7 @@ h1 {
 
 .galeb-img {
   transform: translate(-300px, 200px);
+  /*will-change služi da browser zna koje će se svojstvo promijeniti i u skladu s tim optimizira promjenu*/
   will-change: transform;
   transition: transform 1s;
 }
@@ -261,6 +262,10 @@ ie-brac-map {
   font-weight: bold;
   color: var(--color-danger-1);
 }
+
+.text-wrapper span.highlighted {
+  color: var(--color-primary-5);
+}
 span.danger {
   color: var(--color-danger-3);
 }
@@ -293,13 +298,14 @@ span.danger {
   margin-bottom: 1rem;
 }
 
-.mjesto ul {
+.mjesto ol {
+  list-style: none;
   min-width: 16rem;
   max-width: 60rem;
   width: 80%;
 }
 
-.mjesto ul li {
+.mjesto ol li {
   margin: 1.5rem 0;
 }
 
@@ -309,7 +315,7 @@ ie-gallery {
 
 section#more {
   background: var(--color-secondary-4);
-  padding: 2vw;
+  padding: 20vh 2vw;
 }
 
 section#more p {
@@ -442,6 +448,7 @@ section#more p {
   min-width: 100%;
   margin-left: 2rem;
   min-width: 10rem;
+  align-self: flex-start;
 }
 .about-p {
   margin-bottom: 1rem;
@@ -451,7 +458,7 @@ section#more p {
   margin-top: 10rem;
 }
 #izvori-h {
-  border-color: var(--color-primary-4);
+  border-color: var(--color-primary-1);
 }
 
 .us-section ul {
@@ -527,6 +534,14 @@ section#more p {
 .main-about {
   min-height: 150vh;
   overflow: hidden;
+}
+
+.main-about a {
+  color: var(--color-primary-5);
+}
+.main-about a:hover {
+  color: var(--color-primary-1);
+  border-bottom: 1px var(--color-primary-1) solid;
 }
 
 .about-p {
