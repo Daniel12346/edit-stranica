@@ -136,12 +136,31 @@
           <ul class="izvori-list">
             <li>sav kod je potpuno izvoran</li>
             <li>
-              x.svg i menu.svg su preuzeti s
+              x.svg, mail.svg, i menu.svg su preuzeti s
               <a href="https://feathericons.com/">FeatherIcons</a>, ostali
               SVG-jevi su izvorni
             </li>
           </ul>
         </div>
+        <h2 class="question" id="kontakt-h">
+            Kontaktirajte nas!
+          </h2>
+        <form id="kontakt">
+          <!--galeb pismonoša :) -->
+          <object id="kontaktGaleb" data="assets/galeb.svg"></object>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" />
+          </div>
+          <div class="field">
+            <label>Poruka</label>
+            <textarea></textarea>
+          </div>
+
+          <button class="button send" type="submit">
+            <object data="assets/send.svg"></object>
+          </button>
+        </form>
       </section>
     </main>
     <ie-footer></ie-footer>
@@ -149,6 +168,12 @@
     <script src="scripts/theme.js"></script>
     <script src="scripts/utils.js"></script>
     <script src="scripts/observer.js"></script>
+    <script>
+      document.querySelector("form").addEventListener("submit", e => {
+        e.preventDefault();
+        e.target.classList.add("sent");
+      });
+    </script>
 
     <script src="components/FlappyGaleb.js"></script>
     <script src="components/Toggle.js"></script>

@@ -93,23 +93,20 @@ nav.mobile{
   
  :host([active=pocetna]) #pocetna{
   font-weight: bold;
-  border-left: 1px var(--color-primary-3) solid;
-  border-right: 1px var(--color-primary-3) solid;
+  border: 2px var(--color-primary-3) solid;
  }
  :host([active=ekologija]) #ekologija{
   font-weight: bold;
-  border-left: 1px var(--color-primary-3) solid;
-  border-right: 1px var(--color-primary-3) solid;
+  border: 2px var(--color-primary-3) solid;
+  
  }
  :host([active=dodatci]) #dodatci{
   font-weight: bold;
-  border-left: 1px var(--color-primary-3) solid;
-  border-right: 1px var(--color-primary-3) solid;
+  border: 2px var(--color-primary-3) solid;
  }
  :host([active=about]) #about{
   font-weight: bold;
-  border-left: 1px var(--color-primary-3) solid;
-  border-right: 1px var(--color-primary-3) solid;
+  border: 2px var(--color-primary-3) solid;
  }
 }
 

@@ -8,7 +8,7 @@ html {
   --color-primary-1: hsl(135, 59%, 42%);
   --color-primary-2: hsl(130, 57%, 36%);
   --color-primary-3: hsl(135, 61%, 32%);
-  --color-primary-4: hsl(134, 59%, 24%);
+  --color-primary-4: hsl(134, 59%, 27%);
   --color-primary-5: hsl(134, 65%, 19%);
 
   --color-secondary-1: hsl(188, 51%, 59%);
@@ -47,6 +47,8 @@ html {
   /*boja karte otoka (slična primarnoj zelenoj boji, ali potrebna je posebna nijansa zbog odnosa sa svijetloplavom bojom mora ispod)*/
   --color-brac-map: hsla(120, 55%, 30%, 0.8);
 
+  --color-form: hsla(185, 20%, 65%, 0.9);
+
   --gradient-1: linear-gradient(
     to right,
     hsla(110, 55%, 48%, 0.9),
@@ -72,17 +74,17 @@ html {
 html[data-dark="true"] {
   --color-primary-3: hsl(125, 40%, 39%);
   --color-primary-4: hsl(122, 35%, 29%);
-  --color-primary-5: hsla(125, 49%, 59%, 1);
+  --color-primary-5: hsla(125, 55%, 39%, 1);
 
   --color-secondary-3: hsl(192, 41%, 39%);
-  --color-secondary-4: hsl(196, 42%, 35%);
+  --color-secondary-4: hsl(196, 45%, 31%);
 
   --color-danger-1: hsl(4, 69%, 61%);
   --color-danger-3: hsl(11, 89%, 76%);
 
   --color-accent-1: hsl(235, 65%, 55%);
 
-  --color-text-1: hsla(10, 8%, 88%, 1);
+  --color-text-1: hsla(10, 8%, 84%, 1);
   --color-text-2: hsla(10, 8%, 10%, 1);
 
   --color-text-about: hsla(10, 8%, 75%, 1);
@@ -92,7 +94,9 @@ html[data-dark="true"] {
 
   --color-nav: hsla(180, 10%, 18%, 1);
 
-  --color-brac-map: hsla(115, 44%, 38%, 0.8);
+  --color-form: hsla(185, 23%, 45%, 0.8);
+
+  --color-brac-map: hsla(128, 52%, 48%, 1);
 
   --shadow-1: 2px 2px 3px hsla(0, 0%, 10%, 0.2);
   --shadow-2: 2px 4px 5px hsla(0, 0%, 10%, 0.2);

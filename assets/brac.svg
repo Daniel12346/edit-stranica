@@ -7,10 +7,13 @@ animation: go-green 2s forwards ease-out;
 
 @keyframes go-green{
 from{
-fill: ref
+fill: black
 }
 to{
-fill: green}
+fill: hsla(125,70%,29%,1)}
 }
+
+
+
 </style>
 </svg>

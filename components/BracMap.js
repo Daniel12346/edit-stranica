@@ -7,7 +7,12 @@ template.innerHTML = `
   fill: var(--color-primary-4)
 }
 .mjesto:not(.more):hover{
-  fill: var(--color-primary-1);
+  fill: hsla(130, 90%,60%,1);
+}
+
+
+.jadransko-more-tekst{
+   fill: var(--color-text-1)
 }
 
 .mjesto, .more{
@@ -16,7 +21,7 @@ template.innerHTML = `
 
 .more{
   cursor: pointer;
-  fill: var(--color-secondary-1)
+  fill: var(--color-secondary-2);
 }
 
 .more:hover{
@@ -56,7 +61,7 @@ template.innerHTML = `
 <text style="line-height:1.25;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start" x="25.1" y="24" id="text882-56" font-weight="400" font-size="2.3" font-family="sans-serif" letter-spacing="0" word-spacing="0" fill="#f3f3f3" stroke-width=".1">
   <tspan id="tspan880-2" x="25.1" y="24" style="-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start">Vidova </tspan><tspan x="25.1" y="26.9" style="-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start" id="tspan961">gora</tspan>
 </text>
-<text style="line-height:1.25;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start" x="17.4" y="29.2" id="text882-56-9" transform="rotate(10.2)" font-weight="400" font-size="2.3" font-family="sans-serif" letter-spacing="0" word-spacing="0" fill="#241c1c" stroke-width=".1">
+<text class="jadransko-more-tekst" style="line-height:1.25;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start" x="17.4" y="29.2" id="text882-56-9" transform="rotate(10.2)" font-weight="400" font-size="2.3" font-family="sans-serif" letter-spacing="0" word-spacing="0" fill="#241c1c" stroke-width=".1">
   <tspan id="tspan880-2-1" x="17.4" y="29.2" style="-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start">Jadransko more</tspan>
 </text>
 <text style="line-height:1.25;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start" x="36.8" y="18.1" id="text882-5-2" font-weight="400" font-size="2.3" font-family="sans-serif" letter-spacing="0" word-spacing="0" fill="#f3f3f3" stroke-width=".1">

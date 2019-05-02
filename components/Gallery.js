@@ -30,7 +30,7 @@ galleryTemplate.innerHTML = ` <style>
   content: "";
   left: 0;
   right: 0;
-  background: var(--color-primary-4);
+  background: var(--color-primary-3);
   /*pozadina je viša od galerije za 7vmax (7% od dulje dimenzije viewporta)*/
   height: calc(100% + 7vmax);
   min-width: 300vmax;
@@ -44,7 +44,7 @@ galleryTemplate.innerHTML = ` <style>
 ::slotted(img) {
   width: 100%;
   height: 10rem;
-  outline: 0px var(--color-primary-1) solid;
+  outline: 0px lightgreen solid;
   transition: all 0.3s;
   object-position: center center;
   object-fit: cover;
@@ -52,7 +52,7 @@ galleryTemplate.innerHTML = ` <style>
 }
 
 ::slotted(img.danger){
-  outline: 0px var(--color-danger-2) solid;
+  outline: 0px var(--color-danger-1) solid;
 }
 
 ::slotted(img:hover){

@@ -62,14 +62,14 @@ img {
   height: 2.5rem;
   width: 4.5rem;
   text-align: center;
-  background: var(--color-primary-4);
+  background: var(--color-primary-5);
   color: var(--color-white-1);
   transition: transform 0.3s ease-out, box-shadow 0.3s;
   box-shadow: var(--shadow-1);
 }
 
 .button:hover {
-  /*povećavanje elementa te veća površina i gustoća njegove sjene simuliraju fizičko idizanje iznad plohe*/
+  /*povećavanje elementa te veća površina i gustoća njegove sjene simuliraju idizanje iznad plohe*/
   transform: scale(1.05);
   box-shadow: var(--shadow-2);
 }
@@ -264,10 +264,11 @@ ie-brac-map {
 }
 
 .text-wrapper span.highlighted {
-  color: var(--color-primary-5);
+  font-weight: bold;
 }
 span.danger {
   color: var(--color-danger-3);
+  font-weight: bold;
 }
 
 .text-wrapper h2 {
@@ -316,6 +317,7 @@ ie-gallery {
 section#more {
   background: var(--color-secondary-4);
   padding: 20vh 2vw;
+  margin-bottom: 0;
 }
 
 section#more p {
@@ -356,6 +358,12 @@ section#more p {
 }
 #bag-3 {
   transform: rotate(150deg) translate(50%, -10%);
+}
+
+section#akcije {
+  background: var(--color-primary-4);
+  color: var(--color-white-1);
+  min-height: 30vh;
 }
 
 /**DODATCI**/
@@ -476,8 +484,93 @@ section#more p {
   margin-bottom: 1.5rem;
 }
 
-#izvori {
-  grid-area: p2;
+form {
+  transition: transform 2s;
+  width: 90%;
+  min-height: 30vh;
+  background-color: var(--color-form);
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  margin-bottom: 5vh;
+  padding: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+}
+
+input,
+textarea {
+  border: none;
+  border-radius: 4px;
+  min-height: 2rem;
+  margin-top: 0.4rem;
+}
+
+input:active,
+textarea:active,
+input:focus,
+textarea:focus {
+  border: 0.1rem var(--color-secondary-5) solid;
+  background: var(--color-text-1);
+}
+
+button.send {
+  margin-top: 1rem;
+  align-self: center;
+  background: var(--color-secondary-4);
+  border-radius: 4px;
+}
+
+form::after {
+  content: "";
+  display: block;
+  z-index: -1;
+  border-radius: 8px;
+  transform: rotate(-2deg);
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: calc(100% + 2vh);
+  width: 100%;
+  background: var(--color-secondary-2);
+}
+
+textarea {
+  resize: none;
+  min-height: 4rem;
+}
+
+.field {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+/*samo prvo polje ima donju marginu*/
+.field:first-child {
+  margin-bottom: 2vmax;
+}
+
+#kontaktGaleb {
+  display: none;
+}
+
+@keyframes send {
+  0% {
+    transform: scale(1);
+  }
+  /*smanjivanje form elementa*/
+  10% {
+    transform: scale(0.2);
+  }
+  100% {
+    transform: translate(100vw, -30vh);
+  }
+}
+
+#kontakt-h {
+  margin-bottom: 2rem;
+  border-left-color: var(--color-secondary-2);
 }
 
 @media screen and (min-width: 1024px) {
@@ -485,6 +578,7 @@ section#more p {
     padding: 0 4vw;
     width: 60%;
     display: grid;
+    /*grid-template-areas opisuje vizualnu strukturu grida i omogućuje lakše postavljanje svih elemenata u grid*/
     grid-template-areas:
       "question-1 . after-1"
       "after-2 . ."
@@ -492,7 +586,10 @@ section#more p {
       "question-2 . ."
       "p p p"
       "izvori-h . ."
-      "p2 p2 p2";
+      "p2 p2 p2"
+      "kontakt-h . ."
+      "kontakt kontakt kontakt";
+    /*stupci su određeni ovdje, a retke automatski stvara grid prema potrebnom prostoru*/
     grid-template-columns: 1fr 20% 1fr;
     padding-top: 3rem;
   }
@@ -529,6 +626,33 @@ section#more p {
   #izvori {
     grid-area: p2;
   }
+  #kontakt {
+    grid-area: kontakt;
+  }
+  #kontakt-h {
+    grid-area: kontakt-h;
+  }
+  /*animacija je moguća jedino na dovoljno širokim zaslonima, zbog čega se slika galeba ne rendera na manjim širinama od one određene u ovom media queryju*/
+  #kontaktGaleb {
+    display: block;
+    z-index: 3;
+    position: absolute;
+    width: 100vw;
+    max-width: 40rem;
+    /*skrivanje galeba s ekrana*/
+    transform: translateX(-100vw);
+    transition: transform 2s;
+  }
+
+  form.sent {
+    /*forwards znači da se animirani elementi ne vraća u početni položaj na kraju animacije*/
+    animation: 4s send forwards;
+    animation-delay: 2s;
+  }
+
+  form.sent #kontaktGaleb {
+    transform: translateX(0) scale(1.5);
+  }
 }
 
 .main-about {
@@ -536,6 +660,7 @@ section#more p {
   overflow: hidden;
 }
 
+/*styling linkova na stranici "o nama"*/
 .main-about a {
   color: var(--color-primary-5);
 }
