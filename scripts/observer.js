@@ -18,7 +18,7 @@ const observe = (
 ) => {
   const callback = (entries, observer) => {
     if (!window.IntersectionObserver) {
-      //intersection observer još nije podržan u svim browserima, a za polyfill bi bio potreban npm
+      //intersection observer još nije podržan u svim browserima
       throw new Error("Intersection observer nije podržan u ovom browseru");
     }
 
@@ -151,5 +151,3 @@ observe(
   },
   quoteSection
 );
-
-/*** */

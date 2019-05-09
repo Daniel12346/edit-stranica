@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 209.7 203.4" id="svg8">
+  <g id="layer1" transform="translate(.5 -31.6)" fill="#57ff6e" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="47.8">
+    <path id="srce-bg" d="M175.1 34c-21.8-6.7-49.5 4.6-72.8 30C77.1 41 50.4 26.6 29.5 35c-33 13.3-39.6 70.2-13 120 26.4 49.8 53.4 68.6 92.3 79.3 32.8-9.5 74-56 88-87.3 22-51.7 12.3-102.3-21.7-113z" stroke="#1e890a" stroke-opacity=".8"/>
+    <path id="srce" d="M175.1 34c-21.8-6.7-49.6 4.6-72.8 30C77.1 41 50.4 26.6 29.5 35c-33 13.3-39.6 70.2-13 120 26.4 49.8 53.4 68.6 92.3 79.3 32.8-9.5 74-56 88-87.3 22-51.7 12.3-102.3-21.7-113z" opacity=".5" stroke="#3eef1e" stroke-opacity=".2"/>
+  </g>
+  <style>
+  @keyframes beat{
+  from{
+  transform: scale(0.6)
+  }
+  to{
+  transform: scale(0.8)
+  }
+  }
+
+
+  @keyframes bg-beat{
+  from{
+  transform: scale(0.5)
+  }
+  to{
+  transform: scale(0.9)
+  }
+  }
+
+#srce,#srce-bg{
+transform-origin: center
+}
+
+
+  #srce{
+  animation: bg-beat 1s alternate infinite;
+  }
+  #srce-bg{
+  animation: beat 1s alternate infinite;
+  }
+  </style>
+</svg>

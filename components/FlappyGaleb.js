@@ -226,6 +226,7 @@ canvas {
 display: inline-block;
 padding: 0.2rem;
 border-radius: 3px;
+z-index: 3;
 }
 
 
@@ -301,7 +302,6 @@ class FlappyGaleb extends HTMLElement {
     const levelCounter = this.$root.getElementById("levelCounter");
     //element koji prikazuje poruku koja ovisi o trenutnom stanju igre
     const gameInfo = this.$root.getElementById("gameInfo");
-    const resetButton = this.$root.getElementById("resetButton");
 
     const { gravity, speed } = currentLevel;
     const physics = new Physics({ gravity, speed });
@@ -392,6 +392,8 @@ class FlappyGaleb extends HTMLElement {
 
     //resetiranje (vraćanje svega na osnovne postavke)
     const reset = () => {
+      isRunning = false;
+
       isOver = false;
       distance = 0;
       pipes = [];
@@ -401,10 +403,11 @@ class FlappyGaleb extends HTMLElement {
       levelCounter.textContent = 1;
       physics.speed = currentLevel.speed;
       physics.gravity = currentLevel.gravity;
-      isRunning = true;
       //drugi argument toggle funkcije mora biti true da se toggle izvrši, što znači da će se gameInfo prikazati samo ako je igra uspješno resetirana i ponovno započeta
       gameInfo.parentElement.classList.toggle("hidden", isRunning);
       seagull.y = canvas.clientHeight / 3;
+
+      console.log(pipes, bags, currentLevel, physics);
       run();
     };
 
@@ -456,6 +459,7 @@ class FlappyGaleb extends HTMLElement {
 
       //crtanje galeba bez promjena zadanih parametara jer su sva potrebna svosjtva definirana na klasi galeba
       seagull.draw({});
+
       seagull.y += physics.gravity;
       //promjena bodova (udaljenosti) ovisi o brzini definiranoj na svakoj razini
       distance += Math.round(1 * currentLevel.speed);
@@ -488,7 +492,7 @@ class FlappyGaleb extends HTMLElement {
       // znatno učinkovitije od setInterval
       //req je objekt koji requestAnimationFrame vraća služi za prekidanje te iste petlje
       const req = requestAnimationFrame(animate);
-      if (!isRunning) {
+      if (!isRunning || isOver) {
         //ako je igra pauzirana ili prekinuta, prekida se petlja
         cancelAnimationFrame(req);
       }
@@ -497,8 +501,8 @@ class FlappyGaleb extends HTMLElement {
     const run = () => {
       if (!isRunning && !isOver) {
         isRunning = true;
+        animate();
       }
-      animate();
     };
 
     const stop = () => {
@@ -516,11 +520,14 @@ class FlappyGaleb extends HTMLElement {
       window.addEventListener("keydown", e => {
         //keyCode 32 predstavlja razmaknicu (spacebar)
         if (e.keyCode === 32) {
-          if (!isRunning && !isOver) {
+          if (!isRunning) {
             run();
           }
+          //ista tipka služi za resetiranje nakon što igra završi
+          if (isOver) {
+            reset();
+          }
           gameInfo.parentElement.classList.toggle("hidden", isRunning);
-
           //služi za "skakanje" galeba
           seagull.flap({ multiplier: 2 / physics.gravity });
         } else if (e.key === "p") {
@@ -530,11 +537,9 @@ class FlappyGaleb extends HTMLElement {
           }
           gameInfo.parentElement.classList.toggle("hidden");
           toggleActive();
-        } else if (e.key === "r") {
-          reset();
         }
       });
-      resetButton.addEventListener("click", reset);
+
       if (this.canvas.clientWidth < 1200) {
         const infoButton = this.$root.querySelector(".info-button");
         // "pritisnite bilo gdje da započnete"
@@ -551,9 +556,7 @@ class FlappyGaleb extends HTMLElement {
       }
     };
     //regiranje na evente počinje nakon učitavanja slike galeba
-    seagullImg.onload = () => {
-      listenToEvents();
-    };
+    seagullImg.onload = listenToEvents;
   }
 }
 

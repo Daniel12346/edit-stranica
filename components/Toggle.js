@@ -105,7 +105,7 @@ class Toggle extends HTMLElement {
     val ? this.setAttribute("toggled", val) : this.removeAttribute("toggled");
   }
 
-  //mijenja temu i sprema novu temu u svojstvo toggled i u local storage
+  //mijenja temu i sprema novu temu u svojstvo toggled te u local storage
   toggle() {
     const htmlRoot = document.querySelector("html");
     htmlRoot.dataset.dark = htmlRoot.dataset.dark === "true" ? "false" : "true";

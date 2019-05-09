@@ -1,3 +1,4 @@
+//navigacija stranice
 const navTemplate = document.createElement("template");
 
 navTemplate.innerHTML = ` <style>
@@ -100,7 +101,7 @@ nav.mobile{
   border: 2px var(--color-primary-3) solid;
   
  }
- :host([active=dodatci]) #dodatci{
+ :host([active=igra]) #igra{
   font-weight: bold;
   border: 2px var(--color-primary-3) solid;
  }
@@ -128,6 +129,9 @@ ie-toggle{
   #theme-toggle{
   display: none;
   }
+
+
+  /* nav.mobile je novi navi na vrhu ekrana mobilnih uređaja, a stari, koji se koristi na većim zaslonima, na manjim zaslonima postaje nav koji prekriva cijeli zaslon kad je prikazan */
   nav.mobile{
     display: flex;
     background-color: var(--color-primary-3);
@@ -203,7 +207,7 @@ ie-toggle{
 <ul class="links">
  <li id="pocetna"><a href="index.html" >Početna</a></li>
  <li id="ekologija"><a href="ekologija.html">Ekologija</a></li>
- <li id="dodatci"><a href="dodatci.html">Dodatci</a></li>
+ <li id="igra"><a href="igra.html">Igra</a></li>
  <li id="about"><a href="about.html">O nama</a></li>
  <li id="theme-toggle"><ie-toggle></ie-toggle></li>
 </ul>

@@ -21,7 +21,7 @@ html {
 
   --color-danger-1: hsl(4, 45%, 63%);
   --color-danger-2: hsl(5, 43%, 55%);
-  --color-danger-3: hsl(4, 55%, 43%);
+  --color-danger-3: hsl(4, 45%, 43%);
   --color-danger-4: hsl(2, 54%, 32%);
   --color-danger-5: hsl(1, 51%, 19%);
 
@@ -29,7 +29,8 @@ html {
   --color-alert-2: hsl(47, 54%, 53%);
   --color-alert-3: hsl(52, 60%, 47%);
 
-  --color-bg-1: hsla(190, 20%, 89%, 1);
+  /*pozadinske boje*/
+  --color-bg-1: hsla(190, 20%, 86%, 1);
   --color-bg-2: hsla(190, 12%, 93%, 1);
 
   --color-text-1: hsla(30, 8%, 18%, 1);
@@ -71,9 +72,10 @@ html {
 
 /*ove vrijednosti varijabli zamjenjuju ranije definirane kad html element ima svojstvo data-dark=true (tamna tema),
  varijable koje u ovom selektoru nemaju nove vrijednosti su uvijek jednake i ne ovise o temi*/
+/*glavni razlog mijenjanja većine ovih boja je održavanje kontrasta s tamnijom pozadinom i svijetlijim tekstom*/
 html[data-dark="true"] {
   --color-primary-3: hsl(125, 40%, 39%);
-  --color-primary-4: hsl(122, 35%, 29%);
+  --color-primary-4: hsl(124, 45%, 25%);
   --color-primary-5: hsla(125, 55%, 39%, 1);
 
   --color-secondary-3: hsl(192, 41%, 39%);
@@ -84,19 +86,19 @@ html[data-dark="true"] {
 
   --color-accent-1: hsl(235, 65%, 55%);
 
-  --color-text-1: hsla(10, 8%, 84%, 1);
+  --color-text-1: hsla(10, 8%, 89%, 1);
   --color-text-2: hsla(10, 8%, 10%, 1);
 
   --color-text-about: hsla(10, 8%, 75%, 1);
 
   --color-bg-1: hsla(180, 15%, 11%, 1);
-  --color-bg-2: hsla(180, 15%, 16%, 1);
+  --color-bg-2: hsla(180, 15%, 18%, 1);
 
   --color-nav: hsla(180, 10%, 18%, 1);
 
   --color-form: hsla(185, 23%, 45%, 0.8);
 
-  --color-brac-map: hsla(128, 52%, 48%, 1);
+  --color-brac-map: hsla(128, 42%, 42%, 1);
 
   --shadow-1: 2px 2px 3px hsla(0, 0%, 10%, 0.2);
   --shadow-2: 2px 4px 5px hsla(0, 0%, 10%, 0.2);

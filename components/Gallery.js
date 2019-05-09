@@ -40,7 +40,7 @@ galleryTemplate.innerHTML = ` <style>
 }
 
 
-
+/*::slotted(img) selektira img elemente koji su u html-u ubačeni u slotove koje ova komponenta rendera*/
 ::slotted(img) {
   width: 100%;
   height: 10rem;

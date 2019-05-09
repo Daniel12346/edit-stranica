@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="theme-color" content="#57DB78" />
-    <!--TODO: title-->
+    <title>igra - BračGoGreen</title>
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/utils.css" />
     <link rel="stylesheet" href="styles/variables.css" />
@@ -28,16 +28,16 @@
   </head>
 
   <body>
-    <ie-nav active="dodatci"></ie-nav>
+    <ie-nav active="igra"></ie-nav>
     <main>
       <div class="flex flex-cc mb-m mt-m br-m">
         <p class="info" style="min-height: 20vh">
           <span class="highlighted">Flappy Galeb</span>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore
-          optio explicabo voluptas maxime, nulla alias aspernatur similique
-          dolores nisi laboriosam libero et ratione suscipit architecto
-          repellendus fuga aliquid enim nostrum aut dignissimos reprehenderit,
-          reiciendis repudiandae? Hic quia consectetur dignissimos numquam.
+          se temelji na igri Flappy Bird, ali sadrži i nove elemente kao što su
+          razine s različitim postavkama (različita pozadinska slika, brzina
+          kretanja...) . Cilj ove igre nije samo zabaviti, nego i kroz zabavu
+          predstaviti ljepote otoka Brača te upozoriti na ekološke probleme kao
+          što su plastične vrećice koje na višim razinama treba izbjegavati.
         </p>
       </div>
       <ie-flappy-galeb></ie-flappy-galeb>
@@ -48,12 +48,12 @@
       <script src="scripts/utils.js"></script>
       <script src="scripts/observer.js"></script>
 
-      <script src="components/FlappyGaleb.js"></script>
       <script src="components/Toggle.js"></script>
       <script src="components/Nav.js"></script>
       <script>
         document.onkeydown = e => e.keyCode !== 32;
       </script>
+      <script src="components/FlappyGaleb.js"></script>
       <script src="components/Footer.js"></script>
     </main>
   </body>
