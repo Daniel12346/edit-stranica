@@ -221,7 +221,7 @@ canvas {
   opacity:0;
 }
 
-.info-button, #resetButton{
+.info-button{
   background: hsla(130,60%,10%,0.95); 
 display: inline-block;
 padding: 0.2rem;
@@ -230,15 +230,7 @@ z-index: 3;
 }
 
 
-#resetButton{
-  color: white;
-  border: none;
-  max-width: 3rem;
-  height: auto;
-  background: hsla(130,60%,15%,0.95); 
-  font-size: 2rem
 
-}
 
 
 </style>
@@ -249,7 +241,6 @@ z-index: 3;
     <span class="display">score: <span id="scoreCounter">0</span></span>
     <div class="display info-display">
       <p class="display game-info" id="gameInfo">Pritisnite <span class="info-button">P</span> da započnete</p> 
-      <button id="resetButton">&#x21bb</button>    
     </div>
 
   </div>
@@ -539,8 +530,8 @@ class FlappyGaleb extends HTMLElement {
           toggleActive();
         }
       });
-
-      if (this.canvas.clientWidth < 1200) {
+      //kontrole na manjim zaslonima
+      if (this.canvas.clientWidth < 1000) {
         const infoButton = this.$root.querySelector(".info-button");
         // "pritisnite bilo gdje da započnete"
         infoButton.textContent = "bilo gdje";
@@ -549,8 +540,12 @@ class FlappyGaleb extends HTMLElement {
         this.addEventListener("click", () => {
           if (!isRunning && !isOver) {
             run();
-            gameInfo.parentElement.classList.add("hidden");
           }
+          if (isOver) {
+            reset();
+          }
+          gameInfo.parentElement.classList.toggle("hidden", isRunning);
+
           seagull.flap({ multiplier: 2 / physics.gravity });
         });
       }

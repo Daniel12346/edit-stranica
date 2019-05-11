@@ -132,12 +132,12 @@ afters.forEach((after, i) => {
 
 /*GALEB NA POČETNOJ STRANICI*/
 
-const [galeb, quoteSection] = selectById(document, "galeb", "quoteSection");
+const [galeb, introSection] = selectById(document, "galeb", "introSection");
 
-console.log(galeb);
+console.log(introSection);
 
-if (quoteSection) {
-  quoteSection.onIntersection = function() {
+if (introSection) {
+  introSection.onIntersection = function() {
     galeb.style.transform = "translate(0,0)";
   };
 }
@@ -146,8 +146,8 @@ observe(
     ...options,
     initialOpacity: 1,
     initialTransform: null,
-    threshold: 0.5,
-    rootMargin: "20px 3000px"
+    threshold: 0.7,
+    rootMargin: "-10% 3000px"
   },
-  quoteSection
+  introSection
 );
