@@ -21,8 +21,9 @@ button {
 }
 
 h2,
-p {
-  line-height: 1.4;
+p,
+li {
+  line-height: 1.5;
 }
 
 @keyframes goGreen {
@@ -162,7 +163,7 @@ h1 {
   background-blend-mode: luminosity;
   min-height: 10rem;
   padding: 5vw;
-  margin: 5vh 0 10vh 0;
+  margin: 8vh 0 15vh 0;
   color: var(--color-white-1);
 }
 
@@ -183,8 +184,10 @@ h1 {
 }
 
 .cards a {
+  display: flex;
   color: var(--color-text-1);
   justify-content: center;
+  align-items: center;
   transition: transform 0.3s ease-in;
   min-height: 14rem;
 }
@@ -196,7 +199,8 @@ h1 {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1), 0px 2px 4px rgba(0, 0, 0, 0.3);
   background: white;
   border-radius: 5px;
-  width: 16rem;
+  width: 80vw;
+  max-width: 20rem;
   color: var(--color-text-1);
   background-color: var(--color-bg-2);
   padding: 1rem 2rem;
@@ -218,7 +222,7 @@ h1 {
 
 .card img {
   width: 6rem;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
 }
 
 .cards a:hover {
@@ -241,7 +245,7 @@ h1 {
   flex-flow: row wrap;
   align-items: space-around;
   background: var(--color-primary-4);
-  margin: 5vmax 0;
+  margin: 4rem 0 5rem;
   padding: 4rem 0;
   min-height: 20vh;
 }
@@ -296,11 +300,11 @@ ie-brac-map {
 }
 
 .map-wrapper {
-  margin-bottom: 18vh;
+  margin-bottom: 20vh;
 }
 
 .map-info {
-  margin: 4rem 0 0;
+  margin-top: 5%;
   width: 80%;
   max-width: 40rem;
 }
@@ -345,6 +349,7 @@ ie-brac-map {
 span.highlighted {
   font-weight: bold;
 }
+
 span.danger {
   font-weight: bold;
 }
@@ -374,7 +379,7 @@ span.danger {
 }
 
 .text-wrapper p {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .mjesto ol {
@@ -470,7 +475,7 @@ section#akcije .text-wrapper:not(:last-child) {
   max-width: 15rem;
 }
 
-/**DODATCI**/
+/**IGRA**/
 .info {
   background-color: var(--color-bg-2);
   padding: 1rem 2rem;
@@ -486,9 +491,14 @@ section#akcije .text-wrapper:not(:last-child) {
   color: var(--color-secondary-2);
 }
 
+ie-flappy-galeb {
+  margin-bottom: 15vh;
+}
+
 /***O NAMA***/
 
 .us-section {
+  max-width: 100%;
   margin-top: 15vh;
   display: flex;
   flex-flow: column nowrap;
@@ -503,22 +513,22 @@ section#akcije .text-wrapper:not(:last-child) {
   margin: 0 3rem 0.5rem 0;
 }
 
-#after-1,
-#after-3 {
+#osoba-1,
+#osoba-3 {
   transform: translate(200px);
 }
 
-#after-2 {
+#osoba-2 {
   transform: translate(-200px);
 }
-#after-1.fade-in,
-#after-2.after.fade-in,
-#after-3.fade-in {
+#osoba-1.fade-in,
+#osoba-2.fade-in,
+#osoba-3.fade-in {
   transform: translate(0px);
   opacity: 1;
 }
 
-.after {
+.osoba {
   position: relative;
   color: var(--color-text-1);
   padding: 2rem;
@@ -528,14 +538,18 @@ section#akcije .text-wrapper:not(:last-child) {
   transition: opacity 1.5s, transform 1.5s;
 }
 
-.after .role {
+.osoba img {
+  margin-bottom: 1.5rem;
+}
+
+.osoba .role {
   background: darkmagenta;
   box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
   letter-spacing: 1.2px;
   font-weight: bold;
 }
-.after::after {
+.osoba::after {
   content: "";
   display: block;
   height: 40rem;
@@ -547,12 +561,12 @@ section#akcije .text-wrapper:not(:last-child) {
   position: absolute;
   top: 0px;
 }
-#after-2::after {
+#osoba-2::after {
   transform: rotate(10deg);
   background: url("../assets/abstract2.1.svg") no-repeat;
 }
 
-#after-3::after {
+#osoba-3::after {
   background: url("../assets/abstract2.2.svg") no-repeat;
 }
 
@@ -574,7 +588,23 @@ section#akcije .text-wrapper:not(:last-child) {
 }
 
 #izvori ul {
-  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  /*TODO: sth*/
+  min-height: 20rem;
+  list-style: square;
+  min-width: 15rem;
+  max-width: 90%;
+  list-style: none;
+  padding: 1rem 1rem 0 1.5rem;
+}
+
+#izvori li {
+  margin-bottom: 2rem;
+}
+#izvori a {
+  color: var(--color-link);
 }
 
 .us-section ul {
@@ -582,9 +612,10 @@ section#akcije .text-wrapper:not(:last-child) {
   flex-flow: column nowrap;
   justify-content: space-evenly;
   /*TODO: sth*/
-  height: 10rem;
+  min-height: 10rem;
   list-style: square;
 }
+
 #ciljevi ul {
   height: auto;
 }
@@ -701,14 +732,14 @@ textarea {
     grid-template-columns: 1fr 20% 1fr;
     padding-top: 3rem;
   }
-  #after-1 {
+  #osoba-1 {
     grid-area: after-1;
   }
-  #after-2 {
+  #osoba-2 {
     grid-area: after-2;
   }
 
-  #after-3 {
+  #osoba-3 {
     grid-area: after-3;
   }
   .question {
@@ -769,10 +800,6 @@ textarea {
   margin-bottom: 15vh;
 }
 
-/*styling linkova na stranici "o nama"*/
-.main-about a {
-  color: var(--color-primary-5);
-}
 .main-about a:hover {
   color: var(--color-primary-1);
   border-bottom: 1px var(--color-primary-1) solid;
@@ -785,11 +812,6 @@ textarea {
 #ciljevi ul {
   padding: 1rem 0 0 1.5rem;
   list-style: none;
-}
-
-#izvori ul {
-  list-style: none;
-  padding: 1rem 0 0 1.5rem;
 }
 
 /*crtica ispred elemenata u listi*/

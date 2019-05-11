@@ -68,7 +68,7 @@ galleryTemplate.innerHTML = ` <style>
   z-index: 9;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,6 +77,7 @@ galleryTemplate.innerHTML = ` <style>
 .bigImg{
   min-width: 280px;
   max-width: 1000px;
+  max-height: 70vh;
   width: auto;
   z-index: 10;
 }

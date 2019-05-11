@@ -106,18 +106,18 @@ lazyImages.forEach(img => {
   }
 });
 
+/*ULAZAK KARTICA*/
 observe(
   { ...options, initialTransition: "", rootMargin: "100px" },
   ...lazyImages
 );
-const [afters] = selectAll(document, ".after");
+const [osobe] = selectAll(document, ".osoba");
 
-afters.forEach((after, i) => {
-  after.onIntersection = function() {
+osobe.forEach((osoba, i) => {
+  osoba.onIntersection = function() {
     this.classList.add("fade-in");
   };
-  //card je svaki element s klasom "card", i je index elementa u arrayu svih takvih elemenata (varijabla cards)
-  //transition delay ovisi o indexu pa slike ne postaju vidljive istovremeno
+
   observe(
     {
       ...options,
@@ -126,15 +126,13 @@ afters.forEach((after, i) => {
       threshold: 0.2,
       rootMargin: "-5% 1000px"
     },
-    after
+    osoba
   );
 });
 
 /*GALEB NA POČETNOJ STRANICI*/
 
 const [galeb, introSection] = selectById(document, "galeb", "introSection");
-
-console.log(introSection);
 
 if (introSection) {
   introSection.onIntersection = function() {

@@ -12,7 +12,7 @@ levels.set(1, {
   //sljedeća razina
   next: 2,
   //pozadinska slika razine
-  backgroundUrl: "assets/pucisca.jpg",
+  backgroundUrl: "assets/cc-pucisca3.jpg",
   gravity: 1.1,
   speed: 1.1,
   //određuje broj stvorenih cijevi
@@ -25,21 +25,31 @@ levels.set(1, {
 levels.set(2, {
   current: 2,
   next: 3,
-  backgroundUrl: "assets/postira.jpg",
+  backgroundUrl: "assets/cc-sumartin2.jpg",
   gravity: 1.4,
   speed: 1.7,
   pipeFrequencyModifier: 1.6,
-  totalDistance: 1500
+  totalDistance: 2500
 });
 
 levels.set(3, {
   current: 3,
-  next: 1,
-  backgroundUrl: "assets/supetar.JPG",
+  next: 4,
+  backgroundUrl: "assets/cc-bol4.jpg",
   gravity: 1.9,
   speed: 2.3,
   pipeFrequencyModifier: 2,
-  totalDistance: 200
+  totalDistance: 4500
+});
+
+levels.set(4, {
+  current: 4,
+  next: null,
+  backgroundUrl: "assets/cc-supetar3.jpg",
+  gravity: 2.3,
+  speed: 2.8,
+  pipeFrequencyModifier: 2.4,
+  totalDistance: 10000
 });
 
 class Physics {
@@ -237,8 +247,8 @@ z-index: 3;
 
 <div class="canvas-container">
   <div id="overlay" >
-    <span class="display">LEVEL <span id="levelCounter">1</span></span>
-    <span class="display">score: <span id="scoreCounter">0</span></span>
+    <span class="display">RAZINA <span id="levelCounter">1</span></span>
+    <span class="display">rezultat: <span id="scoreCounter">0</span></span>
     <div class="display info-display">
       <p class="display game-info" id="gameInfo">Pritisnite <span class="info-button">P</span> da započnete</p> 
     </div>
@@ -260,6 +270,7 @@ class FlappyGaleb extends HTMLElement {
     //canvas i njegov kontekst se vezuju za klasu
     this.canvas = this.$root.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
+    this.isMobile = this.canvas.clientWidth < 1000;
   }
   connectedCallback() {
     //veliki dio ovih varijabli i funkcija je mogao biti definiran kao svojstva i metode klase,
@@ -348,8 +359,10 @@ class FlappyGaleb extends HTMLElement {
 
     //kraj igre
     const end = () => {
-      //prikazivanje poruke s konačnim rezultatom
-      gameInfo.textContent = `REZULTAT: ${distance}`;
+      //prikazivanje poruke s konačnim rezultatom i uputom za resetiranje
+      gameInfo.textContent = `KONAČNI REZULTAT: ${distance}
+                              ${!this.isMobile &&
+                                ", pritisnite tipku R da ponovno započnete igru"}`;
 
       gameInfo.parentElement.classList.remove("hidden");
       isRunning = false;
@@ -445,6 +458,14 @@ class FlappyGaleb extends HTMLElement {
 
     //glavna animacijska petlja
     const animate = () => {
+      //provjerava je li galeb prešao gornji ili donji rub, uz određeno dopušteno odstupanje zbog različitih mogućih veličina canvasa
+      if (
+        seagull.y > canvas.clientHeight ||
+        seagull.y < -0.5 * canvas.clientHeight
+      ) {
+        //igra završava ako galeb nije u granicama canvasa
+        end();
+      }
       //prvo nastupa potpuno čišćenje canvasa
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -454,7 +475,7 @@ class FlappyGaleb extends HTMLElement {
       seagull.y += physics.gravity;
       //promjena bodova (udaljenosti) ovisi o brzini definiranoj na svakoj razini
       distance += Math.round(1 * currentLevel.speed);
-      //string + int pretvara int u string
+      //string + int implicitno pretvara int u string
       scoreCounter.textContent = "" + distance;
       //ako je prijeđena udaljenost jednaka udaljenosti određenoj na razini, igrač prelazi na višu razinu
       if (distance === currentLevel.totalDistance) {
@@ -515,9 +536,7 @@ class FlappyGaleb extends HTMLElement {
             run();
           }
           //ista tipka služi za resetiranje nakon što igra završi
-          if (isOver) {
-            reset();
-          }
+
           gameInfo.parentElement.classList.toggle("hidden", isRunning);
           //služi za "skakanje" galeba
           seagull.flap({ multiplier: 2 / physics.gravity });
@@ -528,10 +547,16 @@ class FlappyGaleb extends HTMLElement {
           }
           gameInfo.parentElement.classList.toggle("hidden");
           toggleActive();
+          //resetiranje igre
+        } else if (e.key === "r") {
+          if (isOver) {
+            reset();
+            gameInfo.parentElement.classList.toggle("hidden");
+          }
         }
       });
       //kontrole na manjim zaslonima
-      if (this.canvas.clientWidth < 1000) {
+      if (this.isMobile) {
         const infoButton = this.$root.querySelector(".info-button");
         // "pritisnite bilo gdje da započnete"
         infoButton.textContent = "bilo gdje";

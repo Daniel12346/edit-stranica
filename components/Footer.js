@@ -30,11 +30,10 @@ footer{
 }
 
 footer img{
-  width: 15rem;
+  max-height: 8rem;
   transition: filter 0.4s;
   filter: grayscale(0.85);
-  flex-basis: 300px;
-  max-width: 20rem;
+  width: auto;
 }
 
 footer img:hover {
@@ -43,6 +42,9 @@ footer img:hover {
 
 span{
   justify-self: center;
+  color: hsla(180,20%,90%,1);
+  width: 95%;
+  max-width: 25rem;
 }
 
 
@@ -50,7 +52,7 @@ span{
 
 <footer>
   <img width="300px" src="../assets/ict.png" />  
-  <span> ©2019 BračGoGreen</span>
+  <span> ©2019 SŠ "Brač" Supetar - Daniel Vrandečić, Josip Vrandečić, Duje Vlahović</span>
 </footer>`;
 
 //footer nema nikakvu posebnu funkcionalnost
