@@ -224,7 +224,6 @@ class Nav extends HTMLElement {
     this.$root.appendChild(navTemplate.content.cloneNode(true));
     [this.button, this.menuIcon] = select(this.$root, "button", "#menuIcon");
     this.button.addEventListener("click", this.toggle.bind(this));
-    console.log(this.active);
   }
 
   //atribut koji govori je li navigacija na mobilnom uređaju otvorena(prikazana) ili ne
@@ -245,6 +244,7 @@ class Nav extends HTMLElement {
     this.open = !this.open;
   }
 
+  //trenutno aktivni link
   get active() {
     if (!this.hasAttribute("active")) {
       return null;

@@ -108,7 +108,7 @@ lazyImages.forEach(img => {
 
 /*ULAZAK KARTICA*/
 observe(
-  { ...options, initialTransition: "", rootMargin: "100px" },
+  { ...options, initialTransition: "", rootMargin: "200px" },
   ...lazyImages
 );
 const [osobe] = selectAll(document, ".osoba");

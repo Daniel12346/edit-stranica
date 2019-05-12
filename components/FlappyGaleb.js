@@ -229,13 +229,7 @@ canvas {
   opacity:0;
 }
 
-.info-button{
-  background: hsla(130,60%,10%,0.95); 
-display: inline-block;
-padding: 0.2rem;
-border-radius: 3px;
-z-index: 3;
-}
+
 
 
 
@@ -248,7 +242,7 @@ z-index: 3;
     <span class="display">RAZINA <span id="levelCounter">1</span></span>
     <span class="display">rezultat: <span id="scoreCounter">0</span></span>
     <div class="display info-display">
-      <p class="display game-info" id="gameInfo">Pritisnite <span class="info-button">P</span> da započnete</p> 
+      <p class="display game-info" id="gameInfo">Pritisnite <span class="info-button">tipku P da započnete/pauzirate i razmaknicu da letite</span> </p>
     </div>
 
   </div>
@@ -408,7 +402,6 @@ class FlappyGaleb extends HTMLElement {
       gameInfo.parentElement.classList.toggle("hidden", isRunning);
       seagull.y = canvas.clientHeight / 3;
 
-      console.log(pipes, bags, currentLevel, physics);
       run();
     };
 

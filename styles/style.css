@@ -1,4 +1,3 @@
-/*TODO: comment and explain css variables*/
 *,
 *::after,
 *::before {
@@ -18,6 +17,8 @@ ul {
 button {
   border: none;
   cursor: pointer;
+  /*veći razmak među slovima*/
+  letter-spacing: 2px;
 }
 
 h2,
@@ -81,7 +82,7 @@ img {
 }
 
 .landing-section {
-  margin: -4vmax 0 8vmax 0;
+  margin: -2vmax 0 8vmax 0;
   display: grid;
   width: 100vw;
   min-height: 45vh;
@@ -107,6 +108,7 @@ h1 {
 
 .landing-section header span {
   line-height: 1.5;
+  margin: 1rem 0;
 }
 
 @media screen and (max-width: 1000px) {
@@ -131,10 +133,6 @@ h1 {
   }
 }
 
-.brac-img {
-  margin-top: 2rem;
-}
-
 .landing-section .brac-img {
   grid-row: 3;
   gap: 1rem;
@@ -144,14 +142,18 @@ h1 {
 
 .landing-section header {
   max-width: 30rem;
-  height: 45vh;
+  height: 35vh;
 
   min-height: 10rem;
   max-height: 20rem;
   grid-row: 3;
   display: flex;
-  flex-flow: row wrap;
-  align-items: space-between;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+}
+
+.brac-img {
+  margin-top: 2rem;
 }
 
 .intro-section {
@@ -455,18 +457,19 @@ section#akcije {
   padding: 15vh 0;
 }
 
-section#akcije .text-wrapper:not(:last-child) {
-  margin: 2vh 0 9vh 0;
+section#akcije .text-wrapper {
+  margin-bottom: 2rem;
 }
 
 .zelenko-img,
 .video {
   object-fit: cover;
   object-position: center;
-  width: 80%;
+  width: 90%;
   max-width: 60rem;
   min-height: 35vh;
   max-height: 45vh;
+  margin: 1rem 0 1rem;
 }
 
 .video {
@@ -545,6 +548,7 @@ ie-flappy-galeb {
 
 .osoba img {
   margin-bottom: 1.5rem;
+  object-fit: cover;
 }
 
 .osoba .role {
@@ -606,7 +610,6 @@ ie-flappy-galeb {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
-  /*TODO: sth*/
   min-height: 20rem;
   list-style: square;
   min-width: 15rem;
@@ -626,7 +629,6 @@ ie-flappy-galeb {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-evenly;
-  /*TODO: sth*/
   min-height: 10rem;
   list-style: square;
 }
