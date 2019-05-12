@@ -234,7 +234,7 @@ class Nav extends HTMLElement {
   }
   set open(val) {
     //ikona u lijevom kutu nav-a se mijenja ovisno boolean vrijednosti argumenta val
-    this.menuIcon.src = `../assets/${val ? "x" : "menu"}.svg`;
+    this.menuIcon.src = `assets/${val ? "x" : "menu"}.svg`;
     //ako je val true (truth-y) navigacija se prikazuje, inače je skrivena
     val ? this.setAttribute("open", val) : this.removeAttribute("open");
   }
