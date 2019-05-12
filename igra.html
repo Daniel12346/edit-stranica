@@ -51,6 +51,8 @@
       <script src="components/Toggle.js"></script>
       <script src="components/Nav.js"></script>
       <script>
+        //sprječava djelovanje razmaknice na ovoj stranici jer komponenta s igrom mora biti centrirana i ne smije se micati,
+        //a ona ima vlastiti event listener koji dopušta djelovanje razmaknice
         document.onkeydown = e => e.keyCode !== 32;
       </script>
       <script src="components/FlappyGaleb.js"></script>

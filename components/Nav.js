@@ -53,7 +53,6 @@ a{
     text-decoration: none;
     color: var(--color-primary-1);
     padding: 1rem;
-    /*TODO: new serif*/
     font-family: Roboto;
 }
 

@@ -234,11 +234,15 @@ h1 {
   transform: translate(-100px, 0);
 }
 
+/*svg galeba na početnoj stranici*/
 .galeb-img {
   transform: translate(-300px, 200px);
   /*will-change služi da browser zna koje će se svojstvo promijeniti i u skladu s tim optimizira promjenu*/
   will-change: transform;
   transition: transform 1s;
+  filter: drop-shadow(3px 2px 6px hsla(0, 0%, 0%, 0.5));
+  width: 100%;
+  max-width: 400px;
 }
 
 .quote-section {
@@ -293,7 +297,7 @@ h1 {
     margin-bottom: 0;
   }
 }
-/**PROJEKT**/
+/**EKOLOGIJA**/
 ie-brac-map {
   width: 90%;
   max-width: 45rem;
@@ -322,6 +326,7 @@ ie-brac-map {
   flex-flow: column nowrap;
 }
 
+/*slika na vrhu sectiona*/
 .mjesto-img {
   width: 100%;
   height: 35vh;
@@ -482,7 +487,7 @@ section#akcije .text-wrapper:not(:last-child) {
   border-top: 4px var(--color-secondary-3) solid;
   box-shadow: 0px 1.5px 2px rgba(0, 0, 0, 0.23);
   width: 90%;
-  /*širina je ograničena tako da broj znakova u svakom redu ne prelazi 80 na većim zaslonima (zbog bolje čitljivosti)*/
+  /*širina je ograničena tako da broj znakova u svakom redu ne prelazi 80 na većim zaslonima (zbog lakšeg čitanja)*/
   max-width: 40rem;
   border-radius: 6px;
 }
@@ -549,6 +554,16 @@ ie-flappy-galeb {
   letter-spacing: 1.2px;
   font-weight: bold;
 }
+
+.osoba .name {
+  font-family: "Raleway";
+  text-transform: none;
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+  background: transparent;
+  box-shadow: none;
+}
+
 .osoba::after {
   content: "";
   display: block;
@@ -682,6 +697,10 @@ form::after {
 textarea {
   resize: none;
   min-height: 4rem;
+}
+/*textarea s porukom*/
+.poruka {
+  min-height: 18vh;
 }
 
 .field {

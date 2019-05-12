@@ -22,7 +22,7 @@ const observe = (
       throw new Error("Intersection observer nije podržan u ovom browseru");
     }
 
-    //funkcija koju observer poziva odmah koja postavlja styling elementa prije nego što postane vidljiv
+    //funkcija koju observer poziva odmah, a postavlja styling elementa prije nego što postane vidljiv
     const setup = el => {
       el.style.opacity = el.style.opacity || initialOpacity;
       el.style.transform = el.style.transform || initialTransform;
@@ -37,16 +37,16 @@ const observe = (
     };
 
     entries.forEach(entry => {
+      //entry.target je sam element
       const { target } = entry;
 
-      //ako ne elementu nije definirana funkcija onIntersection, poziva se funkcija koja priprema element za fadeIn
+      //ako na elementu nije definirana funkcija onIntersection, poziva se funkcija koja priprema element za fadeIn
       !target.onIntersection && setup(target);
       if (entry.isIntersecting) {
-        //entry.target je sam element
         target.onIntersection
           ? target.onIntersection()
           : //ako definiramo onIntersection callback na elementu, on će biti pozvan,
-            //inače ova se poziva gore definirani fadeIn
+            //inače se poziva gore definirani fadeIn
             fadeIn(target);
         observer.unobserve(target);
       }
@@ -79,8 +79,8 @@ const options = {
 };
 
 cards.forEach((card, i) =>
-  //card je svaki element s klasom "card", i je index elementa u arrayu svih takvih elemenata (varijabla cards)
-  //transition delay ovisi o indexu pa slike ne postaju vidljive istovremeno
+  //card je svaki selektirani element s klasom "card", i je index elementa u arrayu svih takvih elemenata (varijabla cards)
+  //transition delay ovisi o indexu pa slike ne ulaze istovremeno
   observe({ ...options, rootMargin: "-20% 300px", delay: `${i * 0.3}s` }, card)
 );
 

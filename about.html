@@ -41,11 +41,7 @@
             height="150px"
             style="height: 150px; border-radius: 50%"
           />
-          <span
-            class="name role"
-            style="font-family: 'Raleway';text-transform: none; font-size: 1.5rem; margin-bottom: 0.2rem; background: transparent; box-shadow: none"
-            >Daniel Vrandečić</span
-          >
+          <span class="name role">Daniel Vrandečić</span>
           <ul>
             <li>kod stranice (JS, CSS, HTML)</li>
             <li>responzivnost</li>
@@ -59,11 +55,7 @@
             height="150px"
             style="height: 150px; border-radius: 50%"
           />
-          <span
-            class="name role"
-            style="font-family: 'Raleway';text-transform: none; font-size: 1.5rem; margin-bottom: 0.2rem; background: transparent; box-shadow: none"
-            >Josip Vrandečić</span
-          >
+          <span class="name role">Josip Vrandečić</span>
           <ul>
             <li>ideja i tema stranice</li>
             <li>tekst</li>
@@ -78,13 +70,9 @@
             class="osoba-img"
             style="height: 150px; border-radius: 50%"
           />
-          <span
-            class="name role"
-            style="font-family: 'Raleway';text-transform: none; font-size: 1.5rem; margin-bottom: 0.2rem; background: transparent; box-shadow: none"
-            >Duje Vlahović</span
-          >
+          <span class="name role">Duje Vlahović</span>
           <ul>
-            <li>neke slike (Postira)</li>
+            <li>neke slike (4., 5., 6. slika Postira)</li>
             <li>tekst (more)</li>
             <li>dizajn</li>
           </ul>
@@ -148,16 +136,14 @@
         <h2 class="question" id="kontakt-h">
           Kontaktirajte nas!
         </h2>
+        <!--dekorativan form-->
         <form id="kontakt">
           <!--galeb pismonoša :) -->
           <object id="kontaktGaleb" data="assets/galeb.svg"></object>
-          <div class="field">
-            <label>Email</label>
-            <input type="email" />
-          </div>
+
           <div class="field">
             <label>Poruka</label>
-            <textarea></textarea>
+            <textarea class="poruka"></textarea>
           </div>
 
           <button class="button send" type="submit">
@@ -173,6 +159,7 @@
     <script src="scripts/observer.js"></script>
     <script>
       document.querySelector("form").addEventListener("submit", e => {
+        //form se ne šalje jer nema servera
         e.preventDefault();
         e.target.classList.add("sent");
       });

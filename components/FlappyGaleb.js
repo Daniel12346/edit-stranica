@@ -1,6 +1,4 @@
-//TODO: prevest
-
-//proporcije nisu uvijek idealne, ali igra funkcionira na svim uređajima
+//proporcije nisu uvijek idealne, ali igra funkcionira na svim uređajima (dimenzija zaslona koje su potrebne za veliki dio funkcionalnosti) se učitavaju kad se stranica učita
 
 /*POSTAVKE */
 
@@ -367,7 +365,6 @@ class FlappyGaleb extends HTMLElement {
       gameInfo.parentElement.classList.remove("hidden");
       isRunning = false;
       isOver = true;
-      //TODO: move this setup to a new function
     };
     // crta sve cijevi na canvas
     const drawPipesAndBags = () => {
@@ -560,7 +557,6 @@ class FlappyGaleb extends HTMLElement {
         const infoButton = this.$root.querySelector(".info-button");
         // "pritisnite bilo gdje da započnete"
         infoButton.textContent = "bilo gdje";
-        //TODO: mobilno pauziranje
         infoButton.classList.remove("info-button");
         this.addEventListener("click", () => {
           if (!isRunning && !isOver) {
