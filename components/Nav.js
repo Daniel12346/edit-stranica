@@ -53,7 +53,6 @@ a{
     text-decoration: none;
     color: var(--color-primary-1);
     padding: 1rem;
-    font-family: Roboto;
 }
 
 nav.mobile{
@@ -212,7 +211,7 @@ ie-toggle{
 </ul>
 </nav>
 <nav class="mobile">
-<button style="z-index: 12;"><img src ="../assets/menu.svg" id="menuIcon"/></button>
+<button style="z-index: 12;"><img src ="assets/menu.svg" id="menuIcon"/></button>
 <div class="toggle-wrapper"><ie-toggle></ie-toggle> <span style="color: white">tema</span></div>
 
 </nav>`;

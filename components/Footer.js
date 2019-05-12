@@ -51,7 +51,7 @@ span{
 </style>
 
 <footer>
-  <img width="300px" src="../assets/ict.png" />  
+  <img width="300px" src="assets/ict.png" />  
   <span> ©2019 SŠ "Brač" Supetar - Daniel Vrandečić, Josip Vrandečić, Duje Vlahović</span>
 </footer>`;
 

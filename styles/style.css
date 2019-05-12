@@ -95,10 +95,12 @@ img {
   background: var(--color-bg-1);
   line-height: 1.5;
   font-weight: 500;
+  font-size: 1.2rem;
 }
 
 .landing-section .button {
-  margin: 1rem 0 2rem;
+  padding: 0.3rem;
+  display: inline-block;
 }
 
 h1 {
@@ -176,6 +178,10 @@ h1 {
   max-width: 30rem;
 }
 
+.cards-section {
+  margin: 15vh 0;
+}
+
 .cards {
   display: flex;
   flex-flow: row wrap;
@@ -206,7 +212,7 @@ h1 {
   color: var(--color-text-1);
   background-color: var(--color-bg-2);
   padding: 1rem 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   min-height: 14rem;
 }
 
@@ -306,7 +312,7 @@ ie-brac-map {
 }
 
 .map-wrapper {
-  margin-bottom: 20vh;
+  margin-bottom: 8rem;
 }
 
 .map-info {
